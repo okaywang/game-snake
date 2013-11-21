@@ -1,0 +1,12 @@
+D:\test2\MyGame\GreedySnake\bin\Debug\GreedySnake.exe
+D:\test2\MyGame\GreedySnake\bin\Debug\GreedySnake.pdb
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\GreedySnake\obj\Debug\MainWindow.baml
+D:\test2\MyGame\GreedySnake\obj\Debug\MainWindow.g.cs
+D:\test2\MyGame\GreedySnake\obj\Debug\App.g.cs
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake_MarkupCompile.cache
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake.g.resources
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake.Properties.Resources.resources
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake.csproj.GenerateResource.Cache
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake.exe
+D:\test2\MyGame\GreedySnake\obj\Debug\GreedySnake.pdb
