@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreedySnakeLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +23,14 @@ namespace GreedySnake
     public partial class MainWindow : Window
     {
         private Snake _snake;
-        private Direction _direction = Direction.Down;
+        private OrientationInterpreter _orientation = new OrientationDown();
+        private Timer _timer = new Timer();
         public MainWindow()
         {
             InitializeComponent();
 
+            Coordinate.MaxX = 10;
+            Coordinate.MaxY = 10;
 
             var segment1 = new Segment();
             segment1.Poisition = new Coordinate() { X = 2, Y = 2 };
@@ -35,25 +39,42 @@ namespace GreedySnake
             var segment3 = new Segment();
             segment3.Poisition = new Coordinate() { X = 2, Y = 4 };
             var segment4 = new Segment();
-            segment4.Poisition = new Coordinate() { X = 3, Y = 4 };
+            segment4.Poisition = new Coordinate() { X = 2, Y = 5 };
 
-            var segs = new List<Segment>() { segment1, segment2, segment3, segment4 };
-            _snake = new Snake(segs);
+            var head = new SnakeHead( segment4);
+
+            var segs = new LinkedList<Segment>();
+            segs.AddFirst(segment1);
+            segs.AddLast(segment2);
+            segs.AddLast(segment3);
+            segs.AddLast(segment4);
+            var body = new SnakeBody( segs);
+
+            _snake = new Snake(head, body);
         }
-
+        public Rectangle SegmentShape
+        {
+            get
+            {
+                var rect = new Rectangle();
+                rect.Width = 20;
+                rect.Height = 20;
+                rect.Fill = Brushes.Silver;
+                return rect;
+            }
+        }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            opRegion.SetDimension(10, 10);
+            opRegion.SetDimension(Coordinate.MaxY + 1, Coordinate.MaxX + 1);
 
             RenderSnake(_snake);
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var timer = new Timer();
-            timer.Interval = 1000;
-            timer.Elapsed += timer_Elapsed;
-            timer.Start();
+            _timer.Interval = 500;
+            _timer.Elapsed += timer_Elapsed;
+            _timer.Start();
         }
 
         void timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -63,21 +84,39 @@ namespace GreedySnake
 
         private void AA()
         {
+            try
+            {
+                _snake.Creep(_orientation, _hasFood);
+            }
+            catch (BeyondBoundaryException ex)
+            {
+                _timer.Stop();
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("game over");
+                return;
+            }
+            catch (SelfCrashedException ex)
+            {
+                _timer.Stop();
+                MessageBox.Show(ex.Message);
+                MessageBox.Show("game over");
+                return;
+            }
+            _hasFood = false;
+
             opRegion.Children.Clear();
-            _snake.Move(_direction);
             RenderSnake(_snake);
         }
 
-
-
         private void RenderSnake(Snake snake)
         {
-            snake.Segments.ForEach(s => this.RenderSegement(s));
+            this.RenderSegement(snake.Head.Segment);
+            snake.Body.Segments.ForEach(s => this.RenderSegement(s));
         }
 
         private void RenderSegement(Segment segment)
         {
-            this.RenderShape(segment.Shape, segment.Poisition);
+            this.RenderShape(SegmentShape, segment.Poisition);
         }
 
         private void RenderShape(Rectangle rect, Coordinate coord)
@@ -89,24 +128,28 @@ namespace GreedySnake
 
         private void Window_KeyUp_1(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Up)
+            if (e.Key == Key.Up && _orientation.GetType() != typeof(OrientationDown))
             {
-                _direction = Direction.Up;
+                _orientation = new OrientationUp();
             }
-            else if (e.Key == Key.Right)
+            else if (e.Key == Key.Right && _orientation.GetType() != typeof(OrientationLeft))
             {
-                _direction = Direction.Right;
-
+                _orientation = new OrientationRight();
             }
-            else if (e.Key == Key.Down)
+            else if (e.Key == Key.Down && _orientation.GetType() != typeof(OrientationUp))
             {
-                _direction = Direction.Down;
-
+                _orientation = new OrientationDown();
             }
-            else if (e.Key == Key.Left)
+            else if (e.Key == Key.Left && _orientation.GetType() != typeof(OrientationRight))
             {
-                _direction = Direction.Left;
+                _orientation = new OrientationLeft();
             }
+        }
+        private bool _hasFood;
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var food = new Food();
+            _hasFood = true;
         }
 
     }

@@ -53,10 +53,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Direction.cs" />
-    <Compile Include="IMoveable.cs" />
-    <Compile Include="Segment.cs" />
-    <Compile Include="Snake.cs" />
     <Compile Include="WpfHelper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -66,9 +62,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Coordinate.cs" />
-    <Compile Include="Food.cs" />
-    <Compile Include="ISnake.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,6 +90,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GreedySnakeLibrary\GreedySnakeLibrary.csproj">
+      <Project>{4012dfaa-7d47-43ec-b8d7-118946572df6}</Project>
+      <Name>GreedySnakeLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
