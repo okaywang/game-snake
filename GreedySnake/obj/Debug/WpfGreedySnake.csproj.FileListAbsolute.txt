@@ -20,3 +20,4 @@ D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake_MarkupCompile.ca
 D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.g.resources
 D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.Properties.Resources.resources
 D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.csproj.GenerateResource.Cache
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.csprojResolveAssemblyReference.cache

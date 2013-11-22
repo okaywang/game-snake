@@ -5,9 +5,8 @@ using System.Text;
 
 namespace WpfGreedySnake
 {
-    interface ISnake
+    public interface ISnake
     {
-        void MoveForward();
         void Eat(Food food);
         void Crash();
     }

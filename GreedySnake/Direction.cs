@@ -5,8 +5,11 @@ using System.Text;
 
 namespace WpfGreedySnake
 {
-    public class Food
+    public enum Direction
     {
-        public Coordinate Position { get; set; }
+        Up,
+        Right,
+        Down,
+        Left
     }
 }

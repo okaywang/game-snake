@@ -5,8 +5,8 @@ using System.Text;
 
 namespace WpfGreedySnake
 {
-    public class Food
+   public  interface IMoveable
     {
-        public Coordinate Position { get; set; }
+        void Move(Direction direction);
     }
 }
