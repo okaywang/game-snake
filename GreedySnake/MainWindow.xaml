@@ -9,9 +9,9 @@
         </Grid.RowDefinitions>
         
         <Canvas Grid.Row="0">
-            <Button Width="73" Height="60" Content="click me" Click="Button_Click_1" />
-            <Button Content="Run" Canvas.Left="134" Canvas.Top="10" Width="75" Height="50" Click="Button_Click_2"/>
-            <Button Content="Eat" Width="75" Canvas.Left="250" Canvas.Top="10" Height="50" Click="Button_Click_3"/>
+            <Button x:Name="btnStart" Content="Start" Canvas.Left="134" Canvas.Top="10" Width="75" Height="50" Click="btnStart_Click" />
+            <Button x:Name="btnRestart" Content="Restart" Canvas.Left="240" Canvas.Top="10" Width="75" Height="50" Click="btnRestart_Click"/>
+            <Button x:Name="btnPause" Content="Pause" Canvas.Left="354" Canvas.Top="10" Width="75" Height="50" Click="btnPause_Click"/>
         </Canvas>
         <Grid Grid.Row="1" Name="opRegion" ShowGridLines="True">
             

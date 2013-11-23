@@ -18,6 +18,8 @@ namespace GreedySnakeLibrary
     public abstract class OrientationInterpreter
     {
         public abstract void Interpret(ref Coordinate coord);
+
+        public abstract Coordinate GetExpectedPosition(Coordinate coord);
     }
 
     public class OrientationUp : OrientationInterpreter
@@ -30,6 +32,12 @@ namespace GreedySnakeLibrary
             }
             coord.Y--;
         }
+
+        public override Coordinate GetExpectedPosition(Coordinate coord)
+        {
+            coord.Y--;
+            return coord;
+        }
     }
     public class OrientationDown : OrientationInterpreter
     {
@@ -40,6 +48,11 @@ namespace GreedySnakeLibrary
                 throw new BeyondBoundaryException("can not move beyond the down boundary!");
             }
             coord.Y++;
+        }
+        public override Coordinate GetExpectedPosition(Coordinate coord)
+        {
+            coord.Y++;
+            return coord;
         }
     }
     public class OrientationLeft : OrientationInterpreter
@@ -52,6 +65,11 @@ namespace GreedySnakeLibrary
             }
             coord.X--;
         }
+        public override Coordinate GetExpectedPosition(Coordinate coord)
+        {
+            coord.X--;
+            return coord;
+        }
     }
     public class OrientationRight : OrientationInterpreter
     {
@@ -62,6 +80,11 @@ namespace GreedySnakeLibrary
                 throw new BeyondBoundaryException("can not move beyond the right boundary!");
             }
             coord.X++;
+        }
+        public override Coordinate GetExpectedPosition(Coordinate coord)
+        {
+            coord.X++;
+            return coord;
         }
     }
 }

@@ -59,5 +59,32 @@ namespace WpfGreedySnake.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 44444.
+        /// </summary>
+        internal static string code {
+            get {
+                return ResourceManager.GetString("code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3fff.
+        /// </summary>
+        internal static string commtext {
+            get {
+                return ResourceManager.GetString("commtext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 33.
+        /// </summary>
+        internal static string name {
+            get {
+                return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
     }
 }

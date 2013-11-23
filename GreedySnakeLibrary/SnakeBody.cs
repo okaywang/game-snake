@@ -44,5 +44,10 @@ namespace GreedySnakeLibrary
                 node = node.Next;
             }
         }
+
+        public bool IsCover(Coordinate pos)
+        {
+            return this.Segments.Any(s => s.Poisition == pos);
+        }
     }
 }

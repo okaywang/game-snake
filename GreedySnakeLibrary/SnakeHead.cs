@@ -27,11 +27,15 @@ namespace GreedySnakeLibrary
         public void Creep(OrientationInterpreter orientation)
         {
             _segment.Creep(orientation);
-            var isPosOccupied = _owner.Body.Segments.Any(s => s.Poisition == _segment.Poisition);
-            if (isPosOccupied)
+            if (_owner.Body.IsCover(_segment.Poisition))
             {
                 throw new SelfCrashedException("crashed oneself");
             }
+        }
+
+        public bool IsCover(Coordinate pos)
+        {
+            return this.Segment.Poisition == pos;
         }
     }
 }

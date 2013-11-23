@@ -23,3 +23,13 @@ D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.csproj.GenerateR
 D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game-snake\GreedySnake\bin\Debug\GreedySnakeLibrary.dll
 D:\test2\MyGame\game-snake\GreedySnake\bin\Debug\GreedySnakeLibrary.pdb
+D:\test2\MyGame\game-snake\GreedySnake\bin\Debug\de-DE\WpfGreedySnake.resources.dll
+D:\test2\MyGame\game-snake\GreedySnake\bin\Debug\en-US\WpfGreedySnake.resources.dll
+D:\test2\MyGame\game-snake\GreedySnake\bin\Debug\zh-CN\WpfGreedySnake.resources.dll
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.Properties.PolicyResources.resources
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.Properties.Resources.de-DE.resources
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.Properties.Resources.en-US.resources
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\WpfGreedySnake.Properties.Resources.zh-CN.resources
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\de-DE\WpfGreedySnake.resources.dll
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\en-US\WpfGreedySnake.resources.dll
+D:\test2\MyGame\game-snake\GreedySnake\obj\Debug\zh-CN\WpfGreedySnake.resources.dll

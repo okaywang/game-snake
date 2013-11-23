@@ -37,12 +37,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventArgs\SnakeGameEvent.cs" />
     <Compile Include="Exceptions\BarrierCrashedException.cs" />
     <Compile Include="Exceptions\BeyondBoundaryException.cs" />
     <Compile Include="Exceptions\SelfCrashedException.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="GameMediator.cs" />
+    <Compile Include="ISnakeGameUI.cs" />
     <Compile Include="Segment.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="OrientationInterpreter.cs" />

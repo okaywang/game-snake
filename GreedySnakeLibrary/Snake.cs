@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GreedySnakeLibrary
 {
-    public class Snake 
+    public class Snake
     {
         private SnakeHead _head;
         private SnakeBody _body;
@@ -27,6 +27,11 @@ namespace GreedySnakeLibrary
         public SnakeBody Body
         {
             get { return _body; }
+        }
+
+        public bool IsCover(Coordinate pos)
+        {
+            return _head.IsCover(pos) || _body.IsCover(pos);
         }
 
         public void Creep(OrientationInterpreter orientation, bool growth)
