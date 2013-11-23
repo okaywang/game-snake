@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Input;
+using WinFormControls;
 
 namespace WinFormGreedySnake
 {
@@ -21,6 +22,10 @@ namespace WinFormGreedySnake
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             g = this.pnlGame.CreateGraphics();
 
             _gameMediator = new GameMediator(this);
@@ -30,8 +35,8 @@ namespace WinFormGreedySnake
 
             this.btnPause.Enabled = false;
             this.btnRestart.Enabled = false;
+            //this.pnlGame.BackColor = Color.Transparent;
         }
-
         private void GameOver(object sender, SnakeGameEvent e)
         {
             this.Invoke(new Action(() =>
@@ -46,7 +51,7 @@ namespace WinFormGreedySnake
         {
             _blockHeight = this.pnlGame.Height / rowCount;
             _blockWidth = this.pnlGame.Width / columnCount;
-            PaintGrid();
+            PaintGrid(rowCount,columnCount);
         }
 
         public void PaintSnake(Snake snake)
@@ -73,28 +78,14 @@ namespace WinFormGreedySnake
 
         public void ClearObjects()
         {
-            g.Clear(this.pnlGame.BackColor);
-            PaintGrid();
+            g.Clear(this.BackColor);
+            //PaintGrid(10, 10);
         }
 
         //how to avoid twinkle
-        private void PaintGrid()
+        private void PaintGrid(int rowCount,int columnCount)
         {
-            int x = 0;
-            int y = 0;
-            while (y < this.pnlGame.Height)
-            {
-                g.DrawLine(Pens.Brown, x, y, this.pnlGame.Width, y);
-                y += _blockHeight;
-            }
-
-            x = 0;
-            y = 0;
-            while (x < this.pnlGame.Width)
-            {
-                g.DrawLine(Pens.Brown, x, y, x, this.pnlGame.Height);
-                x += _blockWidth;
-            }
+            WinFormHelper.DrawGrid(this.pnlGame, rowCount, columnCount);
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -123,8 +114,7 @@ namespace WinFormGreedySnake
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             _gameMediator.InterpreterKey(e.KeyCode);
-        }
-
+        } 
 
     }
 }

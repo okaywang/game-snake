@@ -66,6 +66,7 @@
             // 
             // pnlGame
             // 
+            this.pnlGame.BackColor = System.Drawing.Color.Transparent;
             this.pnlGame.Location = new System.Drawing.Point(12, 91);
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(468, 268);
@@ -83,6 +84,7 @@
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
 
@@ -93,7 +95,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Button btnPause;
-        private System.Windows.Forms.Panel pnlGame;
+        private System.Windows.Forms.Panel pnlGame; 
     }
 }
 

@@ -111,6 +111,8 @@ namespace GreedySnake
         private void Window_KeyUp_1(object sender, KeyEventArgs e)
         {
             _gameMediator.InterpreterKey(e.Key);
+
+           
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
