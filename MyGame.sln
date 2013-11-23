@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGreedySnake", "GreedySna
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedySnakeLibrary", "GreedySnakeLibrary\GreedySnakeLibrary.csproj", "{4012DFAA-7D47-43EC-B8D7-118946572DF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormGreedySnake", "WinFormGreedySnake\WinFormGreedySnake.csproj", "{C391FE60-5664-4790-8201-28AA4126DFEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASample", "ASample\ASample.csproj", "{1CF81D71-20DE-4587-95DE-722627E21E93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{4012DFAA-7D47-43EC-B8D7-118946572DF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4012DFAA-7D47-43EC-B8D7-118946572DF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4012DFAA-7D47-43EC-B8D7-118946572DF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C391FE60-5664-4790-8201-28AA4126DFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C391FE60-5664-4790-8201-28AA4126DFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C391FE60-5664-4790-8201-28AA4126DFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C391FE60-5664-4790-8201-28AA4126DFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF81D71-20DE-4587-95DE-722627E21E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF81D71-20DE-4587-95DE-722627E21E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF81D71-20DE-4587-95DE-722627E21E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF81D71-20DE-4587-95DE-722627E21E93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

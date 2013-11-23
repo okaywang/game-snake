@@ -1,0 +1,10 @@
+D:\test2\MyGame\game-snake\WinFormGreedySnake\bin\Debug\WinFormGreedySnake.exe
+D:\test2\MyGame\game-snake\WinFormGreedySnake\bin\Debug\WinFormGreedySnake.pdb
+D:\test2\MyGame\game-snake\WinFormGreedySnake\bin\Debug\GreedySnakeLibrary.dll
+D:\test2\MyGame\game-snake\WinFormGreedySnake\bin\Debug\GreedySnakeLibrary.pdb
+D:\test2\MyGame\game-snake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.Form1.resources
+D:\test2\MyGame\game-snake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.Properties.Resources.resources
+D:\test2\MyGame\game-snake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.csproj.GenerateResource.Cache
+D:\test2\MyGame\game-snake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.exe
+D:\test2\MyGame\game-snake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.pdb

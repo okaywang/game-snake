@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Timers;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace GreedySnakeLibrary
@@ -12,7 +13,7 @@ namespace GreedySnakeLibrary
         private Snake _snake;
         private ISnakeGameUI _ui;
         private OrientationInterpreter _orientation;
-        private Timer _timer = new Timer();
+        private System.Timers.Timer _timer = new System.Timers.Timer();
         private Food _food = new Food();
 
         public event EventHandler<SnakeGameEvent> BeyondBoundary;
@@ -73,6 +74,25 @@ namespace GreedySnakeLibrary
                 _orientation = new OrientationLeft();
             }
         }
+        public void InterpreterKey(Keys key)
+        {
+            if (key == Keys.Up && _orientation.GetType() != typeof(OrientationDown))
+            {
+                _orientation = new OrientationUp();
+            }
+            else if (key == Keys.Right && _orientation.GetType() != typeof(OrientationLeft))
+            {
+                _orientation = new OrientationRight();
+            }
+            else if (key == Keys.Down && _orientation.GetType() != typeof(OrientationUp))
+            {
+                _orientation = new OrientationDown();
+            }
+            else if (key == Keys.Left && _orientation.GetType() != typeof(OrientationRight))
+            {
+                _orientation = new OrientationLeft();
+            }
+        }
 
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
@@ -125,7 +145,7 @@ namespace GreedySnakeLibrary
 
         private void InitMap()
         {
-            Coordinate.MaxX = 10;
+            Coordinate.MaxX = 15;
             Coordinate.MaxY = 10;
             _ui.PaintMap(Coordinate.MaxY + 1, Coordinate.MaxX + 1);
         }
