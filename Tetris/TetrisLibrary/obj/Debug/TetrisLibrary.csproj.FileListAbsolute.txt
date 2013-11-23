@@ -1,0 +1,4 @@
+D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\TetrisLibrary.dll
+D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\TetrisLibrary.pdb
+D:\development\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.dll
+D:\development\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.pdb
