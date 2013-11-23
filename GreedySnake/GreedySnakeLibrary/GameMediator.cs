@@ -11,7 +11,7 @@ namespace GreedySnakeLibrary
     public class GameMediator
     {
         private Snake _snake;
-        private ISnakeGameUI _ui;
+        private ISnakeGameView _ui;
         private OrientationInterpreter _orientation;
         private System.Timers.Timer _timer = new System.Timers.Timer();
         private Food _food = new Food();
@@ -20,7 +20,7 @@ namespace GreedySnakeLibrary
 
         public event EventHandler<SnakeGameEvent> SelfCrash;
 
-        public GameMediator(ISnakeGameUI ui)
+        public GameMediator(ISnakeGameView ui)
         {
             _ui = ui;
         }
@@ -122,14 +122,14 @@ namespace GreedySnakeLibrary
             }
 
             _ui.ClearObjects();
-            _ui.PaintSnake(_snake);
+            _ui.RenderSnake(_snake);
 
             if (_food == null)
             {
                 GenerateFood();
             }
 
-            _ui.PaintFood(_food);
+            _ui.RenderFood(_food);
         }
 
         private void GenerateFood()
@@ -147,7 +147,7 @@ namespace GreedySnakeLibrary
         {
             Coordinate.MaxX = 15;
             Coordinate.MaxY = 10;
-            _ui.PaintMap(Coordinate.MaxY + 1, Coordinate.MaxX + 1);
+            _ui.RenderMap(Coordinate.MaxY + 1, Coordinate.MaxX + 1);
         }
 
         private void InitSnake()
@@ -169,7 +169,7 @@ namespace GreedySnakeLibrary
 
             _snake = new Snake(head, body);
 
-            _ui.PaintSnake(_snake);
+            _ui.RenderSnake(_snake);
         }
 
         private void InitTimer()

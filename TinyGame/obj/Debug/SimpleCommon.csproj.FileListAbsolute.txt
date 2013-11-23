@@ -1,0 +1,4 @@
+D:\development\game-snake\TinyGame\bin\Debug\SimpleCommon.dll
+D:\development\game-snake\TinyGame\bin\Debug\SimpleCommon.pdb
+D:\development\game-snake\TinyGame\obj\Debug\SimpleCommon.dll
+D:\development\game-snake\TinyGame\obj\Debug\SimpleCommon.pdb

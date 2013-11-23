@@ -8,7 +8,6 @@ D:\development\game-snake\WinFormTetris\obj\Debug\WinFormTetris.pdb
 D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormTetris.exe.config
 D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormTetris.exe
 D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormTetris.pdb
-D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.csprojResolveAssemblyReference.cache
 D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.Properties.Resources.resources
 D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.csproj.GenerateResource.Cache
 D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.exe

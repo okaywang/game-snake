@@ -12,9 +12,9 @@ using WinFormControls;
 
 namespace WinFormGreedySnake
 {
-    public partial class Form1 : Form, ISnakeGameUI
+    public partial class Form1 : Form, ISnakeGameView
     {
-        private GameMediator _gameMediator;
+        private GameMediator2 _gameMediator;
 
         private int _blockHeight = 10;
         private int _blockWidth = 10;
@@ -28,10 +28,11 @@ namespace WinFormGreedySnake
         {
             g = this.pnlGame.CreateGraphics();
 
-            _gameMediator = new GameMediator(this);
+            var settings = new SnakeGameSettings() { RowCount = 10, ColumnCount = 20, TimerInterval = 200 };
+            _gameMediator = new GameMediator2(this,settings);
             _gameMediator.BeyondBoundary += GameOver;
             _gameMediator.SelfCrash += GameOver;
-            _gameMediator.InitGame();
+            _gameMediator.Initialize();
 
             this.btnPause.Enabled = false;
             this.btnRestart.Enabled = false;
@@ -47,14 +48,22 @@ namespace WinFormGreedySnake
             }));
         }
 
-        public void PaintMap(int rowCount, int columnCount)
+        public void RenderMap(int rowCount, int columnCount)
         {
             _blockHeight = this.pnlGame.Height / rowCount;
             _blockWidth = this.pnlGame.Width / columnCount;
             PaintGrid(rowCount,columnCount);
         }
 
-        public void PaintSnake(Snake snake)
+
+        public void RenderScence()
+        {
+            g.Clear(this.BackColor);
+            RenderSnake(_gameMediator.Snake);
+            RenderFood(_gameMediator.Food);
+        }
+
+        public void RenderSnake(Snake snake)
         {
             PaintBlock(snake.Head.Segment.Poisition);
             snake.Body.Segments.ForEach(s => PaintBlock(s.Poisition));
@@ -65,21 +74,19 @@ namespace WinFormGreedySnake
             return new Rectangle(coor.X * _blockWidth, coor.Y * _blockHeight, _blockWidth, _blockHeight);
         }
 
-        public void PaintFood(Food food)
+        public void RenderFood(Food food)
         {
             PaintBlock(food.Position);
-        }
-
-        private void PaintBlock(Coordinate pos)
-        {
-            var rect = this.GetFoodRect(pos);
-            g.FillRectangle(Brushes.Silver, rect);
         }
 
         public void ClearObjects()
         {
             g.Clear(this.BackColor);
-            //PaintGrid(10, 10);
+        }
+        private void PaintBlock(Coordinate pos)
+        {
+            var rect = this.GetFoodRect(pos);
+            g.FillRectangle(Brushes.Silver, rect);
         }
 
         //how to avoid twinkle
@@ -97,7 +104,7 @@ namespace WinFormGreedySnake
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            _gameMediator.BeginGame();
+            _gameMediator.Start();
             this.btnStart.Enabled = false;
             this.btnPause.Enabled = true;
             this.btnRestart.Enabled = false;
@@ -105,8 +112,9 @@ namespace WinFormGreedySnake
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            _gameMediator.ResetGame();
-            _gameMediator.BeginGame();
+ 
+            //_gameMediator.ResetGame();
+            _gameMediator.Start();
             this.btnPause.Enabled = true;
             this.btnRestart.Enabled = false;
         }
@@ -114,7 +122,7 @@ namespace WinFormGreedySnake
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             _gameMediator.InterpreterKey(e.KeyCode);
-        } 
+        }
 
     }
 }

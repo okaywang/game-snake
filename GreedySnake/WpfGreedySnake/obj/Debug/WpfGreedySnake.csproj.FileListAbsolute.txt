@@ -81,3 +81,5 @@ D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\en-US\WpfGreedySn
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\zh-CN\WpfGreedySnake.resources.dll
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.exe
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.pdb
+D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\SimpleGame.dll
+D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\SimpleGame.pdb

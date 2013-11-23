@@ -20,7 +20,7 @@ namespace GreedySnake
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, ISnakeGameUI
+    public partial class MainWindow : Window, ISnakeGameView
     {
         private GameMediator _gameMediator;
         public MainWindow()
@@ -44,7 +44,7 @@ namespace GreedySnake
             }));
         }
 
-        public void PaintMap(int rowCount, int columnCount)
+        public void RenderMap(int rowCount, int columnCount)
         {
             opRegion.SetDimension(rowCount, columnCount);
         }
@@ -79,7 +79,7 @@ namespace GreedySnake
             Dispatcher.Invoke(new Action(() => { opRegion.Children.Clear(); }));
         }
         
-        public void PaintFood(Food food)
+        public void RenderFood(Food food)
         {
             Dispatcher.Invoke(new Action(() =>
             {
@@ -87,7 +87,7 @@ namespace GreedySnake
             }));
         }
 
-        public void PaintSnake(Snake snake)
+        public void RenderSnake(Snake snake)
         {
             Dispatcher.Invoke(new Action(() =>
             {

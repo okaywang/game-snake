@@ -6,11 +6,11 @@ using System.Windows.Input;
 
 namespace GreedySnakeLibrary
 {
-    public interface ISnakeGameUI
+    public interface ISnakeGameView:SimpleGame.IGameView
     {
-        void PaintMap(int rowCount,int columnCount);
-        void PaintSnake(Snake snake);
-        void PaintFood(Food food);
+        //void RenderMap(int rowCount,int columnCount);
+        void RenderSnake(Snake snake);
+        void RenderFood(Food food);
         void ClearObjects();
     }
 }
