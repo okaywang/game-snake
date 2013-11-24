@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace WinFormGreedySnake
 {
-    public partial class FormTest : Form
+    public partial class FrmTest : Form
     {
-        public FormTest()
+        public FrmTest()
         {
             InitializeComponent();
         }

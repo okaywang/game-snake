@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basics\CommandOrientation.cs" />
+    <Compile Include="Basics\Coordinate.cs" />
+    <Compile Include="Basics\Exceptions\BeyondBoundaryException.cs" />
     <Compile Include="GameControllerBase.cs" />
     <Compile Include="GameSettingsBase.cs" />
     <Compile Include="IDataModel.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace WinFormGreedySnake
 {
-    partial class FormTest
+    partial class FrmTest
     {
         /// <summary>
         /// Required designer variable.

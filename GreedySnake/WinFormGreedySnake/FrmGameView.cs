@@ -13,14 +13,12 @@ using WinFormControls;
 
 namespace WinFormGreedySnake
 {
-    public partial class Form1 : Form, ISnakeGameView
+    public partial class FrmGameView : Form, ISnakeGameView
     {
         private int _blockHeight = 10;
         private int _blockWidth = 10;
 
-        public SnakeGameModel Model;
-
-        public Form1()
+        public FrmGameView()
         {
             InitializeComponent();
         }

@@ -65,8 +65,6 @@ D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\zh-CN\WpfGreedySn
 D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\GreedySnakeLibrary.dll
 D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\GreedySnakeLibrary.pdb
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.csprojResolveAssemblyReference.cache
-D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\MainWindow.baml
-D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\MainWindow.g.cs
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\App.g.cs
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake_MarkupCompile.cache
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.g.resources
@@ -83,5 +81,7 @@ D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.ex
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.pdb
 D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\SimpleGame.dll
 D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\SimpleGame.pdb
-D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WindowTest.baml
-D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WindowTest.g.cs
+D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\PageGameView.baml
+D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\PageTest.baml
+D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\PageGameView.g.cs
+D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\PageTest.g.cs
