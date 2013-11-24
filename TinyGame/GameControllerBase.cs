@@ -63,6 +63,11 @@ namespace SimpleGame
             _timer.Stop();
         }
 
+        public void Reset()
+        {
+            this.InitializeActiveObjects();
+        }
+
         public abstract void TimerElapsed();
         protected virtual void InitializeModelContext() { }
         public abstract void InitializeActiveObjects();

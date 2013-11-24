@@ -2,4 +2,3 @@ D:\development\game-snake\TinyGame\bin\Debug\SimpleGame.dll
 D:\development\game-snake\TinyGame\bin\Debug\SimpleGame.pdb
 D:\development\game-snake\TinyGame\obj\Debug\SimpleGame.dll
 D:\development\game-snake\TinyGame\obj\Debug\SimpleGame.pdb
-D:\development\game-snake\TinyGame\obj\Debug\SimpleGame.csprojResolveAssemblyReference.cache

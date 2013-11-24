@@ -24,7 +24,7 @@ namespace GreedySnakeLibrary
             get { return _segment; }
         }
 
-        public void Creep(OrientationInterpreter orientation)
+        public void Creep(CommandOrientation orientation)
         {
             _segment.Creep(orientation);
             if (_owner.Body.IsCover(_segment.Poisition))

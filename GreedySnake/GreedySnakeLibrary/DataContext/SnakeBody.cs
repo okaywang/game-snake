@@ -34,7 +34,7 @@ namespace GreedySnakeLibrary
             _segments.AddBefore(head, newSegment);
         }
 
-        public void Creep(OrientationInterpreter orientation)
+        public void Creep(CommandOrientation orientation)
         {
             var node = _segments.First;
 

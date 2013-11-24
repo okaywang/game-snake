@@ -22,22 +22,17 @@ namespace GreedySnake
     /// </summary>
     public partial class MainWindow : Window, ISnakeGameView
     {
-        private GameMediator _gameMediator;
         public MainWindow()
         {
             InitializeComponent();
-            _gameMediator = new GameMediator(this);
-            _gameMediator.BeyondBoundary += GameOver;
-            _gameMediator.SelfCrash += GameOver;
-            _gameMediator.InitGame();
-
             this.btnPause.IsEnabled = false;
             this.btnRestart.IsEnabled = false;
-        } 
+        }
 
-        void GameOver(object sender, SnakeGameEvent e)
+        public void GameOver(object sender, SnakeGameEvent e)
         {
-            Dispatcher.Invoke(new Action(() => {
+            Dispatcher.Invoke(new Action(() =>
+            {
                 MessageBox.Show(e.Message);
                 this.btnPause.IsEnabled = false;
                 this.btnRestart.IsEnabled = true;
@@ -72,13 +67,22 @@ namespace GreedySnake
                 return rect;
             }
         }
-         
 
+
+
+        public void RenderScence(SimpleGame.IDataModel model)
+        {
+            var m = model as SnakeGameModel;
+            this.ClearObjects();
+            this.RenderSnake(m.Snake);
+            this.RenderFood(m.Food);
+
+        }
         public void ClearObjects()
         {
             Dispatcher.Invoke(new Action(() => { opRegion.Children.Clear(); }));
         }
-        
+
         public void RenderFood(Food food)
         {
             Dispatcher.Invoke(new Action(() =>
@@ -110,21 +114,35 @@ namespace GreedySnake
 
         private void Window_KeyUp_1(object sender, KeyEventArgs e)
         {
-            //_gameMediator.InterpreterKey(e.Key);
-
-           
+            switch (e.Key)
+            {
+                case Key.Up:
+                    OrientationReqest(new CommandUp());
+                    break;
+                case Key.Down:
+                    OrientationReqest(new CommandDown());
+                    break;
+                case Key.Left:
+                    OrientationReqest(new CommandLeft());
+                    break;
+                case Key.Right:
+                    OrientationReqest(new CommandRight());
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
-            _gameMediator.Pause();
+            this.PauseRequest();
             this.btnPause.IsEnabled = false;
             this.btnStart.IsEnabled = true;
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            _gameMediator.BeginGame();
+            this.StartRequest();
             this.btnStart.IsEnabled = false;
             this.btnPause.IsEnabled = true;
             this.btnRestart.IsEnabled = false;
@@ -132,19 +150,45 @@ namespace GreedySnake
 
         private void btnRestart_Click(object sender, RoutedEventArgs e)
         {
-            _gameMediator.ResetGame();
-            _gameMediator.BeginGame();
+            this.ResetRequest();
+            this.StartRequest();
             this.btnPause.IsEnabled = true;
             this.btnRestart.IsEnabled = false;
         }
 
-
-
-
-
-        public void RenderScence(SimpleGame.IDataModel model)
+        private Action _actionStart;
+        public Action StartRequest
         {
-            throw new NotImplementedException();
+            set { _actionStart = value; }
+            protected get { return _actionStart; }
+        }
+
+        private Action _actionPause;
+        public Action PauseRequest
+        {
+            set { _actionPause = value; }
+            protected get { return _actionPause; }
+        }
+
+        private Action _actionReset;
+        public Action ResetRequest
+        {
+            set { _actionReset = value; }
+            protected get { return _actionReset; }
+        }
+
+        private Action _actionStop;
+        public Action StopRequest
+        {
+            set { _actionStop = value; }
+            protected get { return _actionStop; }
+        }
+
+        private Action<CommandOrientation> _actionOrientate;
+        public Action<CommandOrientation> OrientationReqest
+        {
+            set { _actionOrientate = value; }
+            protected get { return _actionOrientate; }
         }
     }
 }

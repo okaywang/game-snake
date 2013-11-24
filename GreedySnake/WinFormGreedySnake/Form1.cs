@@ -18,12 +18,6 @@ namespace WinFormGreedySnake
         private int _blockHeight = 10;
         private int _blockWidth = 10;
 
-        public Action StartRequest;
-        public Action PauseRequest;
-        public Action ResetRequest;
-        public Action StopRequest;
-        public Action<Keys> OrientationReqest;
-
         public SnakeGameModel Model;
 
         public Form1()
@@ -38,6 +32,7 @@ namespace WinFormGreedySnake
             this.btnRestart.Enabled = false;
             //this.pnlGame.BackColor = Color.Transparent;
         }
+
         public void GameOver(object sender, SnakeGameEvent e)
         {
             this.Invoke(new Action(() =>
@@ -55,30 +50,12 @@ namespace WinFormGreedySnake
             PaintGrid(rowCount,columnCount);
         }
 
-
         public void RenderScence(IDataModel model)
         {
             var m = model as SnakeGameModel;
-            var g = this.pnlGame.CreateGraphics();
-            g.Clear(this.BackColor);
+            ClearObjects();
             RenderSnake(m.Snake);
             RenderFood(m.Food);
-        }
-
-        public void RenderSnake(Snake snake)
-        {
-            PaintBlock(snake.Head.Segment.Poisition);
-            snake.Body.Segments.ForEach(s => PaintBlock(s.Poisition));
-        }
-
-        private Rectangle GetFoodRect(Coordinate coor)
-        {
-            return new Rectangle(coor.X * _blockWidth, coor.Y * _blockHeight, _blockWidth, _blockHeight);
-        }
-
-        public void RenderFood(Food food)
-        {
-            PaintBlock(food.Position);
         }
 
         public void ClearObjects()
@@ -86,17 +63,51 @@ namespace WinFormGreedySnake
             var g = this.pnlGame.CreateGraphics();
             g.Clear(this.BackColor);
         }
-        private void PaintBlock(Coordinate pos)
+
+        public void RenderSnake(Snake snake)
         {
-            var rect = this.GetFoodRect(pos);
-            var g = this.pnlGame.CreateGraphics();
-            g.FillRectangle(Brushes.Silver, rect);
+            PaintBlock(snake.Head.Segment.Poisition);
+            snake.Body.Segments.ForEach(s => PaintBlock(s.Poisition));
+        }
+        
+        public void RenderFood(Food food)
+        {
+            PaintBlock(food.Position);
         }
 
-        //how to avoid twinkle
-        private void PaintGrid(int rowCount,int columnCount)
+        private Action _actionStart;
+        public Action StartRequest
         {
-            WinFormHelper.DrawGrid(this.pnlGame, rowCount, columnCount);
+            set { _actionStart = value; }
+            protected get { return _actionStart; }
+        }
+
+        private Action _actionPause;
+        public Action PauseRequest
+        {
+            set { _actionPause = value; }
+            protected get { return _actionPause; }
+        }
+
+        private Action _actionReset;
+        public Action ResetRequest
+        {
+            set { _actionReset = value; }
+            protected get { return _actionReset; }
+        }
+
+        private Action _actionStop;
+        public Action StopRequest
+        {
+            set { _actionStop = value; }
+            protected get { return _actionStop; }
+        }
+
+        private Action<CommandOrientation> _actionOrientate;
+        public Action<CommandOrientation> OrientationReqest
+        {
+            set { _actionOrientate = value; }
+            protected get { return _actionOrientate; }
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -116,8 +127,7 @@ namespace WinFormGreedySnake
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
- 
-            //_gameMediator.ResetGame();
+            this.ResetRequest();
             this.StartRequest();
             this.btnPause.Enabled = true;
             this.btnRestart.Enabled = false;
@@ -125,9 +135,43 @@ namespace WinFormGreedySnake
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            OrientationReqest(e.KeyCode);
-            //_gameMediator.InterpreterKey(e.KeyCode);
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    OrientationReqest(new CommandUp());
+                    break;
+                case Keys.Down:
+                    OrientationReqest(new CommandDown());
+                    break;
+                case Keys.Left:
+                    OrientationReqest(new CommandLeft());
+                    break;
+                case Keys.Right:
+                    OrientationReqest(new CommandRight());
+                    break;
+                default:
+                    break;
+            }
         }
+
+        private Rectangle GetFoodRect(Coordinate coor)
+        {
+            return new Rectangle(coor.X * _blockWidth, coor.Y * _blockHeight, _blockWidth, _blockHeight);
+        }
+
+        private void PaintBlock(Coordinate pos)
+        {
+            var rect = this.GetFoodRect(pos);
+            var g = this.pnlGame.CreateGraphics();
+            g.FillRectangle(Brushes.Silver, rect);
+        }
+
+        //how to avoid twinkle
+        private void PaintGrid(int rowCount,int columnCount)
+        {
+            WinFormHelper.DrawGrid(this.pnlGame, rowCount, columnCount);
+        }
+
 
     }
 }

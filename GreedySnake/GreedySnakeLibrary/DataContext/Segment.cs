@@ -14,9 +14,9 @@ namespace GreedySnakeLibrary
             get { return _poisition; }
         }
 
-        public void Creep(OrientationInterpreter orientation)
+        public void Creep(CommandOrientation orientation)
         {
-            orientation.Interpret(ref _poisition);
+            orientation.Execute(ref _poisition);
         }
 
         public object Clone()

@@ -18,7 +18,7 @@ namespace WinFormGreedySnake
             Application.SetCompatibleTextRenderingDefault(false);
             var form = new Form1();
             var settings = new SnakeGameSettings() { RowCount = 10, ColumnCount = 20, TimerInterval = 400 };
-            var _gameMediator = new GameMediator2(form, settings);
+            var _gameMediator = new SnakeGameController(form, settings);
 
             _gameMediator.BeyondBoundary += form.GameOver;
             _gameMediator.SelfCrash += form.GameOver;
@@ -26,9 +26,9 @@ namespace WinFormGreedySnake
 
             form.StartRequest = _gameMediator.Start;
             form.PauseRequest = _gameMediator.Pause;
-            form.ResetRequest = _gameMediator.Restart;
+            form.ResetRequest = _gameMediator.Reset;
             form.StopRequest = _gameMediator.Stop;
-            form.OrientationReqest = _gameMediator.InterpreterKey;
+            form.OrientationReqest = _gameMediator.InterviewCommand;
 
 
             Application.Run(form);

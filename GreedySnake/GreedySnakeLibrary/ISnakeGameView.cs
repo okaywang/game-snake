@@ -6,11 +6,18 @@ using System.Windows.Input;
 
 namespace GreedySnakeLibrary
 {
-    public interface ISnakeGameView:SimpleGame.IGameView
+    public interface ISnakeGameView : SimpleGame.IGameView
     {
         //void RenderMap(int rowCount,int columnCount);
         void RenderSnake(Snake snake);
         void RenderFood(Food food);
         void ClearObjects();
+
+        Action StartRequest { set; }
+        Action PauseRequest { set; }
+        Action ResetRequest { set; }
+        Action StopRequest { set; }
+        Action<CommandOrientation> OrientationReqest { set; }
+
     }
 }

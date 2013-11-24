@@ -10,3 +10,4 @@ D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.Properties.Resour
 D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.csproj.GenerateResource.Cache
 D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.exe
 D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.pdb
+D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.csprojResolveAssemblyReference.cache

@@ -83,3 +83,5 @@ D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.ex
 D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WpfGreedySnake.pdb
 D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\SimpleGame.dll
 D:\development\game-snake\GreedySnake\WpfGreedySnake\bin\Debug\SimpleGame.pdb
+D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WindowTest.baml
+D:\development\game-snake\GreedySnake\WpfGreedySnake\obj\Debug\WindowTest.g.cs

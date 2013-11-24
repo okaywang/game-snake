@@ -9,37 +9,38 @@ using System.Windows.Input;
 
 namespace GreedySnakeLibrary
 {
-    public class GameMediator2 : GameControllerBase
+    public class SnakeGameController : GameControllerBase
     {
         private ISnakeGameView _view;
         private SnakeGameModel _model;
-        
-        private OrientationInterpreter _orientation;
-        
+
+        //private RequestOrientation _orientation;
+        private Queue<CommandOrientation> _requests;
+
         public event EventHandler<SnakeGameEvent> BeyondBoundary;
         public event EventHandler<SnakeGameEvent> SelfCrash;
 
-        public GameMediator2(ISnakeGameView view, SnakeGameSettings settings)
+        public SnakeGameController(ISnakeGameView view, SnakeGameSettings settings)
             : base(view, settings)
         {
             _view = view;
-            _model = new SnakeGameModel();
+            Coordinate.MaxX = settings.ColumnCount ;
+            Coordinate.MaxY = settings.RowCount;
         }
 
-  
+
         public override void TimerElapsed()
         {
-            var acrossFood = false;
-            var expectedPosition = _orientation.GetExpectedPosition(_model.Snake.Head.Segment.Poisition);
-            if (expectedPosition == _model.Food.Position)
+            if (_requests.Count > 0)
             {
-                _model.Food = null;
-                acrossFood = true;
+                _model.Snake.Command = _requests.Dequeue();
             }
+
+            var acrossFood = _model.Snake.ImmediatePosition == _model.Food.Position;
 
             try
             {
-                _model.Snake.Creep(_orientation, acrossFood);
+                _model.Snake.Creep(acrossFood);
             }
             catch (BeyondBoundaryException ex)
             {
@@ -54,7 +55,7 @@ namespace GreedySnakeLibrary
                 return;
             }
 
-            if (_model.Food == null)
+            if (acrossFood)
             {
                 GenerateFood();
             }
@@ -79,9 +80,7 @@ namespace GreedySnakeLibrary
             segs.AddLast(segment3);
             var body = new SnakeBody(segs);
 
-            _model.Snake = new Snake(head, body);
-
-            _orientation = new OrientationDown();
+            _model.Snake = new Snake(head, body, new CommandDown());
         }
 
         private void GenerateFood()
@@ -92,11 +91,14 @@ namespace GreedySnakeLibrary
             {
                 pos = Coordinate.GetRandomPosition();
             }
-            _model.Food.Position = new Coordinate(new Random().Next(Coordinate.MaxX), new Random().Next(Coordinate.MaxY));
+            _model.Food.Position = pos;
         }
 
         public override void InitializeActiveObjects()
         {
+            _model = new SnakeGameModel();
+            _requests = new Queue<CommandOrientation>();
+
             GenerateSnake();
 
             GenerateFood();
@@ -104,25 +106,34 @@ namespace GreedySnakeLibrary
             _view.RenderScence(_model);
         }
 
-        public void InterpreterKey(Keys key)
+        public void InterviewCommand(CommandOrientation command)
         {
-            if (key == Keys.Up && _orientation.GetType() != typeof(OrientationDown))
+            var adjacentCommand = _model.Snake.Command;
+            if (_requests.Count > 0)
             {
-                _orientation = new OrientationUp();
+                adjacentCommand = _requests.Peek();
             }
-            else if (key == Keys.Right && _orientation.GetType() != typeof(OrientationLeft))
+
+            if (this.IsIdenticalDimension(command, adjacentCommand))
             {
-                _orientation = new OrientationRight();
+                return;
             }
-            else if (key == Keys.Down && _orientation.GetType() != typeof(OrientationUp))
-            {
-                _orientation = new OrientationDown();
-            }
-            else if (key == Keys.Left && _orientation.GetType() != typeof(OrientationRight))
-            {
-                _orientation = new OrientationLeft();
-            }
+            _requests.Enqueue(command);
         }
+
+        private bool IsIdenticalDimension(CommandOrientation a, CommandOrientation b)
+        {
+            if (a is IHorizontalOrientation && b is IHorizontalOrientation)
+            {
+                return true;
+            }
+            if (a is IVerticalOrientation && b is IVerticalOrientation)
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void OnBeyondBoundary(string message)
         {
             if (BeyondBoundary != null)

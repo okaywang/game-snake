@@ -9,11 +9,13 @@ namespace GreedySnakeLibrary
     {
         private SnakeHead _head;
         private SnakeBody _body;
+        private CommandOrientation _command;
 
-        public Snake(SnakeHead head, SnakeBody body)
+        public Snake(SnakeHead head, SnakeBody body, CommandOrientation command)
         {
             _head = head;
             _body = body;
+            _command = command;
 
             _head.SetOwner(this);
             _body.SetOwner(this);
@@ -29,12 +31,18 @@ namespace GreedySnakeLibrary
             get { return _body; }
         }
 
+        public CommandOrientation Command
+        {
+            get { return _command; }
+            set { _command = value; }
+        }
+
         public bool IsCover(Coordinate pos)
         {
             return _head.IsCover(pos) || _body.IsCover(pos);
         }
 
-        public void Creep(OrientationInterpreter orientation, bool growth)
+        public void Creep(bool growth)
         {
             if (growth)
             {
@@ -42,9 +50,18 @@ namespace GreedySnakeLibrary
             }
             else
             {
-                _body.Creep(orientation);
+                _body.Creep(_command);
             }
-            _head.Creep(orientation);
+            _head.Creep(_command);
+        }
+
+        public Coordinate ImmediatePosition
+        {
+            get
+            {
+                var expectedPosition = _command.GetExpectedResult(_head.Segment.Poisition);
+                return expectedPosition;
+            }
         }
     }
 }

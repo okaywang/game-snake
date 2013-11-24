@@ -15,16 +15,19 @@ namespace GreedySnakeLibrary
     *      6 |
     *      Y  
     */
-    public abstract class OrientationInterpreter
+    public abstract class CommandOrientation
     {
-        public abstract void Interpret(ref Coordinate coord);
+        public abstract void Execute(ref Coordinate coord);
 
-        public abstract Coordinate GetExpectedPosition(Coordinate coord);
+        public abstract Coordinate GetExpectedResult(Coordinate coord);
     }
-
-    public class OrientationUp : OrientationInterpreter
+    public interface IVerticalOrientation
+    { }
+    public interface IHorizontalOrientation
+    { }
+    public class CommandUp : CommandOrientation,IVerticalOrientation
     {
-        public override void Interpret(ref Coordinate coord)
+        public override void Execute(ref Coordinate coord)
         {
             if (coord.Y == 0)
             {
@@ -33,15 +36,15 @@ namespace GreedySnakeLibrary
             coord.Y--;
         }
 
-        public override Coordinate GetExpectedPosition(Coordinate coord)
+        public override Coordinate GetExpectedResult(Coordinate coord)
         {
             coord.Y--;
             return coord;
         }
     }
-    public class OrientationDown : OrientationInterpreter
+    public class CommandDown : CommandOrientation,IVerticalOrientation
     {
-        public override void Interpret(ref Coordinate coord)
+        public override void Execute(ref Coordinate coord)
         {
             if (coord.Y == Coordinate.MaxY)
             {
@@ -49,15 +52,15 @@ namespace GreedySnakeLibrary
             }
             coord.Y++;
         }
-        public override Coordinate GetExpectedPosition(Coordinate coord)
+        public override Coordinate GetExpectedResult(Coordinate coord)
         {
             coord.Y++;
             return coord;
         }
     }
-    public class OrientationLeft : OrientationInterpreter
+    public class CommandLeft : CommandOrientation,IHorizontalOrientation
     {
-        public override void Interpret(ref Coordinate coord)
+        public override void Execute(ref Coordinate coord)
         {
             if (coord.X == 0)
             {
@@ -65,15 +68,15 @@ namespace GreedySnakeLibrary
             }
             coord.X--;
         }
-        public override Coordinate GetExpectedPosition(Coordinate coord)
+        public override Coordinate GetExpectedResult(Coordinate coord)
         {
             coord.X--;
             return coord;
         }
     }
-    public class OrientationRight : OrientationInterpreter
+    public class CommandRight : CommandOrientation,IHorizontalOrientation
     {
-        public override void Interpret(ref Coordinate coord)
+        public override void Execute(ref Coordinate coord)
         {
             if (coord.X == Coordinate.MaxX)
             {
@@ -81,7 +84,7 @@ namespace GreedySnakeLibrary
             }
             coord.X++;
         }
-        public override Coordinate GetExpectedPosition(Coordinate coord)
+        public override Coordinate GetExpectedResult(Coordinate coord)
         {
             coord.X++;
             return coord;
