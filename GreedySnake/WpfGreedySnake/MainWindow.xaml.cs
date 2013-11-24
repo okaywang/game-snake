@@ -140,5 +140,11 @@ namespace GreedySnake
 
 
 
+
+
+        public void RenderScence(SimpleGame.IDataModel model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

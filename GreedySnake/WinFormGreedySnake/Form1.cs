@@ -1,4 +1,5 @@
 ﻿using GreedySnakeLibrary;
+using SimpleGame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,17 @@ namespace WinFormGreedySnake
 {
     public partial class Form1 : Form, ISnakeGameView
     {
-        private GameMediator2 _gameMediator;
-
         private int _blockHeight = 10;
         private int _blockWidth = 10;
-        private Graphics g;
+
+        public Action StartRequest;
+        public Action PauseRequest;
+        public Action ResetRequest;
+        public Action StopRequest;
+        public Action<Keys> OrientationReqest;
+
+        public SnakeGameModel Model;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,19 +33,12 @@ namespace WinFormGreedySnake
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            g = this.pnlGame.CreateGraphics();
-
-            var settings = new SnakeGameSettings() { RowCount = 10, ColumnCount = 20, TimerInterval = 200 };
-            _gameMediator = new GameMediator2(this,settings);
-            _gameMediator.BeyondBoundary += GameOver;
-            _gameMediator.SelfCrash += GameOver;
-            _gameMediator.Initialize();
 
             this.btnPause.Enabled = false;
             this.btnRestart.Enabled = false;
             //this.pnlGame.BackColor = Color.Transparent;
         }
-        private void GameOver(object sender, SnakeGameEvent e)
+        public void GameOver(object sender, SnakeGameEvent e)
         {
             this.Invoke(new Action(() =>
             {
@@ -56,11 +56,13 @@ namespace WinFormGreedySnake
         }
 
 
-        public void RenderScence()
+        public void RenderScence(IDataModel model)
         {
+            var m = model as SnakeGameModel;
+            var g = this.pnlGame.CreateGraphics();
             g.Clear(this.BackColor);
-            RenderSnake(_gameMediator.Snake);
-            RenderFood(_gameMediator.Food);
+            RenderSnake(m.Snake);
+            RenderFood(m.Food);
         }
 
         public void RenderSnake(Snake snake)
@@ -81,11 +83,13 @@ namespace WinFormGreedySnake
 
         public void ClearObjects()
         {
+            var g = this.pnlGame.CreateGraphics();
             g.Clear(this.BackColor);
         }
         private void PaintBlock(Coordinate pos)
         {
             var rect = this.GetFoodRect(pos);
+            var g = this.pnlGame.CreateGraphics();
             g.FillRectangle(Brushes.Silver, rect);
         }
 
@@ -97,14 +101,14 @@ namespace WinFormGreedySnake
 
         private void btnPause_Click(object sender, EventArgs e)
         {
-            _gameMediator.Pause();
+            this.PauseRequest();
             this.btnPause.Enabled = false;
             this.btnStart.Enabled = true;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            _gameMediator.Start();
+            this.StartRequest();
             this.btnStart.Enabled = false;
             this.btnPause.Enabled = true;
             this.btnRestart.Enabled = false;
@@ -114,14 +118,15 @@ namespace WinFormGreedySnake
         {
  
             //_gameMediator.ResetGame();
-            _gameMediator.Start();
+            this.StartRequest();
             this.btnPause.Enabled = true;
             this.btnRestart.Enabled = false;
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            _gameMediator.InterpreterKey(e.KeyCode);
+            OrientationReqest(e.KeyCode);
+            //_gameMediator.InterpreterKey(e.KeyCode);
         }
 
     }

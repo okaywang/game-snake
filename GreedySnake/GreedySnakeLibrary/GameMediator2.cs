@@ -12,11 +12,10 @@ namespace GreedySnakeLibrary
     public class GameMediator2 : GameControllerBase
     {
         private ISnakeGameView _view;
-        private Food _food;
+        private SnakeGameModel _model;
+        
         private OrientationInterpreter _orientation;
-        private Snake _snake;
-
-
+        
         public event EventHandler<SnakeGameEvent> BeyondBoundary;
         public event EventHandler<SnakeGameEvent> SelfCrash;
 
@@ -24,29 +23,23 @@ namespace GreedySnakeLibrary
             : base(view, settings)
         {
             _view = view;
+            _model = new SnakeGameModel();
         }
 
-        public Snake Snake
-        {
-            get { return _snake; }
-        }
-        public Food Food
-        {
-            get { return _food; }
-        }
+  
         public override void TimerElapsed()
         {
             var acrossFood = false;
-            var expectedPosition = _orientation.GetExpectedPosition(_snake.Head.Segment.Poisition);
-            if (expectedPosition == _food.Position)
+            var expectedPosition = _orientation.GetExpectedPosition(_model.Snake.Head.Segment.Poisition);
+            if (expectedPosition == _model.Food.Position)
             {
-                _food = null;
+                _model.Food = null;
                 acrossFood = true;
             }
 
             try
             {
-                _snake.Creep(_orientation, acrossFood);
+                _model.Snake.Creep(_orientation, acrossFood);
             }
             catch (BeyondBoundaryException ex)
             {
@@ -61,12 +54,12 @@ namespace GreedySnakeLibrary
                 return;
             }
 
-            if (_food == null)
+            if (_model.Food == null)
             {
                 GenerateFood();
             }
 
-            _view.RenderScence();
+            _view.RenderScence(_model);
         }
 
         private void GenerateSnake()
@@ -86,20 +79,20 @@ namespace GreedySnakeLibrary
             segs.AddLast(segment3);
             var body = new SnakeBody(segs);
 
-            _snake = new Snake(head, body);
+            _model.Snake = new Snake(head, body);
 
             _orientation = new OrientationDown();
         }
 
         private void GenerateFood()
         {
-            _food = new Food();
+            _model.Food = new Food();
             var pos = Coordinate.GetRandomPosition();
-            while (_snake.IsCover(pos))
+            while (_model.Snake.IsCover(pos))
             {
                 pos = Coordinate.GetRandomPosition();
             }
-            _food.Position = new Coordinate(new Random().Next(Coordinate.MaxX), new Random().Next(Coordinate.MaxY));
+            _model.Food.Position = new Coordinate(new Random().Next(Coordinate.MaxX), new Random().Next(Coordinate.MaxY));
         }
 
         public override void InitializeActiveObjects()
@@ -108,7 +101,7 @@ namespace GreedySnakeLibrary
 
             GenerateFood();
 
-            _view.RenderScence();
+            _view.RenderScence(_model);
         }
 
         public void InterpreterKey(Keys key)

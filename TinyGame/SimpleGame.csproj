@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="GameControllerBase.cs" />
     <Compile Include="GameSettingsBase.cs" />
+    <Compile Include="IDataModel.cs" />
     <Compile Include="IGameView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

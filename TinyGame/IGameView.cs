@@ -9,6 +9,6 @@ namespace SimpleGame
     public interface IGameView
     {
         void RenderMap(int rowCount,int columnCount);
-        void RenderScence();
+        void RenderScence(IDataModel model);
     }
 }
