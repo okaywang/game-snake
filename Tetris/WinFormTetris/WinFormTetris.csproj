@@ -74,6 +74,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TinyGame\SimpleGame.csproj">
+      <Project>{517593d6-de30-4fd3-80f1-d99f02ad8b04}</Project>
+      <Name>SimpleGame</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TetrisLibrary\TetrisLibrary.csproj">
+      <Project>{06744468-067f-46b4-9ae7-32125439a840}</Project>
+      <Name>TetrisLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

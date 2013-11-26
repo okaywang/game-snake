@@ -11,3 +11,16 @@ D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.csproj.GenerateRe
 D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.exe
 D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.pdb
 D:\development\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\bin\Debug\WpfTetris.exe.config
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\bin\Debug\WpfTetris.exe
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\bin\Debug\WpfTetris.pdb
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\MainWindow.baml
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\MainWindow.g.cs
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\App.g.cs
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris_MarkupCompile.cache
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.g.resources
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.Properties.Resources.resources
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.csproj.GenerateResource.Cache
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.exe
+D:\test2\MyGame\game-snake\Tetris\WpfTetris\obj\Debug\WpfTetris.pdb

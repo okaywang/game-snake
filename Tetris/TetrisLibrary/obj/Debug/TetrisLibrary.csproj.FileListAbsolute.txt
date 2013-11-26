@@ -5,3 +5,12 @@ D:\development\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.pdb
 D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\SimpleGame.dll
 D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\SimpleGame.pdb
 D:\development\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.dll
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.pdb
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\TetrisLibrary.dll
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\TetrisLibrary.pdb
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\CommonHelper.dll
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\SimpleGame.dll
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\CommonHelper.pdb
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\SimpleGame.pdb

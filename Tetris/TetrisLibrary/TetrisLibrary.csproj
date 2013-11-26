@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,10 +40,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataContext\Apartment.cs" />
+    <Compile Include="DataContext\Block.cs" />
+    <Compile Include="DataContext\Floor.cs" />
+    <Compile Include="DataContext\Tetromino\I_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\J_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\L_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\O_Tetromino.cs" />
+    <Compile Include="DataContext\Room.cs" />
+    <Compile Include="DataContext\Tetromino\S_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\TetrominoBase.cs" />
+    <Compile Include="DataContext\Tetromino\T_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Z_Tetromino.cs" />
+    <Compile Include="Exceptions\InvalidCrowdResidenceException.cs" />
+    <Compile Include="Exceptions\InvalidResidenceException.cs" />
+    <Compile Include="ITetrisGameView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TerisGameSettings.cs" />
+    <Compile Include="TetrisGameController.cs" />
+    <Compile Include="TetrisGameModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CommonHelper\CommonHelper.csproj">
+      <Project>{536b4bb4-7378-4dd8-8dbc-aabd060b9350}</Project>
+      <Name>CommonHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TinyGame\SimpleGame.csproj">
       <Project>{517593d6-de30-4fd3-80f1-d99f02ad8b04}</Project>
       <Name>SimpleGame</Name>

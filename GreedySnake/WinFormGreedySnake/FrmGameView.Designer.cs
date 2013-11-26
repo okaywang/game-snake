@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGameView));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
@@ -67,12 +68,13 @@
             // pnlGame
             // 
             this.pnlGame.BackColor = System.Drawing.Color.Transparent;
+            this.pnlGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlGame.BackgroundImage")));
             this.pnlGame.Location = new System.Drawing.Point(12, 91);
             this.pnlGame.Name = "pnlGame";
             this.pnlGame.Size = new System.Drawing.Size(468, 268);
             this.pnlGame.TabIndex = 3;
             // 
-            // Form1
+            // FrmGameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -82,7 +84,7 @@
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnStart);
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "FrmGameView";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

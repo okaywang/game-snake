@@ -9,7 +9,6 @@ namespace GreedySnakeLibrary
 {
     public interface ISnakeGameView : SimpleGame.IGameView
     {
-        //void RenderMap(int rowCount,int columnCount);
         void RenderSnake(Snake snake);
         void RenderFood(Food food);
         void ClearObjects();
