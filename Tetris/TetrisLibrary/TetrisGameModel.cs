@@ -19,17 +19,21 @@ namespace TetrisLibrary
 
         public bool[,] GetUnderlyingData()
         {
-            ActiveRowIndex = 2;
-
             var data = this.Apartment.GetUnderlyingData();
             var tetrominoData = this.Tetromino.GetUnderlyingDataUpward();
 
             var rowIndex = ActiveRowIndex;
+
             foreach (var rowData in tetrominoData)
             {
                 if (rowIndex > this.Apartment.FloorCount - 1)
                 {
                     break;
+                }
+                if (rowIndex < 0)
+                {
+                    rowIndex++;
+                    continue;
                 }
                 for (int i = 0; i < rowData.Length; i++)
                 {

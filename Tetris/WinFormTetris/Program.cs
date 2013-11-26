@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TetrisLibrary;
 using TetrisLibrary.DataContext;
 
 namespace WinFormTetris
@@ -16,13 +17,24 @@ namespace WinFormTetris
         [STAThread]
         static void Main()
         {
-            Block b = new Block();
-            b.Position = new Coordinate(4, 2);
-            b.Descend(1);
-             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmTetrisView());
+            var view = new FrmTetrisView();
+
+            var settings = new TerisGameSettings() { RowCount = 5, ColumnCount = 3, TimerInterval = 1000 };
+            var _controller = new TetrisGameController(view, settings);
+
+            //_controller.BeyondBoundary += view.GameOver;
+            //_controller.SelfCrash += view.GameOver;
+            _controller.Initialize();
+
+            view.StartRequest = _controller.Start;
+            //view.PauseRequest = _controller.Pause;
+            //view.ResetRequest = _controller.Reset;
+            //view.StopRequest = _controller.Stop;
+            //view.OrientationReqest = _controller.InterviewCommand;
+
+            Application.Run(view);
         }
     }
 }

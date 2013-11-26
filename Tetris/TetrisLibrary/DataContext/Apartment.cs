@@ -48,6 +48,12 @@ namespace TetrisLibrary.DataContext
             {
                 return false;
             }
+            if (floorIndex < 0)
+            {
+                return true;
+            }
+
+
             var data = tetromino.GetUnderlyingDataUpward();
             foreach (var item in data)
             {
@@ -74,7 +80,10 @@ namespace TetrisLibrary.DataContext
             var data = tetromino.GetUnderlyingDataUpward();
             foreach (var item in data)
             {
-                Reside(item, tetromino.ForeColor, floorIndex, roomIndex);
+                if (floorIndex >-1)
+                {
+                    Reside(item, tetromino.ForeColor, floorIndex, roomIndex);
+                }
                 floorIndex++;
             }
         }

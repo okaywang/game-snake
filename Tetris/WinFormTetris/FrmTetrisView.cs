@@ -25,9 +25,11 @@ namespace WinFormTetris
             throw new NotImplementedException();
         }
 
+        private Action _actionStart;
         public Action StartRequest
         {
-            set { throw new NotImplementedException(); }
+            set { _actionStart = value; }
+            protected get { return _actionStart; }
         }
 
         public Action PauseRequest
@@ -65,17 +67,23 @@ namespace WinFormTetris
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.RenderMap(20, 10);
+            this.RenderMap(5, 3);
 
             var model = new TetrisGameModel();
-            var floors = new Floor[20];
+            var floors = new Floor[5];
             for (int i = 0; i < floors.Length; i++)
             {
-                floors[i] = new Floor(20, 10);
+                floors[i] = new Floor(5, 3);
             }
             model.Apartment = new TetrisLibrary.DataContext.Apartment(floors);
-            model.Tetromino = new I_Tetromino();
+            model.Tetromino = new T_Tetromino();
+            model.ActiveRowIndex = -1;
             RenderScence(model);
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            this.StartRequest();
         }
     }
 }

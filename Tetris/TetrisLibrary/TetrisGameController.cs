@@ -13,7 +13,7 @@ namespace TetrisLibrary
     {
         private ITetrisGameView _view;
         private TetrisGameModel _model;
-         
+
         private TerisGameSettings _settings;
         public TetrisGameController(ITetrisGameView view, TerisGameSettings settings)
             : base(view, settings)
@@ -24,7 +24,7 @@ namespace TetrisLibrary
 
         public override void TimerElapsed()
         {
-            var hasBarrier = _model.Apartment.HasBarrier(_model.Tetromino, _model.ActiveRowIndex + 1, _model.ActiveColumnIndex);
+            var hasBarrier = _model.Apartment.HasBarrier(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
             if (hasBarrier)
             {
                 _model.Apartment.Reside(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
@@ -49,8 +49,13 @@ namespace TetrisLibrary
         {
             _model = new TetrisGameModel();
             var floors = new Floor[_settings.RowCount];
-            _model.Apartment = new Apartment(floors);
-            this.ProduceTetromino();
+            for (int i = 0; i < floors.Length; i++)
+            {
+                floors[i] = new Floor(_settings.RowCount, _settings.ColumnCount);
+            }
+            _model.Apartment = new TetrisLibrary.DataContext.Apartment(floors);
+            _model.Tetromino = new T_Tetromino();
+            _model.ActiveRowIndex = _settings.RowCount - 1;
         }
     }
 }
