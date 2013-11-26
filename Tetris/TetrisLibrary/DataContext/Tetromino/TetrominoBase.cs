@@ -70,5 +70,10 @@ namespace TetrisLibrary.DataContext.Tetromino
         {
             get { return Data.GetUpperBound(0) + 1; }
         }
+
+        public int Height
+        {
+            get { return Data.GetUpperBound(1) + 1; }
+        }
     }
 }

@@ -28,6 +28,18 @@ namespace TetrisLibrary
             if (hasBarrier)
             {
                 _model.Apartment.Reside(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
+                for (int i = _model.ActiveRowIndex; i < _model.ActiveRowIndex + _model.Tetromino.Height; i++)
+                {
+                    if (i < 0)
+                    {
+                        continue;
+                    }
+                    if (_model.Apartment[i].IsFull)
+                    {
+                        _model.Apartment[i].Clear();
+                        _model.Apartment.GoDownstairs(i,1);
+                    }
+                }
                 this.ProduceTetromino();
             }
             else
@@ -46,7 +58,6 @@ namespace TetrisLibrary
             }
             else if (command is CommandLeft)
             {
-                bool a = _model.Tetromino.IsEmpty(2);
                 if (_model.ActiveColumnIndex <= 0)
                 {
                     if (_model.Tetromino.IsEmpty(Math.Abs(_model.ActiveColumnIndex)))
@@ -88,8 +99,7 @@ namespace TetrisLibrary
             _model.Tetromino = TetrominoFactory.GetRandomTetromino();
             _model.ActiveColumnIndex = _model.Apartment.UnitCount / 2 - _model.Tetromino.Width / 2;
         }
-
-
+         
         public override void InitializeActiveObjects()
         {
             _model = new TetrisGameModel();

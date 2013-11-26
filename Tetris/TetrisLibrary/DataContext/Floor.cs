@@ -26,6 +26,7 @@ namespace TetrisLibrary.DataContext
         public Room this[int index]
         {
             get { return _rooms[index]; }
+            set { _rooms[index] = value; }
         }
 
         public bool IsFull
@@ -71,6 +72,33 @@ namespace TetrisLibrary.DataContext
             }
 
             _residentCount += blocks.Count;
+        }
+
+        internal void Clear()
+        {
+            for (int i = 0; i < _rooms.Length; i++)
+            {
+                _rooms[i].Clear();
+            }
+            _residentCount = 0;
+        }
+
+        public void Dump(Floor floor)
+        {
+            for (int i = 0; i < _rooms.Length; i++)
+            {
+                var room = floor[i];
+                if (this[i].Resident !=null)
+                {
+                    room.Resident = this[i].Resident.Clone() as Block;
+                }
+                else
+                {
+                    room.Resident = null;
+                }
+                
+                this[i].Clear();
+            }
         }
     }
 }

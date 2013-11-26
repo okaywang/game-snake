@@ -29,6 +29,11 @@ namespace TetrisLibrary.DataContext
             get { return _floors[0].RoomsCount; }
         }
 
+        public Floor this[int index]
+        {
+            get { return _floors[index]; }
+        }
+
         public Block[,] GetUnderlyingData()
         {
             var colCount = _floors[0].RoomsCount;
@@ -130,6 +135,14 @@ namespace TetrisLibrary.DataContext
             if (floorIndex > _topIndex)
             {
                 _topIndex = floorIndex;
+            }
+        }
+
+        internal void GoDownstairs(int floorIndex, int count)
+        {
+            for (int i = floorIndex; i < _floors.Length; i++)
+            {
+                  _floors[floorIndex + count].Dump(_floors[floorIndex]);
             }
         }
     }

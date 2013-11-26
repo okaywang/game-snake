@@ -9,32 +9,52 @@ namespace TetrisLibrary.DataContext
 {
     public struct Room
     {
-        private Block _block ;
-         
-        private bool _hasResident;
+        private Block _block;
+
         public bool HasResident
         {
-            get { return _hasResident; }
+            get { return _block != null; }
         }
 
         public Block Resident
         {
             get { return _block; }
+            set
+            {
+                if (value == null)
+                {
+                    this.Clear();
+                }
+                else
+                {
+                    _block = value;
+                }
+            }
         }
 
         public void Reside(Block block)
         {
-            if (_hasResident)
+            if (HasResident)
             {
                 throw new InvalidResidenceException("room has been occupied, can not reside.");
             }
-            _hasResident = true;
             _block = block;
         }
 
-        public void Remove()
+        public void Substitute(Block block)
         {
-            _hasResident = false;
+            if (block == null)
+            {
+                this.Clear();
+            }
+            else
+            {
+                _block = block;
+            }
+        }
+
+        public void Clear()
+        {
             _block = null;
         }
     }

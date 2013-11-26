@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BasicLibrary
 {
-    public class Block
+    public class Block:ICloneable
     {
 
         private Color _color;
@@ -19,6 +19,11 @@ namespace BasicLibrary
         public Color ForeColor
         {
             get { return _color; }
-        } 
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }
