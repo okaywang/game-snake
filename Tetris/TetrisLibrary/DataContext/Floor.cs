@@ -17,6 +17,16 @@ namespace TetrisLibrary.DataContext
             _rooms = new Room[limitedCount];
         }
 
+        public int RoomsCount
+        {
+            get { return _rooms.Length; }
+        }
+
+        public Room this[int index]
+        {
+            get { return _rooms[index]; }
+        }
+
         public bool IsFull
         {
             get { return _rooms.Length == _residentCount; }

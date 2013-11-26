@@ -48,6 +48,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TetrominoChest.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WinFormHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

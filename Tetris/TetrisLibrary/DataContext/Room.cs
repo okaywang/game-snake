@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TetrisLibrary.DataContext
 {
-    public class Room
+    public struct Room
     {
-        private Block _block = Block.Empty;
+        private Block _block;
 
         public bool HasResident
         {

@@ -26,3 +26,6 @@ D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\CommonHelper.dll
 D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\SimpleGame.pdb
 D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\TetrisLibrary.pdb
 D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\CommonHelper.pdb
+D:\test2\MyGame\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.FrmTetrisView.resources
+D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormControls.dll
+D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormControls.pdb

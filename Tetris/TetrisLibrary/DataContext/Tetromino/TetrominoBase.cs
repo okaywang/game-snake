@@ -17,11 +17,11 @@ namespace WindowsFormsApplication1
             Data = Helper.ClockwiseRotate90(Data);
         }
 
-        public IEnumerable<bool[]> GetDataUpward()
+        public IEnumerable<bool[]> GetUnderlyingDataUpward()
         {
             var rowUpperBound = Data.GetUpperBound(0);
             var colUpperBound = Data.GetUpperBound(1);
-            var b = new bool[rowUpperBound];
+            var b = new bool[colUpperBound + 1];
             for (int i = rowUpperBound; i >= 0; i--)
             {
                 for (int j = 0; j <= colUpperBound; j++)

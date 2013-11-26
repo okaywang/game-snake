@@ -12,6 +12,6 @@ D:\development\game-snake\Utilities\WinFormControls\obj\Debug\WinFormControls.dl
 D:\development\game-snake\Utilities\WinFormControls\obj\Debug\WinFormControls.pdb
 D:\test2\MyGame\game-snake\Utilities\WinFormControls\bin\Debug\WinFormControls.dll
 D:\test2\MyGame\game-snake\Utilities\WinFormControls\bin\Debug\WinFormControls.pdb
-D:\test2\MyGame\game-snake\Utilities\WinFormControls\obj\Debug\WinFormControls.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game-snake\Utilities\WinFormControls\obj\Debug\WinFormControls.dll
 D:\test2\MyGame\game-snake\Utilities\WinFormControls\obj\Debug\WinFormControls.pdb
+D:\test2\MyGame\game-snake\Utilities\WinFormControls\obj\Debug\WinFormControls.csprojResolveAssemblyReference.cache

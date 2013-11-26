@@ -18,13 +18,37 @@ namespace TetrisLibrary.DataContext
             _floors = floors;
         }
 
+        public int FloorCount
+        {
+            get { return _floors.Length; }
+        }
+
+        public int UnitCount
+        {
+            get { return _floors[0].RoomsCount; }
+        }
+
+        public bool[,] GetUnderlyingData()
+        {
+            var colCount = _floors[0].RoomsCount;
+            var data = new bool[_floors.Length, colCount];
+            for (int i = 0; i <= _topIndex; i++)
+            {
+                for (int j = 0; j < colCount; j++)
+                {
+                    data[i, j] = _floors[i][j].HasResident;
+                }
+            }
+            return data;
+        }
+
         public bool HasBarrier(TetrominoBase tetromino, int floorIndex, int roomIndex)
         {
             if (_topIndex <= floorIndex)
             {
                 return false;
             }
-            var data = tetromino.GetDataUpward();
+            var data = tetromino.GetUnderlyingDataUpward();
             foreach (var item in data)
             {
                 var startRoomIndex = roomIndex;
@@ -47,7 +71,7 @@ namespace TetrisLibrary.DataContext
 
         public void Reside(TetrominoBase tetromino, int floorIndex, int roomIndex)
         {
-            var data = tetromino.GetDataUpward();
+            var data = tetromino.GetUnderlyingDataUpward();
             foreach (var item in data)
             {
                 Reside(item, tetromino.ForeColor, floorIndex, roomIndex);
@@ -71,6 +95,7 @@ namespace TetrisLibrary.DataContext
                 }
             }
             _floors[floorIndex].Reside(adjacentBlock, startRoomIndex);
+            _topIndex++;
         }
     }
 }
