@@ -4,7 +4,7 @@ using System.Text;
 using System.Drawing;
 using CommonHelper;
 
-namespace WindowsFormsApplication1
+namespace TetrisLibrary.DataContext.Tetromino
 {
     public abstract class TetrominoBase
     {

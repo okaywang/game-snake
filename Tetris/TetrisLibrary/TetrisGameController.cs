@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TetrisLibrary.DataContext;
-using WindowsFormsApplication1;
+using TetrisLibrary.DataContext.Tetromino;
 
 namespace TetrisLibrary
 {
@@ -85,7 +85,8 @@ namespace TetrisLibrary
         private void ProduceTetromino()
         {
             _model.ActiveRowIndex = _settings.RowCount - 1;
-            _model.Tetromino = new T_Tetromino();
+            _model.Tetromino = TetrominoFactory.GetRandomTetromino();
+            _model.ActiveColumnIndex = _model.Apartment.UnitCount / 2 - _model.Tetromino.Width / 2;
         }
 
 
@@ -98,8 +99,7 @@ namespace TetrisLibrary
                 floors[i] = new Floor(_settings.RowCount, _settings.ColumnCount);
             }
             _model.Apartment = new TetrisLibrary.DataContext.Apartment(floors);
-            _model.Tetromino = new T_Tetromino();
-            _model.ActiveRowIndex = _settings.RowCount - 1;
+            ProduceTetromino();
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Drawing;
 
-namespace WindowsFormsApplication1
+namespace TetrisLibrary.DataContext.Tetromino
 {
     public class I_Tetromino : TetrominoBase
     {

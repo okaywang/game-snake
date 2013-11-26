@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TetrisLibrary.DataContext;
-using WindowsFormsApplication1;
+using TetrisLibrary.DataContext.Tetromino;
 
 namespace TetrisLibrary
 {

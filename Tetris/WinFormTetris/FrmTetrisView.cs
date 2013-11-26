@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TetrisLibrary;
 using TetrisLibrary.DataContext;
+using TetrisLibrary.DataContext.Tetromino;
 using WindowsFormsApplication1;
 
 namespace WinFormTetris

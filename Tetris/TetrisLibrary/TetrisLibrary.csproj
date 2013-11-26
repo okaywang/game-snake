@@ -50,6 +50,7 @@
     <Compile Include="DataContext\Room.cs" />
     <Compile Include="DataContext\Tetromino\S_Tetromino.cs" />
     <Compile Include="DataContext\Tetromino\TetrominoBase.cs" />
+    <Compile Include="DataContext\Tetromino\TetrominoFactory.cs" />
     <Compile Include="DataContext\Tetromino\T_Tetromino.cs" />
     <Compile Include="DataContext\Tetromino\Z_Tetromino.cs" />
     <Compile Include="Exceptions\InvalidCrowdResidenceException.cs" />
