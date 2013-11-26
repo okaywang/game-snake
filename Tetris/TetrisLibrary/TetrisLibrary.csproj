@@ -41,7 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext\Apartment.cs" />
-    <Compile Include="DataContext\Block.cs" />
     <Compile Include="DataContext\Floor.cs" />
     <Compile Include="DataContext\Tetromino\I_Tetromino.cs" />
     <Compile Include="DataContext\Tetromino\J_Tetromino.cs" />
@@ -62,6 +61,10 @@
     <Compile Include="TetrisGameModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BasicLibrary\BasicLibrary.csproj">
+      <Project>{bdc02190-857b-4aa1-9e30-83661e864f09}</Project>
+      <Name>BasicLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CommonHelper\CommonHelper.csproj">
       <Project>{536b4bb4-7378-4dd8-8dbc-aabd060b9350}</Project>
       <Name>CommonHelper</Name>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,11 @@ namespace TetrisLibrary.DataContext
             get { return _hasResident; }
         }
 
+        public Block Resident
+        {
+            get { return _block; }
+        }
+
         public void Reside(Block block)
         {
             if (_hasResident)
@@ -29,7 +35,7 @@ namespace TetrisLibrary.DataContext
         public void Remove()
         {
             _hasResident = false;
-            _block = Block.Empty;
+            _block = null;
         }
     }
 }

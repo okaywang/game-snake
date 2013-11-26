@@ -1,4 +1,5 @@
-﻿using SimpleGame;
+﻿using BasicLibrary;
+using SimpleGame;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,7 +61,7 @@ namespace WinFormTetris
 
         public void RenderMap(int rowCount, int columnCount)
         {
-            this.tetrominoChest1.SetTetrominos(new bool[rowCount, columnCount]);
+            this.tetrominoChest1.SetTetrominos(new Block[rowCount, columnCount]);
         }
 
         public void RenderScence(SimpleGame.IDataModel model)

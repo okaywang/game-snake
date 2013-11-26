@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
 using System.ComponentModel.Design;
+using BasicLibrary;
 
 namespace WindowsFormsApplication1
 {
@@ -14,11 +15,11 @@ namespace WindowsFormsApplication1
         private int _rowCount = 1;
         private int _colCount = 1;
 
-        private bool[,] _tetrominos;
+        private Block[,] _blocks;
 
-        public void SetTetrominos(bool[,] data)
+        public void SetTetrominos(Block[,] data)
         {
-            _tetrominos = data;
+            _blocks = data;
             _rowCount = data.GetUpperBound(0) + 1;
             _colCount = data.GetUpperBound(1) + 1;
             this.Invalidate();
@@ -28,7 +29,7 @@ namespace WindowsFormsApplication1
         {
             base.OnPaint(e);
 
-            if (_tetrominos == null)
+            if (_blocks == null)
             {
                 return;
             }
@@ -41,9 +42,9 @@ namespace WindowsFormsApplication1
                 {
                     e.Graphics.FillEllipse(Brushes.Silver, j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
 
-                    if (_tetrominos[i, j])
+                    if (_blocks[i, j] != null)
                     {
-                        e.Graphics.FillEllipse(Brushes.Red, j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
+                        e.Graphics.FillEllipse(new SolidBrush(_blocks[i, j].ForeColor), j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
                     }
                 }
             }

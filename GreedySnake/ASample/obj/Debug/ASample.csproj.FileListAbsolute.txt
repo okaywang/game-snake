@@ -23,3 +23,4 @@ D:\test2\MyGame\game-snake\GreedySnake\ASample\obj\Debug\ASample.csprojResolveAs
 D:\test2\MyGame\game-snake\GreedySnake\ASample\obj\Debug\贪吃蛇.FormMain.resources
 D:\test2\MyGame\game-snake\GreedySnake\ASample\obj\Debug\贪吃蛇.Properties.Resources.resources
 D:\test2\MyGame\game-snake\GreedySnake\ASample\obj\Debug\ASample.csproj.GenerateResource.Cache
+D:\development\game-snake\GreedySnake\ASample\obj\Debug\ASample.csprojResolveAssemblyReference.cache

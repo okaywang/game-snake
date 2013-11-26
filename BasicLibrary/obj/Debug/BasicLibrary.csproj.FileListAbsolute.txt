@@ -1,0 +1,5 @@
+D:\development\game-snake\BasicLibrary\obj\Debug\BasicLibrary.csprojResolveAssemblyReference.cache
+D:\development\game-snake\BasicLibrary\bin\Debug\BasicLibrary.dll
+D:\development\game-snake\BasicLibrary\bin\Debug\BasicLibrary.pdb
+D:\development\game-snake\BasicLibrary\obj\Debug\BasicLibrary.dll
+D:\development\game-snake\BasicLibrary\obj\Debug\BasicLibrary.pdb

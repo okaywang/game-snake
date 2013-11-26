@@ -78,6 +78,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BasicLibrary\BasicLibrary.csproj">
+      <Project>{bdc02190-857b-4aa1-9e30-83661e864f09}</Project>
+      <Name>BasicLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TinyGame\SimpleGame.csproj">
       <Project>{517593d6-de30-4fd3-80f1-d99f02ad8b04}</Project>
       <Name>SimpleGame</Name>

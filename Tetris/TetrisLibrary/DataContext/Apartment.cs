@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BasicLibrary;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -28,15 +29,15 @@ namespace TetrisLibrary.DataContext
             get { return _floors[0].RoomsCount; }
         }
 
-        public bool[,] GetUnderlyingData()
+        public Block[,] GetUnderlyingData()
         {
             var colCount = _floors[0].RoomsCount;
-            var data = new bool[_floors.Length, colCount];
+            var data = new Block[_floors.Length, colCount];
             for (int i = 0; i <= _topIndex; i++)
             {
                 for (int j = 0; j < colCount; j++)
                 {
-                    data[i, j] = _floors[i][j].HasResident;
+                    data[i, j] = _floors[i][j].Resident;
                 }
             }
             return data;

@@ -1,4 +1,5 @@
-﻿using SimpleGame;
+﻿using BasicLibrary;
+using SimpleGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace TetrisLibrary
         public int ActiveRowIndex { get; set; }
         public int ActiveColumnIndex { get; set; }
 
-        public bool[,] GetUnderlyingData()
+        public Block[,] GetUnderlyingData()
         {
             var data = this.Apartment.GetUnderlyingData();
             var tetrominoData = this.Tetromino.GetUnderlyingDataUpward();
@@ -40,7 +41,10 @@ namespace TetrisLibrary
                     var colIndex = ActiveColumnIndex + i;
                     if (colIndex < this.Apartment.UnitCount && colIndex > -1)
                     {
-                        data[rowIndex, ActiveColumnIndex + i] = data[rowIndex, ActiveColumnIndex + i] || rowData[i];
+                        if (rowData[i])
+                        {
+                            data[rowIndex, ActiveColumnIndex + i] = new Block(this.Tetromino.ForeColor);
+                        }
                     }
                 }
                 rowIndex++;

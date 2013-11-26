@@ -53,6 +53,12 @@
     </Compile>
     <Compile Include="WinFormHelper.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BasicLibrary\BasicLibrary.csproj">
+      <Project>{bdc02190-857b-4aa1-9e30-83661e864f09}</Project>
+      <Name>BasicLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
