@@ -75,7 +75,7 @@ namespace TetrisLibrary.DataContext
                     floorIndex++;
                     continue;
                 }
-                else if(floorIndex <0)
+                else if (floorIndex < 0)
                 {
                     return true;
                 }
@@ -126,7 +126,10 @@ namespace TetrisLibrary.DataContext
                 return;
             }
             _floors[floorIndex].Reside(adjacentBlock, startRoomIndex);
-            _topIndex++;
+            if (floorIndex > _topIndex)
+            {
+                _topIndex = floorIndex;
+            }
         }
     }
 }

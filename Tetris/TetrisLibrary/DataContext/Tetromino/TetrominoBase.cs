@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         {
             Data = Helper.ClockwiseRotate90(Data);
         }
-         
+
         public IEnumerable<bool[]> GetUnderlyingDataUpward()
         {
             var rowUpperBound = Data.GetUpperBound(0);
@@ -30,6 +30,19 @@ namespace WindowsFormsApplication1
                 }
                 yield return b;
             }
+        }
+
+        internal bool IsEmpty(int columnIndex)
+        {
+            var rowCount = Data.GetUpperBound(0) + 1;
+            for (int i = 0; i < rowCount; i++)
+            {
+                if (Data[i, columnIndex])
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         protected void Paint(int blockWidth, int blockHeight, Graphics g)
@@ -51,6 +64,11 @@ namespace WindowsFormsApplication1
             }
         }
 
-        
+
+
+        public int Width
+        {
+            get { return Data.GetUpperBound(0) + 1; }
+        }
     }
 }

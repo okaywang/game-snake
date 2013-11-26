@@ -37,7 +37,11 @@ namespace TetrisLibrary
                 }
                 for (int i = 0; i < rowData.Length; i++)
                 {
-                    data[rowIndex, ActiveColumnIndex + i] = data[rowIndex, ActiveColumnIndex + i] || rowData[i];
+                    var colIndex = ActiveColumnIndex + i;
+                    if (colIndex < this.Apartment.UnitCount && colIndex > -1)
+                    {
+                        data[rowIndex, ActiveColumnIndex + i] = data[rowIndex, ActiveColumnIndex + i] || rowData[i];
+                    }
                 }
                 rowIndex++;
             }

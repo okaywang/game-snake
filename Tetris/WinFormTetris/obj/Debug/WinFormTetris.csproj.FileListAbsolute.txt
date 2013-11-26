@@ -29,3 +29,13 @@ D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\CommonHelper.pdb
 D:\test2\MyGame\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.FrmTetrisView.resources
 D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormControls.dll
 D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormControls.pdb
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\SimpleGame.dll
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\TetrisLibrary.dll
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormControls.dll
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\CommonHelper.dll
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\SimpleGame.pdb
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\WinFormControls.pdb
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\TetrisLibrary.pdb
+D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\CommonHelper.pdb
+D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.csprojResolveAssemblyReference.cache
+D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.FrmTetrisView.resources

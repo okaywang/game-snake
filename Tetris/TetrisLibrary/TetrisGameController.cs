@@ -46,11 +46,33 @@ namespace TetrisLibrary
             }
             else if (command is CommandLeft)
             {
-                _model.ActiveColumnIndex--;
+                bool a = _model.Tetromino.IsEmpty(2);
+                if (_model.ActiveColumnIndex <= 0)
+                {
+                    if (_model.Tetromino.IsEmpty(Math.Abs(_model.ActiveColumnIndex)))
+                    {
+                        _model.ActiveColumnIndex--;
+                    }
+                }
+                else
+                {
+                    _model.ActiveColumnIndex--;
+                }
             }
             else if (command is CommandRight)
             {
-                _model.ActiveColumnIndex++;
+                var criticalIndex = _model.Apartment.UnitCount  - _model.Tetromino.Width;
+                if (_model.ActiveColumnIndex < criticalIndex)
+                {
+                    _model.ActiveColumnIndex++;
+                }
+                else
+                {
+                    if (_model.Tetromino.IsEmpty(_model.Tetromino.Width - 1 - (_model.ActiveColumnIndex - criticalIndex)))
+                    {
+                        _model.ActiveColumnIndex++;
+                    }
+                }
             }
             else if (command is CommandDown)
             {
