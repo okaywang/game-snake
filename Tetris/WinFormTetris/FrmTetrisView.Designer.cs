@@ -46,6 +46,7 @@
             // 
             // tetrominoChest1
             // 
+            this.tetrominoChest1.BackColor = System.Drawing.Color.Tan;
             this.tetrominoChest1.Location = new System.Drawing.Point(74, 46);
             this.tetrominoChest1.Name = "tetrominoChest1";
             this.tetrominoChest1.Size = new System.Drawing.Size(127, 294);

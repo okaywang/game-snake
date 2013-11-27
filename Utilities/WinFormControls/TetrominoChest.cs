@@ -6,6 +6,7 @@ using System.Drawing;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using BasicLibrary;
+using System.Drawing.Drawing2D;
 
 namespace WindowsFormsApplication1
 {
@@ -40,14 +41,27 @@ namespace WindowsFormsApplication1
             {
                 for (int j = 0; j < _colCount; j++)
                 {
-                    e.Graphics.FillEllipse(Brushes.Silver, j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
+
 
                     if (_blocks[i, j] != null)
                     {
-                        e.Graphics.FillEllipse(new SolidBrush(_blocks[i, j].ForeColor), j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
+                        //e.Graphics.FillEllipse(new SolidBrush(_blocks[i, j].ForeColor), j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
+                        this.PaintSquare(e.Graphics, new PointF(j * blockWidth, (_rowCount - i - 1) * blockWidth), new SizeF(blockWidth, blockHeight), Color.White, _blocks[i, j].ForeColor);
                     }
                 }
             }
+        }
+
+        private void PaintSquare(Graphics g, PointF location, SizeF size, Color backColor, Color foreColor)
+        {
+            var gp = new GraphicsPath();
+            var rec = new RectangleF(location, size);
+            gp.AddRectangle(rec);
+            var surroundColor = new Color[] { backColor };
+            var pb = new PathGradientBrush(gp);
+            pb.CenterColor = foreColor;
+            pb.SurroundColors = surroundColor;
+            g.FillPath(pb, gp);
         }
     }
 }

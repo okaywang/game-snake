@@ -26,7 +26,7 @@ namespace TetrisLibrary.DataContext.Tetromino
 
         public override Color ForeColor
         {
-            get { return Color.Yellow; }
+            get { return Color.Blue; }
         }
     }
 }
