@@ -24,7 +24,7 @@ namespace TetrisLibrary
 
         public override void TimerElapsed()
         {
-            var hasBarrier = _model.Apartment.HasBarrier(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
+            var hasBarrier = _model.Apartment.HasBarrier(_model.Tetromino, _model.ActiveRowIndex - 1, _model.ActiveColumnIndex);
             if (hasBarrier)
             {
                 _model.Apartment.Reside(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
@@ -33,6 +33,28 @@ namespace TetrisLibrary
             else
             {
                 _model.ActiveRowIndex--;
+            }
+
+            _view.RenderScence(_model);
+        }
+
+        public void InterviewCommand(CommandOrientation command)
+        {
+            if (command is CommandUp)
+            {
+                _model.Tetromino.Transform();
+            }
+            else if (command is CommandLeft)
+            {
+                _model.ActiveColumnIndex--;
+            }
+            else if (command is CommandRight)
+            {
+                _model.ActiveColumnIndex++;
+            }
+            else if (command is CommandDown)
+            {
+                _model.ActiveRowIndex -= 1;
             }
 
             _view.RenderScence(_model);

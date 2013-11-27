@@ -31,6 +31,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
             this.btnStart = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -61,16 +62,29 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(263, 46);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "TimerElapse";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FrmTetrisView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 465);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tetrominoChest1);
+            this.KeyPreview = true;
             this.Name = "FrmTetrisView";
             this.Text = "Form1";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmTetrisView_KeyUp);
             this.ResumeLayout(false);
 
         }
@@ -80,6 +94,7 @@
         private WindowsFormsApplication1.TetrominoChest tetrominoChest1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button button2;
     }
 }
 

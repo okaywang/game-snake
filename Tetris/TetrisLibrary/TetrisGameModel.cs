@@ -37,7 +37,7 @@ namespace TetrisLibrary
                 }
                 for (int i = 0; i < rowData.Length; i++)
                 {
-                    data[rowIndex, ActiveColumnIndex + i] = rowData[i];
+                    data[rowIndex, ActiveColumnIndex + i] = data[rowIndex, ActiveColumnIndex + i] || rowData[i];
                 }
                 rowIndex++;
             }

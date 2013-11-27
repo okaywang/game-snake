@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         {
             Data = Helper.ClockwiseRotate90(Data);
         }
-
+         
         public IEnumerable<bool[]> GetUnderlyingDataUpward()
         {
             var rowUpperBound = Data.GetUpperBound(0);
@@ -50,5 +50,7 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        
     }
 }

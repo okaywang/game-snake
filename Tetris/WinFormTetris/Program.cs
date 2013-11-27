@@ -21,7 +21,7 @@ namespace WinFormTetris
             Application.SetCompatibleTextRenderingDefault(false);
             var view = new FrmTetrisView();
 
-            var settings = new TerisGameSettings() { RowCount = 5, ColumnCount = 3, TimerInterval = 1000 };
+            var settings = new TerisGameSettings() { RowCount = 5, ColumnCount = 4, TimerInterval = 1000000 };
             var _controller = new TetrisGameController(view, settings);
 
             //_controller.BeyondBoundary += view.GameOver;
@@ -29,10 +29,11 @@ namespace WinFormTetris
             _controller.Initialize();
 
             view.StartRequest = _controller.Start;
+            view.PauseRequest = _controller.TimerElapsed;
             //view.PauseRequest = _controller.Pause;
             //view.ResetRequest = _controller.Reset;
             //view.StopRequest = _controller.Stop;
-            //view.OrientationReqest = _controller.InterviewCommand;
+            view.OrientationReqest = _controller.InterviewCommand;
 
             Application.Run(view);
         }

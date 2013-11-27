@@ -48,10 +48,6 @@ namespace TetrisLibrary.DataContext
             {
                 return false;
             }
-            if (floorIndex < 0)
-            {
-                return true;
-            }
 
 
             var data = tetromino.GetUnderlyingDataUpward();
@@ -67,12 +63,30 @@ namespace TetrisLibrary.DataContext
                     }
                     else
                     {
+                        if (roomCount > 0)
+                        {
+                            break;
+                        }
                         startRoomIndex++;
                     }
                 }
-                _floors[floorIndex].HasAdjacentRooms(startRoomIndex, roomCount);
+                if (roomCount == 0)
+                {
+                    floorIndex++;
+                    continue;
+                }
+                else if(floorIndex <0)
+                {
+                    return true;
+                }
+                var floor = _floors[floorIndex++];
+                var hasRoom = floor.HasAdjacentRooms(startRoomIndex, roomCount);
+                if (!hasRoom)
+                {
+                    return true;
+                }
             }
-            return true;
+            return false;
         }
 
         public void Reside(TetrominoBase tetromino, int floorIndex, int roomIndex)
@@ -80,7 +94,7 @@ namespace TetrisLibrary.DataContext
             var data = tetromino.GetUnderlyingDataUpward();
             foreach (var item in data)
             {
-                if (floorIndex >-1)
+                if (floorIndex > -1)
                 {
                     Reside(item, tetromino.ForeColor, floorIndex, roomIndex);
                 }
@@ -100,8 +114,16 @@ namespace TetrisLibrary.DataContext
                 }
                 else
                 {
+                    if (adjacentBlock.Count > 0)
+                    {
+                        break;
+                    }
                     startRoomIndex++;
                 }
+            }
+            if (adjacentBlock.Count == 0)
+            {
+                return;
             }
             _floors[floorIndex].Reside(adjacentBlock, startRoomIndex);
             _topIndex++;

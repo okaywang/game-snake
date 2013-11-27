@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleGame;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,9 +33,11 @@ namespace WinFormTetris
             protected get { return _actionStart; }
         }
 
+        private Action _actionPause;
         public Action PauseRequest
         {
-            set { throw new NotImplementedException(); }
+            set { _actionPause = value; }
+            protected get { return _actionPause; }
         }
 
         public Action ResetRequest
@@ -47,9 +50,11 @@ namespace WinFormTetris
             set { throw new NotImplementedException(); }
         }
 
-        public Action<SimpleGame.CommandOrientation> OrientationReqest
+        private Action<CommandOrientation> _actionOrientate;
+        public Action<CommandOrientation> OrientationReqest
         {
-            set { throw new NotImplementedException(); }
+            set { _actionOrientate = value; }
+            protected get { return _actionOrientate; }
         }
 
         public void RenderMap(int rowCount, int columnCount)
@@ -85,5 +90,31 @@ namespace WinFormTetris
         {
             this.StartRequest();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.PauseRequest();
+        }
+        private void FrmTetrisView_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    OrientationReqest(new CommandUp());
+                    break;
+                case Keys.Down:
+                    OrientationReqest(new CommandDown());
+                    break;
+                case Keys.Left:
+                    OrientationReqest(new CommandLeft());
+                    break;
+                case Keys.Right:
+                    OrientationReqest(new CommandRight());
+                    break;
+                default:
+                    break;
+            }
+        }
+         
     }
 }
