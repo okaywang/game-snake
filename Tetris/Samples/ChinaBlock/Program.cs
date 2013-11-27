@@ -15,6 +15,7 @@ namespace ChinaBlock
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+//http://www.cnblogs.com/tuyile006/archive/2007/05/16/748256.html
         }
     }
 }
