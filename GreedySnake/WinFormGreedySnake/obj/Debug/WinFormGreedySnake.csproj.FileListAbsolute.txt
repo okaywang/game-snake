@@ -54,3 +54,5 @@ D:\test2\MyGame\game-snake\GreedySnake\WinFormGreedySnake\obj\Debug\WinFormGreed
 D:\test2\MyGame\game-snake\GreedySnake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.csproj.GenerateResource.Cache
 D:\development\game-snake\GreedySnake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.FrmGameView.resources
 D:\development\game-snake\GreedySnake\WinFormGreedySnake\obj\Debug\WinFormGreedySnake.FrmTest.resources
+D:\development\game-snake\GreedySnake\WinFormGreedySnake\bin\Debug\BasicLibrary.dll
+D:\development\game-snake\GreedySnake\WinFormGreedySnake\bin\Debug\BasicLibrary.pdb

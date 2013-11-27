@@ -18,6 +18,31 @@ namespace TetrisLibrary
         public int ActiveRowIndex { get; set; }
         public int ActiveColumnIndex { get; set; }
 
+        public bool[,] TetrominoContext
+        {
+            get
+            {
+                var context = new bool[this.Tetromino.Height, this.Tetromino.Width];
+                for (int i = 0; i < this.Tetromino.Height; i++)
+                {
+                    for (int j = 0; j < this.Tetromino.Width; j++)
+                    {
+                        var rowIndex = i + ActiveRowIndex;
+                        var colIndex = j + ActiveColumnIndex;
+                        if (colIndex < 0 || colIndex > this.Apartment.UnitCount - 1 || rowIndex > this.Apartment.FloorCount - 1)
+                        {
+                            context[i, j] = true;
+                        }
+                        else
+                        {
+                            context[i, j] = this.Apartment[rowIndex][colIndex].HasResident;
+                        }
+                    }
+                }
+                return context;
+            }
+        }
+
         public Block[,] GetUnderlyingData()
         {
             var data = this.Apartment.GetUnderlyingData();

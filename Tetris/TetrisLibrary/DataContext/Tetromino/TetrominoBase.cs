@@ -12,9 +12,25 @@ namespace TetrisLibrary.DataContext.Tetromino
         public abstract Color ForeColor { get; }
 
 
-        public void Transform()
+        public virtual void Transform()
         {
             Data = Helper.ClockwiseRotate90(Data);
+        }
+         
+        public bool CanTransform(bool[,] context)
+        {
+            var data = Helper.ClockwiseRotate90(Data);
+            for (int i = 0; i < this.Height; i++)
+            {
+                for (int j = 0; j < this.Width; j++)
+                {
+                    if (data[i,j] && context[i,j])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         public IEnumerable<bool[]> GetUnderlyingDataUpward()
@@ -63,9 +79,7 @@ namespace TetrisLibrary.DataContext.Tetromino
                 }
             }
         }
-
-
-
+         
         public int Width
         {
             get { return Data.GetUpperBound(0) + 1; }
@@ -75,5 +89,6 @@ namespace TetrisLibrary.DataContext.Tetromino
         {
             get { return Data.GetUpperBound(1) + 1; }
         }
+
     }
 }

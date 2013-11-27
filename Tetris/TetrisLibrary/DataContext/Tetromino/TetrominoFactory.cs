@@ -11,7 +11,7 @@ namespace TetrisLibrary.DataContext.Tetromino
         public static TetrominoBase GetRandomTetromino()
         {
             var index = new Random().Next(0, 7);
-            index = 3;
+            //index = 0;
             switch (index)
             {
                 case 0:

@@ -64,7 +64,10 @@ namespace TetrisLibrary
         {
             if (command is CommandUp)
             {
-                _model.Tetromino.Transform();
+                if (_model.Tetromino.CanTransform(_model.TetrominoContext))
+                {
+                    _model.Tetromino.Transform();
+                }
             }
             else if (command is CommandLeft)
             {
