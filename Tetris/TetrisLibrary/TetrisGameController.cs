@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TetrisLibrary.Commands;
 using TetrisLibrary.DataContext;
 using TetrisLibrary.DataContext.Tetromino;
 
@@ -24,10 +25,13 @@ namespace TetrisLibrary
 
         public override void TimerElapsed()
         {
-            var hasBarrier = _model.Apartment.HasBarrier(_model.Tetromino, _model.ActiveRowIndex - 1, _model.ActiveColumnIndex);
-            if (hasBarrier)
+            if (_model.Tetromino.BeHold(_model.DownTetrominoContext))
             {
-                if (_model.Apartment.TopIndex == _model.Apartment.FloorCount -1)
+                _model.ActiveRowIndex--;
+            }
+            else
+            {
+                if (_model.Apartment.TopIndex == _model.Apartment.FloorCount - 1)
                 {
                     base.OnGameOver();
                     return;
@@ -43,7 +47,7 @@ namespace TetrisLibrary
                     if (_model.Apartment[i].IsFull)
                     {
                         _model.Apartment[i].Clear();
-                        _model.Apartment.GoDownstairs(i,1);
+                        _model.Apartment.GoDownstairs(i, 1);
                     }
                     else
                     {
@@ -51,10 +55,6 @@ namespace TetrisLibrary
                     }
                 }
                 this.ProduceTetromino();
-            }
-            else
-            {
-                _model.ActiveRowIndex--;
             }
 
             _view.RenderScence(_model);
@@ -71,36 +71,29 @@ namespace TetrisLibrary
             }
             else if (command is CommandLeft)
             {
-                if (_model.ActiveColumnIndex <= 0)
-                {
-                    if (_model.Tetromino.IsEmpty(Math.Abs(_model.ActiveColumnIndex)))
-                    {
-                        _model.ActiveColumnIndex--;
-                    }
-                }
-                else
+                if (_model.Tetromino.BeHold(_model.LeftTetrominoContext))
                 {
                     _model.ActiveColumnIndex--;
                 }
             }
             else if (command is CommandRight)
             {
-                var criticalIndex = _model.Apartment.UnitCount  - _model.Tetromino.Width;
-                if (_model.ActiveColumnIndex < criticalIndex)
+                if (_model.Tetromino.BeHold(_model.RightTetrominoContext))
                 {
                     _model.ActiveColumnIndex++;
-                }
-                else
-                {
-                    if (_model.Tetromino.IsEmpty(_model.Tetromino.Width - 1 - (_model.ActiveColumnIndex - criticalIndex)))
-                    {
-                        _model.ActiveColumnIndex++;
-                    }
                 }
             }
             else if (command is CommandDown)
             {
-                _model.ActiveRowIndex -= 1;
+                this.TimerElapsed();
+            }
+            else if (command is CommandBlank)
+            {
+                while (_model.Tetromino.BeHold(_model.DownTetrominoContext))
+                {
+                    _model.ActiveRowIndex--;
+                }
+                this.TimerElapsed();
             }
 
             _view.RenderScence(_model);

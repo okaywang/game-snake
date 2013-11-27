@@ -53,52 +53,52 @@ namespace TetrisLibrary.DataContext
             return data;
         }
 
-        public bool HasBarrier(TetrominoBase tetromino, int floorIndex, int roomIndex)
-        {
-            if (_topIndex < floorIndex)
-            {
-                return false;
-            }
+        //public bool HasBarrier(TetrominoBase tetromino, int floorIndex, int roomIndex)
+        //{
+        //    if (_topIndex < floorIndex)
+        //    {
+        //        return false;
+        //    }
 
 
-            var data = tetromino.GetUnderlyingDataUpward();
-            foreach (var item in data)
-            {
-                var startRoomIndex = roomIndex;
-                var roomCount = 0;
-                for (int i = 0; i < item.Length; i++)
-                {
-                    if (item[i])
-                    {
-                        roomCount++;
-                    }
-                    else
-                    {
-                        if (roomCount > 0)
-                        {
-                            break;
-                        }
-                        startRoomIndex++;
-                    }
-                }
-                if (roomCount == 0)
-                {
-                    floorIndex++;
-                    continue;
-                }
-                else if (floorIndex < 0)
-                {
-                    return true;
-                }
-                var floor = _floors[floorIndex++];
-                var hasRoom = floor.HasAdjacentRooms(startRoomIndex, roomCount);
-                if (!hasRoom)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        //    var data = tetromino.GetUnderlyingDataUpward();
+        //    foreach (var item in data)
+        //    {
+        //        var startRoomIndex = roomIndex;
+        //        var roomCount = 0;
+        //        for (int i = 0; i < item.Length; i++)
+        //        {
+        //            if (item[i])
+        //            {
+        //                roomCount++;
+        //            }
+        //            else
+        //            {
+        //                if (roomCount > 0)
+        //                {
+        //                    break;
+        //                }
+        //                startRoomIndex++;
+        //            }
+        //        }
+        //        if (roomCount == 0)
+        //        {
+        //            floorIndex++;
+        //            continue;
+        //        }
+        //        else if (floorIndex < 0)
+        //        {
+        //            return true;
+        //        }
+        //        var floor = _floors[floorIndex++];
+        //        var hasRoom = floor.HasAdjacentRooms(startRoomIndex, roomCount);
+        //        if (!hasRoom)
+        //        {
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
         public void Reside(TetrominoBase tetromino, int floorIndex, int roomIndex)
         {

@@ -3,3 +3,8 @@ D:\development\game-snake\BasicLibrary\bin\Debug\BasicLibrary.dll
 D:\development\game-snake\BasicLibrary\bin\Debug\BasicLibrary.pdb
 D:\development\game-snake\BasicLibrary\obj\Debug\BasicLibrary.dll
 D:\development\game-snake\BasicLibrary\obj\Debug\BasicLibrary.pdb
+D:\test2\MyGame\game-snake\BasicLibrary\bin\Debug\BasicLibrary.dll
+D:\test2\MyGame\game-snake\BasicLibrary\bin\Debug\BasicLibrary.pdb
+D:\test2\MyGame\game-snake\BasicLibrary\obj\Debug\BasicLibrary.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\BasicLibrary\obj\Debug\BasicLibrary.dll
+D:\test2\MyGame\game-snake\BasicLibrary\obj\Debug\BasicLibrary.pdb

@@ -20,11 +20,22 @@ namespace TetrisLibrary.DataContext.Tetromino
         public bool CanTransform(bool[,] context)
         {
             var data = Helper.ClockwiseRotate90(Data);
+            return BeHold(context,data);
+        }
+
+        public bool BeHold(bool[,] context)
+        {
+            var data = Data;
+            return BeHold(context, data);
+        }
+
+        private bool BeHold(bool[,] context,bool[,] data)
+        {
             for (int i = 0; i < this.Height; i++)
             {
                 for (int j = 0; j < this.Width; j++)
                 {
-                    if (data[i,j] && context[i,j])
+                    if (data[i, j] && context[i, j])
                     {
                         return false;
                     }

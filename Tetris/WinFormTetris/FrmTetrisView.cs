@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TetrisLibrary;
+using TetrisLibrary.Commands;
 using TetrisLibrary.DataContext;
 using TetrisLibrary.DataContext.Tetromino;
 using WindowsFormsApplication1;
@@ -124,6 +125,9 @@ namespace WinFormTetris
                     break;
                 case Keys.Right:
                     OrientationReqest(new CommandRight());
+                    break;
+                case Keys.Space:
+                    OrientationReqest(new CommandBlank());
                     break;
                 default:
                     break;

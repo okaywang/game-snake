@@ -22,25 +22,58 @@ namespace TetrisLibrary
         {
             get
             {
-                var context = new bool[this.Tetromino.Height, this.Tetromino.Width];
-                for (int i = 0; i < this.Tetromino.Height; i++)
-                {
-                    for (int j = 0; j < this.Tetromino.Width; j++)
-                    {
-                        var rowIndex = i + ActiveRowIndex;
-                        var colIndex = j + ActiveColumnIndex;
-                        if (colIndex < 0 || colIndex > this.Apartment.UnitCount - 1 || rowIndex > this.Apartment.FloorCount - 1)
-                        {
-                            context[i, j] = true;
-                        }
-                        else
-                        {
-                            context[i, j] = this.Apartment[rowIndex][colIndex].HasResident;
-                        }
-                    }
-                }
-                return context;
+                return GetContext(this.ActiveRowIndex, this.ActiveColumnIndex);
             }
+        }
+
+        public bool[,] LeftTetrominoContext
+        {
+            get
+            {
+                return GetContext(this.ActiveRowIndex, this.ActiveColumnIndex - 1);
+            }
+        }
+        public bool[,] RightTetrominoContext
+        {
+            get
+            {
+                return GetContext(this.ActiveRowIndex, this.ActiveColumnIndex + 1);
+            }
+        }
+        public bool[,] DownTetrominoContext
+        {
+            get
+            {
+                return GetContext(this.ActiveRowIndex - 1, this.ActiveColumnIndex);
+            }
+        }
+
+        private bool[,] GetContext(int relativeRowIndex, int relativeColumnIndex)
+        {
+            var context = new bool[this.Tetromino.Height, this.Tetromino.Width];
+            for (int i = this.Tetromino.Height - 1; i > -1; i--)
+            {
+                var colIndex = relativeColumnIndex;
+                for (int j = 0; j < this.Tetromino.Width; j++)
+                {
+                    if (colIndex < 0 || colIndex > this.Apartment.UnitCount - 1 || relativeRowIndex < 0)
+                    {
+                        context[i, j] = true;
+                    }
+                    else if (relativeRowIndex > this.Apartment.FloorCount - 1)
+                    {
+                        context[i, j] = false;
+                    }
+                    else
+                    {
+                        context[i, j] = this.Apartment[relativeRowIndex][colIndex].HasResident;
+                    }
+                    colIndex++;
+                }
+
+                relativeRowIndex++;
+            }
+            return context;
         }
 
         public Block[,] GetUnderlyingData()

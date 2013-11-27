@@ -41,3 +41,5 @@ D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.csprojRes
 D:\development\game-snake\Tetris\WinFormTetris\obj\Debug\WinFormTetris.FrmTetrisView.resources
 D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\BasicLibrary.dll
 D:\development\game-snake\Tetris\WinFormTetris\bin\Debug\BasicLibrary.pdb
+D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\BasicLibrary.dll
+D:\test2\MyGame\game-snake\Tetris\WinFormTetris\bin\Debug\BasicLibrary.pdb

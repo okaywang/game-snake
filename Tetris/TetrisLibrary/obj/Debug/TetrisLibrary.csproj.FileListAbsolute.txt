@@ -18,3 +18,5 @@ D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\CommonHelper.dll
 D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\CommonHelper.pdb
 D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\BasicLibrary.dll
 D:\development\game-snake\Tetris\TetrisLibrary\bin\Debug\BasicLibrary.pdb
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\BasicLibrary.dll
+D:\test2\MyGame\game-snake\Tetris\TetrisLibrary\bin\Debug\BasicLibrary.pdb

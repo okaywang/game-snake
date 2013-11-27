@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
             this.btnStart = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
+            this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
             this.SuspendLayout();
             // 
             // button1
@@ -45,15 +45,6 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // tetrominoChest1
-            // 
-            this.tetrominoChest1.BackColor = System.Drawing.Color.Tan;
-            this.tetrominoChest1.Location = new System.Drawing.Point(74, 46);
-            this.tetrominoChest1.Name = "tetrominoChest1";
-            this.tetrominoChest1.Size = new System.Drawing.Size(105, 314);
-            this.tetrominoChest1.TabIndex = 0;
-            this.tetrominoChest1.Text = "tetrominoChest1";
             // 
             // btnStart
             // 
@@ -94,6 +85,15 @@
             this.btnRestart.Text = "restart";
             this.btnRestart.UseVisualStyleBackColor = true;
             this.btnRestart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // tetrominoChest1
+            // 
+            this.tetrominoChest1.BackColor = System.Drawing.Color.Tan;
+            this.tetrominoChest1.Location = new System.Drawing.Point(74, 46);
+            this.tetrominoChest1.Name = "tetrominoChest1";
+            this.tetrominoChest1.Size = new System.Drawing.Size(170, 327);
+            this.tetrominoChest1.TabIndex = 0;
+            this.tetrominoChest1.Text = "tetrominoChest1";
             // 
             // FrmTetrisView
             // 
