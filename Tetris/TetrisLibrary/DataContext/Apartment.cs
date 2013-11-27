@@ -19,6 +19,11 @@ namespace TetrisLibrary.DataContext
             _floors = floors;
         }
 
+        public int TopIndex
+        {
+            get { return _topIndex; }
+        }
+
         public int FloorCount
         {
             get { return _floors.Length; }
@@ -50,7 +55,7 @@ namespace TetrisLibrary.DataContext
 
         public bool HasBarrier(TetrominoBase tetromino, int floorIndex, int roomIndex)
         {
-            if (_topIndex <= floorIndex)
+            if (_topIndex < floorIndex)
             {
                 return false;
             }
@@ -140,9 +145,9 @@ namespace TetrisLibrary.DataContext
 
         internal void GoDownstairs(int floorIndex, int count)
         {
-            for (int i = floorIndex; i < _floors.Length; i++)
+            for (int i = floorIndex; i + count < this.FloorCount; i++)
             {
-                  _floors[floorIndex + count].Dump(_floors[floorIndex]);
+                _floors[i + count].Dump(_floors[i]);
             }
         }
     }

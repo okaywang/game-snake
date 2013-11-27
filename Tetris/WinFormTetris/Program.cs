@@ -21,11 +21,12 @@ namespace WinFormTetris
             Application.SetCompatibleTextRenderingDefault(false);
             var view = new FrmTetrisView();
 
-            var settings = new TerisGameSettings() { RowCount = 10, ColumnCount = 5, TimerInterval = 1000000 };
+            var settings = new TerisGameSettings() { RowCount = 10, ColumnCount = 4, TimerInterval = 1000000 };
             var _controller = new TetrisGameController(view, settings);
 
             //_controller.BeyondBoundary += view.GameOver;
             //_controller.SelfCrash += view.GameOver;
+            _controller.GameOver += view.GameOver;
             _controller.Initialize();
 
             view.StartRequest = _controller.Start;

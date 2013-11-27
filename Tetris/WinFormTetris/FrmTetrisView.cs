@@ -22,7 +22,15 @@ namespace WinFormTetris
         {
             InitializeComponent();
         }
-
+        public void GameOver(object sender, EventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                MessageBox.Show("game over");
+                this.btnPause.Enabled = false;
+                this.btnRestart.Enabled = true;
+            }));
+        }
         public void ClearObjects()
         {
             throw new NotImplementedException();
@@ -42,14 +50,18 @@ namespace WinFormTetris
             protected get { return _actionPause; }
         }
 
+        private Action _actionReset;
         public Action ResetRequest
         {
-            set { throw new NotImplementedException(); }
+            set { _actionReset = value; }
+            protected get { return _actionReset; }
         }
 
+        private Action _actionStop;
         public Action StopRequest
         {
-            set { throw new NotImplementedException(); }
+            set { _actionStop = value; }
+            protected get { return _actionStop; }
         }
 
         private Action<CommandOrientation> _actionOrientate;

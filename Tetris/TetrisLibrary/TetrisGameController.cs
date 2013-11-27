@@ -27,17 +27,27 @@ namespace TetrisLibrary
             var hasBarrier = _model.Apartment.HasBarrier(_model.Tetromino, _model.ActiveRowIndex - 1, _model.ActiveColumnIndex);
             if (hasBarrier)
             {
+                if (_model.Apartment.TopIndex == _model.Apartment.FloorCount -1)
+                {
+                    base.OnGameOver();
+                    return;
+                }
                 _model.Apartment.Reside(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
-                for (int i = _model.ActiveRowIndex; i < _model.ActiveRowIndex + _model.Tetromino.Height; i++)
+                for (int i = _model.ActiveRowIndex; i < _model.ActiveRowIndex + _model.Tetromino.Height; )
                 {
                     if (i < 0)
                     {
+                        i++;
                         continue;
                     }
                     if (_model.Apartment[i].IsFull)
                     {
                         _model.Apartment[i].Clear();
                         _model.Apartment.GoDownstairs(i,1);
+                    }
+                    else
+                    {
+                        i++;
                     }
                 }
                 this.ProduceTetromino();

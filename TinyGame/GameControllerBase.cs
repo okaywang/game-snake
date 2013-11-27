@@ -12,7 +12,9 @@ namespace SimpleGame
         private IGameView _view;
         private GameSettingsBase _settings;
         private System.Timers.Timer _timer;
-         
+
+        public EventHandler GameOver;
+
         public GameControllerBase(IGameView view, GameSettingsBase settings)
         {
             _view = view;
@@ -68,8 +70,18 @@ namespace SimpleGame
             this.InitializeActiveObjects();
         }
 
+        public void OnGameOver()
+        {
+            this.Stop();
+            if (GameOver !=null)
+            {
+                GameOver(this, EventArgs.Empty);
+            }
+        }
+
         public abstract void TimerElapsed();
         protected virtual void InitializeModelContext() { }
         public abstract void InitializeActiveObjects();
+
     }
 }

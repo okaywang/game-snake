@@ -85,20 +85,22 @@ namespace TetrisLibrary.DataContext
 
         public void Dump(Floor floor)
         {
+            floor._residentCount = this._residentCount;
             for (int i = 0; i < _rooms.Length; i++)
             {
-                var room = floor[i];
-                if (this[i].Resident !=null)
-                {
-                    room.Resident = this[i].Resident.Clone() as Block;
-                }
-                else
-                {
-                    room.Resident = null;
-                }
-                
+                floor[i] = this[i];
+                //if (this[i].Resident !=null)
+                //{
+                //    room.Resident = this[i].Resident.Clone() as Block;
+                //}
+                //else
+                //{
+                //    room.Resident = null;
+                //}
+
                 this[i].Clear();
             }
+
         }
     }
 }
