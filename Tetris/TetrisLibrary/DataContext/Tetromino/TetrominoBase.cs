@@ -97,12 +97,12 @@ namespace TetrisLibrary.DataContext.Tetromino
 
         public int Width
         {
-            get { return Data.GetUpperBound(0) + 1; }
+            get { return Data.GetUpperBound(1) + 1; }
         }
 
         public int Height
         {
-            get { return Data.GetUpperBound(1) + 1; }
+            get { return Data.GetUpperBound(0) + 1; }
         }
 
         public int NetHeight

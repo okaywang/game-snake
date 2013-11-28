@@ -43,16 +43,22 @@
     <Compile Include="Commands\CommandBlank.cs" />
     <Compile Include="DataContext\Apartment.cs" />
     <Compile Include="DataContext\Floor.cs" />
-    <Compile Include="DataContext\Tetromino\I_Tetromino.cs" />
-    <Compile Include="DataContext\Tetromino\J_Tetromino.cs" />
-    <Compile Include="DataContext\Tetromino\L_Tetromino.cs" />
-    <Compile Include="DataContext\Tetromino\O_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\I_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\J_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\L_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\O_Tetromino.cs" />
     <Compile Include="DataContext\Room.cs" />
-    <Compile Include="DataContext\Tetromino\S_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\S_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\TetrominoFactoryClassic.cs" />
+    <Compile Include="DataContext\Tetromino\Modern\Tetromino4.cs" />
+    <Compile Include="DataContext\Tetromino\Modern\Tetromino3.cs" />
+    <Compile Include="DataContext\Tetromino\Modern\Tetromino2.cs" />
+    <Compile Include="DataContext\Tetromino\Modern\Tetromino1.cs" />
     <Compile Include="DataContext\Tetromino\TetrominoBase.cs" />
-    <Compile Include="DataContext\Tetromino\TetrominoFactory.cs" />
-    <Compile Include="DataContext\Tetromino\T_Tetromino.cs" />
-    <Compile Include="DataContext\Tetromino\Z_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\TetrominoFactoryModern.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\T_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\Classic\Z_Tetromino.cs" />
+    <Compile Include="DataContext\Tetromino\TetrominoFactoryBase.cs" />
     <Compile Include="GameEventArgs\EliminateRowsEventArgs.cs" />
     <Compile Include="Exceptions\FloorUseupException.cs" />
     <Compile Include="Exceptions\InvalidCrowdResidenceException.cs" />
@@ -77,6 +83,7 @@
       <Name>SimpleGame</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

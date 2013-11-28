@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TetrisLibrary;
 using TetrisLibrary.DataContext;
+using TetrisLibrary.DataContext.Tetromino;
 
 namespace WinFormTetris
 {
@@ -21,7 +22,7 @@ namespace WinFormTetris
             Application.SetCompatibleTextRenderingDefault(false);
             var view = new FrmTetrisView();
 
-            var settings = new TerisGameSettings() { RowCount = 20, ColumnCount = 10, TimerInterval = 500 };
+            var settings = new TerisGameSettings() { RowCount = 20, ColumnCount = 10, TimerInterval = 500, TetrominoFactory = new TetrominoFactoryClassic() };
             var _controller = new TetrisGameController(view, settings);
 
             //_controller.BeyondBoundary += view.GameOver;
@@ -31,7 +32,8 @@ namespace WinFormTetris
             _controller.Initialize();
 
             view.StartRequest = _controller.Start;
-            view.PauseRequest = _controller.TimerElapsed;
+            view.PauseRequest = _controller.TimerElapsedCore;
+            
             //view.PauseRequest = _controller.Pause;
             //view.ResetRequest = _controller.Reset;
             //view.StopRequest = _controller.Stop;

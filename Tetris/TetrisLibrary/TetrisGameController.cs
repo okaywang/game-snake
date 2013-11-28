@@ -14,6 +14,7 @@ namespace TetrisLibrary
     {
         private ITetrisGameView _view;
         private TetrisGameModel _model;
+        private TetrominoFactoryBase _tetrominoFactory;
 
         private TerisGameSettings _settings;
         public EventHandler<EliminateRowsEventArgs> RowsEliminated;
@@ -22,9 +23,10 @@ namespace TetrisLibrary
         {
             _view = view;
             _settings = settings;
+            _tetrominoFactory = settings.TetrominoFactory;
         }
 
-        public override void TimerElapsed()
+        public override void TimerElapsedCore()
         {
             if (_model.Tetromino.BeHold(_model.DownTetrominoContext))
             {
@@ -39,7 +41,6 @@ namespace TetrisLibrary
                 }
                 try
                 {
-
                     _model.Apartment.Reside(_model.Tetromino, _model.ActiveRowIndex, _model.ActiveColumnIndex);
                 }
                 catch (FloorUseupException)
@@ -111,7 +112,7 @@ namespace TetrisLibrary
             }
             else if (command is CommandDown)
             {
-                this.TimerElapsed();
+                this.TimerElapsedCore();
             }
             else if (command is CommandBlank)
             {
@@ -119,7 +120,7 @@ namespace TetrisLibrary
                 {
                     _model.ActiveRowIndex--;
                 }
-                this.TimerElapsed();
+                this.TimerElapsedCore();
             }
 
             _view.RenderScence(_model);
@@ -130,10 +131,10 @@ namespace TetrisLibrary
             _model.ActiveRowIndex = _settings.RowCount - 1;
             if (_model.SpareTire == null)
             {
-                _model.SpareTire = TetrominoFactory.GetRandomTetromino();
+                _model.SpareTire = _tetrominoFactory.GetRandomTetromino();
             }
             _model.Tetromino = _model.SpareTire.Clone() as TetrominoBase;
-            _model.SpareTire = TetrominoFactory.GetRandomTetromino();
+            _model.SpareTire = _tetrominoFactory.GetRandomTetromino();
             _model.ActiveColumnIndex = _model.Apartment.UnitCount / 2 - _model.Tetromino.Width / 2;
         }
 

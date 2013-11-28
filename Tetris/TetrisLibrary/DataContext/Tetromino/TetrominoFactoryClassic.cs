@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace TetrisLibrary.DataContext.Tetromino
 {
-    public class TetrominoFactory
+    public class TetrominoFactoryClassic : TetrominoFactoryBase
     {
-        public static TetrominoBase GetRandomTetromino()
+        public override TetrominoBase GetRandomTetromino()
         {
-            var index = new Random().Next(0, 7);
-            //index = 5;
+            var index = base.RandomIndex;
             switch (index)
             {
                 case 0:
@@ -31,6 +30,11 @@ namespace TetrisLibrary.DataContext.Tetromino
                 default:
                     return null;
             }
+        }
+
+        protected override int Count
+        {
+            get { return 7; }
         }
     }
 }

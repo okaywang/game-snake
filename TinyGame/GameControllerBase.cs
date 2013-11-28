@@ -36,7 +36,7 @@ namespace SimpleGame
         }
         private void TimerElapsed(object sender, ElapsedEventArgs e)
         {
-            TimerElapsed();
+            TimerElapsedCore();
         }
 
         private void InitializeMap()
@@ -79,7 +79,7 @@ namespace SimpleGame
             }
         }
 
-        public abstract void TimerElapsed();
+        public abstract void TimerElapsedCore();
         protected virtual void InitializeModelContext() { }
         public abstract void InitializeActiveObjects();
 

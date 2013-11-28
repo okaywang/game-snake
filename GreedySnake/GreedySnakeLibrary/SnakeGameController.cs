@@ -29,7 +29,7 @@ namespace GreedySnakeLibrary
         }
 
 
-        public override void TimerElapsed()
+        public override void TimerElapsedCore()
         {
             if (_requests.Count > 0)
             {

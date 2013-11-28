@@ -32,19 +32,7 @@ namespace TetrisLibrary.DataContext
         public bool IsFull
         {
             get { return _rooms.Length == _residentCount; }
-        }
-
-        public bool HasAdjacentRooms(int fromRoomIndex, int roomCount)
-        {
-            for (int i = 0; i < roomCount; i++)
-            {
-                if (_rooms[fromRoomIndex++].HasResident)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        } 
 
         public void Reside(Block block, int roomIndex)
         {
@@ -54,25 +42,7 @@ namespace TetrisLibrary.DataContext
             }
             _rooms[roomIndex].Reside(block);
             _residentCount++;
-        }
-
-        public void Reside(ICollection<Block> blocks, int roomIndex)
-        {
-            for (int i = 0; i < blocks.Count; i++)
-            {
-                if (_rooms[roomIndex + i].HasResident)
-                {
-                    throw new InvalidCrowdResidenceException("can not arrange the crowd with consecutive rooms at this floor.");
-                }
-            }
-
-            for (int i = 0; i < blocks.Count; i++)
-            {
-                _rooms[roomIndex + i].Reside(blocks.ElementAt(i));
-            }
-
-            _residentCount += blocks.Count;
-        }
+        } 
 
         internal void Clear()
         {
@@ -89,15 +59,7 @@ namespace TetrisLibrary.DataContext
             for (int i = 0; i < _rooms.Length; i++)
             {
                 floor[i] = this[i];
-                //if (this[i].Resident !=null)
-                //{
-                //    room.Resident = this[i].Resident.Clone() as Block;
-                //}
-                //else
-                //{
-                //    room.Resident = null;
-                //}
-
+                 
                 this[i].Clear();
             }
 

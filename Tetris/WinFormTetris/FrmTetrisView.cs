@@ -103,6 +103,10 @@ namespace WinFormTetris
         {
             this.StartRequest();
         }
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            this.PauseRequest();
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -131,6 +135,12 @@ namespace WinFormTetris
                     break;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

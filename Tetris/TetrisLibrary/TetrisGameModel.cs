@@ -113,6 +113,7 @@ namespace TetrisLibrary
 
             return data;
         }
+
         public Block[,] GetUnderlyingDataSpareTire(int rowCount, int colCount)
         {
             var data = this.SpareTire.EssentialData;
@@ -133,7 +134,7 @@ namespace TetrisLibrary
                     }
                     if (data[m, n])
                     {
-                        blocks[i, j] = new Block(this.SpareTire.ForeColor);
+                        blocks[rowCount - i - 1, j] = new Block(this.SpareTire.ForeColor);
                     }
                 }
             }
