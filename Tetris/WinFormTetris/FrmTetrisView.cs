@@ -36,7 +36,10 @@ namespace WinFormTetris
 
         public void RowsEliminatedHandler(object sender, EliminateRowsEventArgs e)
         {
-            this.lblScore.Text = (Int32.Parse(this.lblScore.Text) + _scoreIndicator[e.EliminateRowsCount - 1]).ToString();
+            this.Invoke(new Action(() =>
+              {
+                  this.lblScore.Text = (Int32.Parse(this.lblScore.Text) + _scoreIndicator[e.EliminateRowsCount - 1]).ToString();
+              }));
         }
 
         public void ClearObjects()

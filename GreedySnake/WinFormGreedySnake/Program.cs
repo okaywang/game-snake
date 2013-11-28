@@ -17,7 +17,7 @@ namespace WinFormGreedySnake
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             var view = new FrmGameView();
-            var settings = new SnakeGameSettings() { RowCount = 10, ColumnCount = 20, TimerInterval = 2000 };
+            var settings = new SnakeGameSettings() { RowCount = 10, ColumnCount = 20, TimerInterval = 400 };
             var _controller = new SnakeGameController(view, settings);
 
             _controller.BeyondBoundary += view.GameOver;

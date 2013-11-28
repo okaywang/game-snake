@@ -34,8 +34,8 @@
             this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
             this.tetrominoChest2 = new WindowsFormsApplication1.TetrominoChest();
             this.lblScore = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -112,8 +112,8 @@
             this.Name = "FrmTetrisView";
             this.Text = "Form1";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmTetrisView_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

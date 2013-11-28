@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGameView));
             this.btnStart = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
-            this.pnlGame = new System.Windows.Forms.Panel();
+            this.pnlGame = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlGame)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -67,12 +67,11 @@
             // 
             // pnlGame
             // 
-            this.pnlGame.BackColor = System.Drawing.Color.Transparent;
-            this.pnlGame.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlGame.BackgroundImage")));
-            this.pnlGame.Location = new System.Drawing.Point(12, 91);
+            this.pnlGame.Location = new System.Drawing.Point(12, 88);
             this.pnlGame.Name = "pnlGame";
-            this.pnlGame.Size = new System.Drawing.Size(468, 268);
-            this.pnlGame.TabIndex = 3;
+            this.pnlGame.Size = new System.Drawing.Size(468, 271);
+            this.pnlGame.TabIndex = 4;
+            this.pnlGame.TabStop = false;
             // 
             // FrmGameView
             // 
@@ -88,6 +87,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pnlGame)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -97,7 +97,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Button btnPause;
-        private System.Windows.Forms.Panel pnlGame; 
+        private System.Windows.Forms.PictureBox pnlGame; 
     }
 }
 

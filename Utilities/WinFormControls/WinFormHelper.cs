@@ -10,25 +10,25 @@ namespace WinFormControls
 {
     public class WinFormHelper
     {
-        public static void DrawGrid(Panel panel, int rowCount, int columnCount)
+        public static void DrawGrid(Control control, int rowCount, int columnCount)
         {
-            var g = panel.CreateGraphics();
+            var g = control.CreateGraphics();
 
             int x = 0;
             int y = 0;
-            var rowHeight = panel.Height / rowCount;
-            while (y < panel.Height)
+            var rowHeight = control.Height / rowCount;
+            while (y < control.Height)
             {
-                g.DrawLine(Pens.Brown, x, y, panel.Width, y);
+                g.DrawLine(Pens.Brown, x, y, control.Width, y);
                 y += rowHeight;
             }
 
             x = 0;
             y = 0;
-            var columnWidth = panel.Width / columnCount;
-            while (x < panel.Width)
+            var columnWidth = control.Width / columnCount;
+            while (x < control.Width)
             {
-                g.DrawLine(Pens.Brown, x, y, x, panel.Height);
+                g.DrawLine(Pens.Brown, x, y, x, control.Height);
                 x += columnWidth;
             }
         }

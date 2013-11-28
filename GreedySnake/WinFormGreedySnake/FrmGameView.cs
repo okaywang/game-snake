@@ -17,6 +17,8 @@ namespace WinFormGreedySnake
     {
         private int _blockHeight = 10;
         private int _blockWidth = 10;
+        private int _rowCount;
+        private int _colCount;
 
         public FrmGameView()
         {
@@ -43,6 +45,8 @@ namespace WinFormGreedySnake
 
         public void RenderMap(int rowCount, int columnCount)
         {
+            _rowCount = rowCount;
+            _colCount = columnCount;
             _blockHeight = this.pnlGame.Height / rowCount;
             _blockWidth = this.pnlGame.Width / columnCount;
             PaintGrid(rowCount,columnCount);
@@ -54,6 +58,7 @@ namespace WinFormGreedySnake
             ClearObjects();
             RenderSnake(m.Snake);
             RenderFood(m.Food);
+            PaintGrid(_rowCount, _colCount);
         }
 
         public void ClearObjects()
