@@ -19,6 +19,7 @@ namespace WinFormTetris
 {
     public partial class FrmTetrisView : Form, ITetrisGameView
     {
+        private int[] _scoreIndicator = { 100, 200, 400, 800 };
         public FrmTetrisView()
         {
             InitializeComponent();
@@ -32,6 +33,12 @@ namespace WinFormTetris
                 this.btnRestart.Enabled = true;
             }));
         }
+
+        public void RowsEliminatedHandler(object sender, EliminateRowsEventArgs e)
+        {
+            this.lblScore.Text = (Int32.Parse(this.lblScore.Text) + _scoreIndicator[e.EliminateRowsCount - 1]).ToString();
+        }
+
         public void ClearObjects()
         {
             throw new NotImplementedException();
@@ -82,7 +89,7 @@ namespace WinFormTetris
             var m = model as TetrisGameModel;
 
             var data = m.GetUnderlyingData();
-            var spareTireData = m.GetUnderlyingDataSpareTire(5,5);
+            var spareTireData = m.GetUnderlyingDataSpareTire(5, 5);
 
             this.tetrominoChest2.SetTetrominos(spareTireData);
             this.tetrominoChest1.SetTetrominos(data);

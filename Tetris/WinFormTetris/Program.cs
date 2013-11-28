@@ -27,6 +27,7 @@ namespace WinFormTetris
             //_controller.BeyondBoundary += view.GameOver;
             //_controller.SelfCrash += view.GameOver;
             _controller.GameOver += view.GameOver;
+            _controller.RowsEliminated += view.RowsEliminatedHandler;
             _controller.Initialize();
 
             view.StartRequest = _controller.Start;

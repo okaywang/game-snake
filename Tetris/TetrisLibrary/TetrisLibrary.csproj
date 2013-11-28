@@ -53,6 +53,7 @@
     <Compile Include="DataContext\Tetromino\TetrominoFactory.cs" />
     <Compile Include="DataContext\Tetromino\T_Tetromino.cs" />
     <Compile Include="DataContext\Tetromino\Z_Tetromino.cs" />
+    <Compile Include="GameEventArgs\EliminateRowsEventArgs.cs" />
     <Compile Include="Exceptions\FloorUseupException.cs" />
     <Compile Include="Exceptions\InvalidCrowdResidenceException.cs" />
     <Compile Include="Exceptions\InvalidResidenceException.cs" />

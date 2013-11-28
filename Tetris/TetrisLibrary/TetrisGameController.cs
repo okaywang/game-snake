@@ -16,6 +16,7 @@ namespace TetrisLibrary
         private TetrisGameModel _model;
 
         private TerisGameSettings _settings;
+        public EventHandler<EliminateRowsEventArgs> RowsEliminated;
         public TetrisGameController(ITetrisGameView view, TerisGameSettings settings)
             : base(view, settings)
         {
@@ -46,6 +47,8 @@ namespace TetrisLibrary
                     base.OnGameOver();
                     return;
                 }
+
+                var eliminateRows = 0;
                 for (int i = _model.ActiveRowIndex; i < _model.ActiveRowIndex + _model.Tetromino.Height; )
                 {
                     if (i < 0)
@@ -57,16 +60,30 @@ namespace TetrisLibrary
                     {
                         _model.Apartment[i].Clear();
                         _model.Apartment.GoDownstairs(i, 1);
+                        eliminateRows++;
                     }
                     else
                     {
                         i++;
                     }
                 }
+                if (eliminateRows > 0)
+                {
+                    OnRowsEliminated(eliminateRows);
+                }
                 this.ProduceTetromino();
             }
 
             _view.RenderScence(_model);
+        }
+
+        private void OnRowsEliminated(int count)
+        {
+            if (RowsEliminated != null)
+            {
+                var e = new EliminateRowsEventArgs() { EliminateRowsCount = count };
+                RowsEliminated(this, e);
+            }
         }
 
         public void InterviewCommand(CommandOrientation command)
@@ -111,7 +128,7 @@ namespace TetrisLibrary
         private void ProduceTetromino()
         {
             _model.ActiveRowIndex = _settings.RowCount - 1;
-            if (_model.SpareTire ==null)
+            if (_model.SpareTire == null)
             {
                 _model.SpareTire = TetrominoFactory.GetRandomTetromino();
             }

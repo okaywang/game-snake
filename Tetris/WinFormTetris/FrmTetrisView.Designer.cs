@@ -93,9 +93,9 @@
             this.lblScore.Font = new System.Drawing.Font("Segoe Script", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.Location = new System.Drawing.Point(342, 293);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(60, 32);
+            this.lblScore.Size = new System.Drawing.Size(30, 32);
             this.lblScore.TabIndex = 5;
-            this.lblScore.Text = "400";
+            this.lblScore.Text = "0";
             // 
             // FrmTetrisView
             // 
