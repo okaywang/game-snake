@@ -101,7 +101,7 @@ namespace WinFormTetris
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            this.StartRequest();
+            this.StartRequest(); 
         }
         private void btnPause_Click(object sender, EventArgs e)
         {

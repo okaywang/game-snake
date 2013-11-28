@@ -13,6 +13,11 @@ namespace LandlordsLibrary.DataContext
             _code = code;
         }
 
+        public int Code
+        {
+            get { return _code; }
+        }
+
         public int LiteralValue
         {
             get

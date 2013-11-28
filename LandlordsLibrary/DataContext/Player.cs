@@ -9,18 +9,27 @@ namespace LandlordsLibrary.DataContext
     public class Player : IPlayer
     {
         private string _playName;
+        public List<Poker> _pokers;
 
         public Player(string playName)
         {
             _playName = playName;
+            _pokers = new List<Poker>();
+        }
+
+        public void ReviewCards()
+        {
+            _pokers.Sort(new Comparison<Poker>((p1, p2) => LandlordsLibraryRules.Compare_SingleCard(p1, p2)));
         }
 
         public void DrawPokers(Poker poker)
         {
+            _pokers.Add(poker);
         }
 
         public void DrawPokers(List<Poker> pokers)
         {
+            _pokers.AddRange(pokers);
         }
 
         public void Passby()

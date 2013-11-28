@@ -1,4 +1,5 @@
 ﻿using BasicLibrary;
+using BasicLibrary.DataStructure;
 using LandlordsLibrary.DataContext;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace LandlordsLibrary.DataContext
     {
         private Poker[] _pokers;
 
-        private LinkedList<IPlayer> _players;
+        private CircularlyLinkedList<IPlayer> _players;
 
-        public Referee(LinkedList<IPlayer> players)
+        public Referee(CircularlyLinkedList<IPlayer> players)
         {
             _pokers = new Poker[54];
             for (int i = 0; i < 54; i++)
@@ -33,16 +34,17 @@ namespace LandlordsLibrary.DataContext
             }
         }
 
-
-        public void Distribute()
+        public void DistributeCards()
         {
-            var player = _players.First;
+            var player = _players.Current;
             for (int i = 0; i < 50; i += 3)
             {
                 player.Value.DrawPokers(_pokers[i]);
-                player.Next.Value.DrawPokers(_pokers[i]);
-                player.Next.Next.Value.DrawPokers(_pokers[i]);
+                player.Next.Value.DrawPokers(_pokers[i + 1]);
+                player.Next.Next.Value.DrawPokers(_pokers[i + 2]);
             }
         }
+
+
     }
 }
