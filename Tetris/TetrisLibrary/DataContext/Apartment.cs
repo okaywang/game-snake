@@ -106,7 +106,7 @@ namespace TetrisLibrary.DataContext
             foreach (var item in data)
             {
                 if (floorIndex > -1)
-                {
+                { 
                     Reside(item, tetromino.ForeColor, floorIndex, roomIndex);
                 }
                 floorIndex++;
@@ -135,6 +135,10 @@ namespace TetrisLibrary.DataContext
             if (adjacentBlock.Count == 0)
             {
                 return;
+            }
+            if (floorIndex> this.FloorCount -1)
+            {
+                throw new FloorUseupException("floor has been used up!");
             }
             _floors[floorIndex].Reside(adjacentBlock, startRoomIndex);
             if (floorIndex > _topIndex)

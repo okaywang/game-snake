@@ -82,24 +82,12 @@ namespace WinFormTetris
             var m = model as TetrisGameModel;
 
             var data = m.GetUnderlyingData();
+            var spareTireData = m.GetUnderlyingDataSpareTire(5,5);
+
+            this.tetrominoChest2.SetTetrominos(spareTireData);
             this.tetrominoChest1.SetTetrominos(data);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.RenderMap(5, 3);
-
-            var model = new TetrisGameModel();
-            var floors = new Floor[5];
-            for (int i = 0; i < floors.Length; i++)
-            {
-                floors[i] = new Floor(5, 3);
-            }
-            model.Apartment = new TetrisLibrary.DataContext.Apartment(floors);
-            model.Tetromino = new T_Tetromino();
-            model.ActiveRowIndex = -1;
-            RenderScence(model);
-        }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
@@ -133,6 +121,6 @@ namespace WinFormTetris
                     break;
             }
         }
-         
+
     }
 }

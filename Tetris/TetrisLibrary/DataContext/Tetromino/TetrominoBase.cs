@@ -6,21 +6,25 @@ using CommonHelper;
 
 namespace TetrisLibrary.DataContext.Tetromino
 {
-    public abstract class TetrominoBase
+    public abstract class TetrominoBase : ICloneable
     {
         protected abstract bool[,] Data { get; set; }
         public abstract Color ForeColor { get; }
 
+        public bool[,] EssentialData
+        {
+            get { return Data; }
+        }
 
         public virtual void Transform()
         {
             Data = Helper.ClockwiseRotate90(Data);
         }
-         
+
         public bool CanTransform(bool[,] context)
         {
             var data = Helper.ClockwiseRotate90(Data);
-            return BeHold(context,data);
+            return BeHold(context, data);
         }
 
         public bool BeHold(bool[,] context)
@@ -29,7 +33,7 @@ namespace TetrisLibrary.DataContext.Tetromino
             return BeHold(context, data);
         }
 
-        private bool BeHold(bool[,] context,bool[,] data)
+        private bool BeHold(bool[,] context, bool[,] data)
         {
             for (int i = 0; i < this.Height; i++)
             {
@@ -90,7 +94,7 @@ namespace TetrisLibrary.DataContext.Tetromino
                 }
             }
         }
-         
+
         public int Width
         {
             get { return Data.GetUpperBound(0) + 1; }
@@ -101,5 +105,31 @@ namespace TetrisLibrary.DataContext.Tetromino
             get { return Data.GetUpperBound(1) + 1; }
         }
 
+        public int NetHeight
+        {
+            get
+            {
+                var rowCount = Data.GetUpperBound(0) + 1;
+                var colCount = Data.GetUpperBound(1) + 1;
+                var netHeight = 0;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    for (int j = 0; j < colCount; j++)
+                    {
+                        if (Data[i, j])
+                        {
+                            netHeight++;
+                            break;
+                        }
+                    }
+                }
+                return netHeight;
+            }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

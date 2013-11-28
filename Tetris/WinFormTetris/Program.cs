@@ -21,7 +21,7 @@ namespace WinFormTetris
             Application.SetCompatibleTextRenderingDefault(false);
             var view = new FrmTetrisView();
 
-            var settings = new TerisGameSettings() { RowCount = 10, ColumnCount = 5, TimerInterval = 500 };
+            var settings = new TerisGameSettings() { RowCount = 20, ColumnCount = 10, TimerInterval = 500 };
             var _controller = new TetrisGameController(view, settings);
 
             //_controller.BeyondBoundary += view.GameOver;

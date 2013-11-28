@@ -13,6 +13,9 @@ namespace TetrisLibrary
     public class TetrisGameModel : IDataModel
     {
         public Apartment Apartment { get; set; }
+
+        public TetrominoBase SpareTire { get; set; }
+
         public TetrominoBase Tetromino { get; set; }
 
         public int ActiveRowIndex { get; set; }
@@ -109,6 +112,32 @@ namespace TetrisLibrary
             }
 
             return data;
+        }
+        public Block[,] GetUnderlyingDataSpareTire(int rowCount, int colCount)
+        {
+            var data = this.SpareTire.EssentialData;
+            var blocks = new Block[rowCount, colCount];
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < colCount; j++)
+                {
+                    var m = i - 1;
+                    var n = j - 1;
+                    if (m < 0 || m > data.GetUpperBound(0))
+                    {
+                        continue;
+                    }
+                    if (n < 0 || n > data.GetUpperBound(1))
+                    {
+                        continue;
+                    }
+                    if (data[m, n])
+                    {
+                        blocks[i, j] = new Block(this.SpareTire.ForeColor);
+                    }
+                }
+            }
+            return blocks;
         }
     }
 }

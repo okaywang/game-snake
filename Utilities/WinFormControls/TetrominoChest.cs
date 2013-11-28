@@ -11,7 +11,7 @@ using System.Drawing.Drawing2D;
 namespace WindowsFormsApplication1
 {
     [Designer("System.Windows.Forms.Design.ParentControlDesigner, System.Design", typeof(IDesigner))]
-    public class TetrominoChest : ContainerControl
+    public class TetrominoChest : PictureBox
     {
         private int _rowCount = 1;
         private int _colCount = 1;
@@ -41,12 +41,10 @@ namespace WindowsFormsApplication1
             {
                 for (int j = 0; j < _colCount; j++)
                 {
-
-
+                    //e.Graphics.FillEllipse(Brushes.Red, j * blockWidth, (_rowCount - i - 1) * blockHeight, blockWidth, blockHeight);
                     if (_blocks[i, j] != null)
                     {
-                        //e.Graphics.FillEllipse(new SolidBrush(_blocks[i, j].ForeColor), j * blockWidth, (_rowCount - i - 1) * blockWidth, blockWidth, blockHeight);
-                        this.PaintSquare(e.Graphics, new PointF(j * blockWidth, (_rowCount - i - 1) * blockWidth), new SizeF(blockWidth, blockHeight), Color.White, _blocks[i, j].ForeColor);
+                        this.PaintSquare(e.Graphics, new PointF(j * blockWidth, (_rowCount - i - 1) * blockHeight), new SizeF(blockWidth, blockHeight), Color.White, _blocks[i, j].ForeColor);
                     }
                 }
             }

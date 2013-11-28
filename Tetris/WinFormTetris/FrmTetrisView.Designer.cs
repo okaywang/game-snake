@@ -28,49 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
             this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
+            this.tetrominoChest2 = new WindowsFormsApplication1.TetrominoChest();
+            this.lblScore = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(354, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(263, 13);
+            this.btnStart.Location = new System.Drawing.Point(28, 28);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 23);
+            this.btnStart.Size = new System.Drawing.Size(143, 54);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(263, 46);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "TimerElapse";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnPause
             // 
-            this.btnPause.Location = new System.Drawing.Point(344, 12);
+            this.btnPause.Location = new System.Drawing.Point(196, 25);
             this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
+            this.btnPause.Size = new System.Drawing.Size(143, 57);
             this.btnPause.TabIndex = 2;
             this.btnPause.Text = "pause";
             this.btnPause.UseVisualStyleBackColor = true;
@@ -78,9 +60,9 @@
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(425, 12);
+            this.btnRestart.Location = new System.Drawing.Point(366, 24);
             this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(75, 23);
+            this.btnRestart.Size = new System.Drawing.Size(143, 58);
             this.btnRestart.TabIndex = 2;
             this.btnRestart.Text = "restart";
             this.btnRestart.UseVisualStyleBackColor = true;
@@ -89,39 +71,62 @@
             // tetrominoChest1
             // 
             this.tetrominoChest1.BackColor = System.Drawing.Color.Tan;
-            this.tetrominoChest1.Location = new System.Drawing.Point(74, 46);
+            this.tetrominoChest1.Location = new System.Drawing.Point(116, 135);
             this.tetrominoChest1.Name = "tetrominoChest1";
-            this.tetrominoChest1.Size = new System.Drawing.Size(170, 327);
+            this.tetrominoChest1.Size = new System.Drawing.Size(197, 318);
             this.tetrominoChest1.TabIndex = 0;
+            this.tetrominoChest1.TabStop = false;
             this.tetrominoChest1.Text = "tetrominoChest1";
+            // 
+            // tetrominoChest2
+            // 
+            this.tetrominoChest2.BackColor = System.Drawing.Color.Tan;
+            this.tetrominoChest2.Location = new System.Drawing.Point(335, 135);
+            this.tetrominoChest2.Name = "tetrominoChest2";
+            this.tetrominoChest2.Size = new System.Drawing.Size(100, 77);
+            this.tetrominoChest2.TabIndex = 4;
+            this.tetrominoChest2.TabStop = false;
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Segoe Script", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(342, 293);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(60, 32);
+            this.lblScore.TabIndex = 5;
+            this.lblScore.Text = "400";
             // 
             // FrmTetrisView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(531, 465);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.lblScore);
+            this.Controls.Add(this.tetrominoChest2);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.btnPause);
             this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.tetrominoChest1);
             this.KeyPreview = true;
             this.Name = "FrmTetrisView";
             this.Text = "Form1";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmTetrisView_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private WindowsFormsApplication1.TetrominoChest tetrominoChest1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnRestart;
+        private WindowsFormsApplication1.TetrominoChest tetrominoChest2;
+        private System.Windows.Forms.Label lblScore;
     }
 }
 
