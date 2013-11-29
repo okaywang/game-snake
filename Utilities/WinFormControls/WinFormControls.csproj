@@ -57,7 +57,7 @@
     <Compile Include="WinFormHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BasicLibrary\BasicLibrary.csproj">
+    <ProjectReference Include="..\BasicLibrary\BasicLibrary.csproj">
       <Project>{bdc02190-857b-4aa1-9e30-83661e864f09}</Project>
       <Name>BasicLibrary</Name>
     </ProjectReference>

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGreedySnake", "GreedySnake\WpfGreedySnake\WpfGreedySnake.csproj", "{8E3905DC-A5AE-4B4A-9906-10AAB5E91AF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGreedySnake", "Snake\GreedySnake\WpfGreedySnake\WpfGreedySnake.csproj", "{8E3905DC-A5AE-4B4A-9906-10AAB5E91AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedySnakeLibrary", "GreedySnake\GreedySnakeLibrary\GreedySnakeLibrary.csproj", "{4012DFAA-7D47-43EC-B8D7-118946572DF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedySnakeLibrary", "Snake\GreedySnake\GreedySnakeLibrary\GreedySnakeLibrary.csproj", "{4012DFAA-7D47-43EC-B8D7-118946572DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormGreedySnake", "GreedySnake\WinFormGreedySnake\WinFormGreedySnake.csproj", "{C391FE60-5664-4790-8201-28AA4126DFEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormGreedySnake", "Snake\GreedySnake\WinFormGreedySnake\WinFormGreedySnake.csproj", "{C391FE60-5664-4790-8201-28AA4126DFEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASample", "GreedySnake\ASample\ASample.csproj", "{1CF81D71-20DE-4587-95DE-722627E21E93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASample", "Snake\GreedySnake\ASample\ASample.csproj", "{1CF81D71-20DE-4587-95DE-722627E21E93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormControls", "Utilities\WinFormControls\WinFormControls.csproj", "{1B23D1E3-DB79-4EC3-BC16-75E1E0C39DFB}"
 EndProject
@@ -27,19 +27,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TinyGame", "TinyGame", "{DA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGame", "TinyGame\SimpleGame.csproj", "{517593D6-DE30-4FD3-80F1-D99F02AD8B04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonHelper", "CommonHelper\CommonHelper.csproj", "{536B4BB4-7378-4DD8-8DBC-AABD060B9350}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonHelper", "Utilities\CommonHelper\CommonHelper.csproj", "{536B4BB4-7378-4DD8-8DBC-AABD060B9350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicLibrary", "BasicLibrary\BasicLibrary.csproj", "{BDC02190-857B-4AA1-9E30-83661E864F09}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicLibrary", "Utilities\BasicLibrary\BasicLibrary.csproj", "{BDC02190-857B-4AA1-9E30-83661E864F09}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinaBlock", "Tetris\Samples\ChinaBlock\ChinaBlock.csproj", "{B3499150-EF72-407F-A1AF-39325BCE40EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Landlords", "Landlords", "{E81018F5-8830-4DD6-8B65-7F3AA7CB3D54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandlordsLibrary", "LandlordsLibrary\LandlordsLibrary.csproj", "{D2998252-1DCF-4A92-8DDA-C6B6C5958891}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LandlordsLibrary", "Landlords\LandlordsLibrary\LandlordsLibrary.csproj", "{D2998252-1DCF-4A92-8DDA-C6B6C5958891}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormLandlords", "WinFormLandlords\WinFormLandlords.csproj", "{F1E13475-A9AC-4E97-BC62-80A8EF1D604E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormLandlords", "Landlords\WinFormLandlords\WinFormLandlords.csproj", "{F1E13475-A9AC-4E97-BC62-80A8EF1D604E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLandlords", "WpfLandlords\WpfLandlords.csproj", "{C0964E79-760E-4044-8F83-A3FD019FB25C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLandlords", "Landlords\WpfLandlords\WpfLandlords.csproj", "{C0964E79-760E-4044-8F83-A3FD019FB25C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASample", "Landlords\Samples\ASample.csproj", "{CFFEC94F-E6E8-4060-8E52-C9354F65866B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +109,10 @@ Global
 		{C0964E79-760E-4044-8F83-A3FD019FB25C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0964E79-760E-4044-8F83-A3FD019FB25C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0964E79-760E-4044-8F83-A3FD019FB25C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,5 +133,6 @@ Global
 		{D2998252-1DCF-4A92-8DDA-C6B6C5958891} = {E81018F5-8830-4DD6-8B65-7F3AA7CB3D54}
 		{F1E13475-A9AC-4E97-BC62-80A8EF1D604E} = {E81018F5-8830-4DD6-8B65-7F3AA7CB3D54}
 		{C0964E79-760E-4044-8F83-A3FD019FB25C} = {E81018F5-8830-4DD6-8B65-7F3AA7CB3D54}
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B} = {E81018F5-8830-4DD6-8B65-7F3AA7CB3D54}
 	EndGlobalSection
 EndGlobal

@@ -1,7 +1,0 @@
-D:\test2\MyGame\game-snake\WpfLandlords\bin\Debug\WpfLandlords.exe
-D:\test2\MyGame\game-snake\WpfLandlords\bin\Debug\WpfLandlords.pdb
-D:\test2\MyGame\game-snake\WpfLandlords\obj\Debug\WpfLandlords.csprojResolveAssemblyReference.cache
-D:\test2\MyGame\game-snake\WpfLandlords\obj\Debug\WpfLandlords.Properties.Resources.resources
-D:\test2\MyGame\game-snake\WpfLandlords\obj\Debug\WpfLandlords.csproj.GenerateResource.Cache
-D:\test2\MyGame\game-snake\WpfLandlords\obj\Debug\WpfLandlords.exe
-D:\test2\MyGame\game-snake\WpfLandlords\obj\Debug\WpfLandlords.pdb

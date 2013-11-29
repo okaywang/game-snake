@@ -1,3 +1,0 @@
-D:\test2\MyGame\game-snake\ASample\bin\Debug\贪吃蛇.exe.config
-D:\test2\MyGame\game-snake\ASample\obj\Debug\贪吃蛇.exe
-D:\test2\MyGame\game-snake\ASample\obj\Debug\贪吃蛇.pdb

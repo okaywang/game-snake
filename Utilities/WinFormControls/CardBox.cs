@@ -10,5 +10,6 @@ namespace WinFormControls
     public class CardBox : PictureBox
     {
         public bool IsSelected { get; set; }
+        public int CardCode { get; set; }
     }
 }

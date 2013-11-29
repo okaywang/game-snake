@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D2998252-1DCF-4A92-8DDA-C6B6C5958891}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LandlordsLibrary</RootNamespace>
+    <AssemblyName>LandlordsLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArtificialIntelligence\AI1.cs" />
+    <Compile Include="ArtificialIntelligence\AIBase.cs" />
+    <Compile Include="DataContext\CardWeights.cs" />
+    <Compile Include="DataContext\IPlayer.cs" />
+    <Compile Include="DataContext\Player.cs" />
+    <Compile Include="DataContext\Poker.cs" />
+    <Compile Include="DataContext\PokerTypes.cs" />
+    <Compile Include="FormationAuthentication.cs" />
+    <Compile Include="Formation\FormationBomb.cs" />
+    <Compile Include="Formation\FormationSequenceSeries.cs" />
+    <Compile Include="Formation\FormationSequence.cs" />
+    <Compile Include="Formation\FormationFour.cs" />
+    <Compile Include="Formation\FormationThree.cs" />
+    <Compile Include="Formation\FormationPair.cs" />
+    <Compile Include="Formation\FormationSingle.cs" />
+    <Compile Include="Formation\IAppendage.cs" />
+    <Compile Include="Formation\IExpandable.cs" />
+    <Compile Include="Formation\IFormation.cs" />
+    <Compile Include="LandlordsLibraryRules.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataContext\Referee.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Utilities\BasicLibrary\BasicLibrary.csproj">
+      <Project>{bdc02190-857b-4aa1-9e30-83661e864f09}</Project>
+      <Name>BasicLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1.jpg" />
+    <Content Include="Resources\10.jpg" />
+    <Content Include="Resources\11.jpg" />
+    <Content Include="Resources\12.jpg" />
+    <Content Include="Resources\13.jpg" />
+    <Content Include="Resources\14.jpg" />
+    <Content Include="Resources\15.jpg" />
+    <Content Include="Resources\16.jpg" />
+    <Content Include="Resources\17.jpg" />
+    <Content Include="Resources\18.jpg" />
+    <Content Include="Resources\19.jpg" />
+    <Content Include="Resources\2.jpg" />
+    <Content Include="Resources\20.jpg" />
+    <Content Include="Resources\21.jpg" />
+    <Content Include="Resources\22.jpg" />
+    <Content Include="Resources\23.jpg" />
+    <Content Include="Resources\24.jpg" />
+    <Content Include="Resources\25.jpg" />
+    <Content Include="Resources\26.jpg" />
+    <Content Include="Resources\27.jpg" />
+    <Content Include="Resources\28.jpg" />
+    <Content Include="Resources\29.jpg" />
+    <Content Include="Resources\3.jpg" />
+    <Content Include="Resources\30.jpg" />
+    <Content Include="Resources\31.jpg" />
+    <Content Include="Resources\32.jpg" />
+    <Content Include="Resources\33.jpg" />
+    <Content Include="Resources\34.jpg" />
+    <Content Include="Resources\35.jpg" />
+    <Content Include="Resources\36.jpg" />
+    <Content Include="Resources\37.jpg" />
+    <Content Include="Resources\38.jpg" />
+    <Content Include="Resources\39.jpg" />
+    <Content Include="Resources\4.jpg" />
+    <Content Include="Resources\40.jpg" />
+    <Content Include="Resources\41.jpg" />
+    <Content Include="Resources\42.jpg" />
+    <Content Include="Resources\43.jpg" />
+    <Content Include="Resources\44.jpg" />
+    <Content Include="Resources\45.jpg" />
+    <Content Include="Resources\46.jpg" />
+    <Content Include="Resources\47.jpg" />
+    <Content Include="Resources\48.jpg" />
+    <Content Include="Resources\49.jpg" />
+    <Content Include="Resources\5.jpg" />
+    <Content Include="Resources\50.jpg" />
+    <Content Include="Resources\51.jpg" />
+    <Content Include="Resources\52.jpg" />
+    <Content Include="Resources\53.jpg" />
+    <Content Include="Resources\54.jpg" />
+    <Content Include="Resources\6.jpg" />
+    <Content Include="Resources\7.jpg" />
+    <Content Include="Resources\8.jpg" />
+    <Content Include="Resources\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Thumbs.db" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
