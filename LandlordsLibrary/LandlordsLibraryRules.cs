@@ -13,7 +13,7 @@ namespace LandlordsLibrary
             return GetWeight(p1) - GetWeight(p2);
         }
 
-        private static  int GetWeight(Poker p)
+        private static int GetWeight(Poker p)
         {
             switch (p.PokerType)
             {
