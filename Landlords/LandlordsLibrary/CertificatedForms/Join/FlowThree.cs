@@ -22,12 +22,15 @@ namespace LandlordsLibrary.CertificatedForms
 
         public bool ICertificate(List<DataContext.Poker> cards)
         {
-            int i = 0;
-            var cards1 = cards.TakeWhile(p => { return i++ % 2 == 0; }).ToList();
-            i = 0;
-            var cards2 = cards.TakeWhile(p => { return i++ % 2 == 1; }).ToList();
-            i = 0;
-            var cards3 = cards.TakeWhile(p => { return i++ % 2 == 2; }).ToList();
+            var cards1 = new List<Poker>();
+            var cards2 = new List<Poker>();
+            var cards3 = new List<Poker>();
+            for (int i = 0; i < cards.Count; i += 3)
+            {
+                cards1.Add(cards[i]);
+                cards2.Add(cards[i + 1]);
+                cards3.Add(cards[i + 2]);
+            }
 
             var isFlow = Identifier.Increase(cards1, 1, p => p.WeightValue);
             if (!isFlow)

@@ -27,7 +27,7 @@ namespace BasicLibrary
             }
             for (int i = 0; i < items1.Count; i++)
             {
-                if (func(items1[i]).CompareTo(func(items2[1])) != 0)
+                if (func(items1[i]).CompareTo(func(items2[i])) != 0)
                 {
                     return false;
                 }
@@ -35,16 +35,17 @@ namespace BasicLibrary
             return true;
         }
 
-        public static bool BeSame<T>(List<T> items, Func<T, IComparable> func)
+        public static bool BeSame<T, TItem>(List<T> items, Func<T, TItem> func) where TItem : IComparable<TItem>
         {
             return BeSame(items, 0, items.Count, func);
         }
 
-        public static bool BeSame<T>(List<T> items, int fromIndex, int count, Func<T, IComparable> func)
+        public static bool BeSame<T, TItem>(List<T> items, int fromIndex, int count, Func<T, TItem> func) where TItem : IComparable<TItem>
         {
-            for (int i = fromIndex; i < fromIndex + count; i++)
+            var endIndex = fromIndex + count - 1;
+            for (int i = fromIndex; i < endIndex; i++)
             {
-                if (func(items[i]) != func(items[i + 1]))
+                if (func(items[i]).CompareTo(func(items[i + 1])) != 0)
                 {
                     return false;
                 }

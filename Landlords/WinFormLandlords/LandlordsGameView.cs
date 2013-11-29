@@ -1,6 +1,7 @@
 ﻿using BasicLibrary.DataStructure;
 using LandlordsLibrary.CertificatedForms;
 using LandlordsLibrary.DataContext;
+using LandlordsLibrary.Formation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,12 +43,15 @@ namespace WinFormLandlords
 
         private void RenderCards(List<Poker> pokers)
         {
+            this.pnoMe.Controls.Clear();
+            _selectedCards.Clear();
+
             var left = 10;
             foreach (var item in pokers)
             {
                 var pic = new CardBox();
                 pic.CardCode = item.Code;
-                pic.Image = Image.FromFile(@"D:\test2\MyGame\game-snake\Landlords\LandlordsLibrary\Resources\" + (item.Code + 1) + ".jpg");
+                pic.Image = Image.FromFile(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\" + (item.Code + 1) + ".jpg");
                 pic.Click += pic_Click;
                 pic.DragOver += pic_DragOver;
                 pic.Top = 20;
@@ -85,9 +89,39 @@ namespace WinFormLandlords
         {
             var x = _selectedCards;
 
+            var pokes = x.Select(i => new Poker(i)).ToList();
+
             var dicts = new Dictionary<int, IEnumerable<ICertification>>();
-            dicts.Add(0, null);
-            //dicts.Add(1,new
+
+            dicts.Add(1, new List<ICertification>() { new SoleForm() });
+            dicts.Add(2, new List<ICertification>() { new DoubleForm(), new BombKingForm() });
+            dicts.Add(3, new List<ICertification>() { new ThreeForm() });
+            dicts.Add(4, new List<ICertification>() { new ThreeWithSole(), new BombCivilianForm() });
+            dicts.Add(5, new List<ICertification>() { new FlowSingle(), new ThreeWithDouble() });
+            dicts.Add(6, new List<ICertification>() { new FlowSingle(), new FourWithTwoSole(), new FlowPair(), new FlowThree() });
+            dicts.Add(7, new List<ICertification>() { new FlowSingle() });
+            dicts.Add(8, new List<ICertification>() { new FlowSingle(), new FourWithTwoPair(), new FlowPair(), new FlowThreeWithSole() });
+            IFormation type = null;
+            var certs = dicts[x.Count];
+            foreach (var item in certs)
+            {
+                if (item.ICertificate(pokes))
+                {
+                    type = item.Issue(pokes);
+                }
+            }
+
+            if (type == null)
+            {
+                MessageBox.Show("invalid");
+            }
+            else
+            {
+                MessageBox.Show(type.Name);
+            }
+
         }
+
+
     }
 }

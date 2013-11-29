@@ -30,9 +30,9 @@ namespace LandlordsLibrary.Formation
             get { return _pokers[0].Weight; }
         }
 
-        public string Name
+        public virtual string Name
         {
-            get { return "单张"; }
+            get { return "顺子"; }
         }
 
         public int CompareTo(FormationSequence<T> other)

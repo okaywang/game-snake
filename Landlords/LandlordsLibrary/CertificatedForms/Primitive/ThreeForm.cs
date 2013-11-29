@@ -1,6 +1,5 @@
 ﻿using BasicLibrary;
 using LandlordsLibrary.DataContext;
-using LandlordsLibrary.Formation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class Double : ICertification
+    public class ThreeForm : ICertification
     {
-        public IFormation Issue(List<DataContext.Poker> cards)
+        public Formation.IFormation Issue(List<DataContext.Poker> cards)
         {
-            return new FormationPair(cards.ToArray());
+            return new Formation.FormationThree(cards.ToArray(), null);
         }
 
         public bool ICertificate(List<DataContext.Poker> cards)
         {
-            return Identifier.BeSame<Poker>(cards, p => p.WeightValue);
+            return Identifier.BeSame<Poker,int>(cards, p => p.WeightValue);
         }
     }
 }

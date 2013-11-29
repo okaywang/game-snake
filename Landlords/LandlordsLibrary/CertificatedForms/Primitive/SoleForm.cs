@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class Sole : ICertification
+    public class SoleForm : ICertification
     { 
         public IFormation Issue(List<Poker> cards)
         {

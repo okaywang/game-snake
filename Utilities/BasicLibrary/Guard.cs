@@ -61,7 +61,7 @@ namespace BasicLibrary
 
         public static void Increase<T>(T[] arr, int step, Func<T, int> valueRetriever)
         {
-            for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length - 1; i++)
             {
                 if (valueRetriever(arr[i]) + step != valueRetriever(arr[i + 1]))
                 {

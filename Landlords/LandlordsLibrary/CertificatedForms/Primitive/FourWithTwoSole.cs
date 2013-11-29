@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace LandlordsLibrary.CertificatedForms
 {
     //6
-    public class FourWithSole1 : ICertification
+    public class FourWithTwoSole : ICertification
     {
         public IFormation Issue(List<Poker> cards)
         {
@@ -36,7 +36,20 @@ namespace LandlordsLibrary.CertificatedForms
 
         public bool ICertificate(List<DataContext.Poker> cards)
         {
-            return cards.GroupBy(p => p.WeightValue).Count() == 3;
+            var groups = cards.GroupBy(p => p.WeightValue);
+            if (groups.Count() != 3)
+            {
+                return false;
+            }
+            foreach (var group in groups)
+            {
+                if (group.Count() !=1 && group.Count () !=4)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
     }
 }

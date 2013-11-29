@@ -37,7 +37,9 @@ namespace LandlordsLibrary.CertificatedForms
             tmp[0] = new int[] { 3, 4 };
             tmp[1] = new int[] { 0, 4 };
             tmp[2] = new int[] { 0, 1 };
-            return new Formation.FormationFour(cards.GetRange(continuousThreeIndex, 4).ToArray(), new Formation.FormationSingle(cards[tmp[continuousThreeIndex][0]]), new Formation.FormationSingle(cards[tmp[continuousThreeIndex][1]]));
+
+            var pair = new Formation.FormationPair(cards[tmp[continuousThreeIndex][0]],cards[tmp[continuousThreeIndex][1]]);
+            return new Formation.FormationThree(cards.GetRange(continuousThreeIndex, 3).ToArray(), pair);
         }
 
         public bool ICertificate(List<DataContext.Poker> cards)

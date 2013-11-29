@@ -15,6 +15,13 @@ namespace LandlordsLibrary.Formation
         {
         }
 
+        public override string Name
+        {
+            get
+            {
+                return "顺子";
+            }
+        }
     }
 
     public class FormationSequenceOfPair : FormationSequence<FormationPair>
@@ -23,6 +30,14 @@ namespace LandlordsLibrary.Formation
             : base(formations, 3)
         {
         }
+
+        public override string Name
+        {
+            get
+            {
+                return "顺子2";
+            }
+        }
     }
 
     public class FormationSequenceofThree : FormationSequence<FormationThree>
@@ -30,6 +45,14 @@ namespace LandlordsLibrary.Formation
         public FormationSequenceofThree(FormationThree[] formations)
             : base(formations, 2)
         {
+        }
+
+        public override string Name
+        {
+            get
+            {
+                return "飞机";
+            }
         }
     }
 }

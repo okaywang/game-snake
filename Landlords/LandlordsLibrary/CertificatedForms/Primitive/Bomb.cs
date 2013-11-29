@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class BombKing : ICertification
+    public class BombKingForm : ICertification
     {
         public bool ICertificate(List<Poker> cards)
         {
@@ -22,7 +22,7 @@ namespace LandlordsLibrary.CertificatedForms
         }
     }
 
-    public class BombCivilian : ICertification
+    public class BombCivilianForm : ICertification
     {
         public bool ICertificate(List<Poker> cards)
         {
@@ -30,7 +30,7 @@ namespace LandlordsLibrary.CertificatedForms
             {
                 return false;
             }
-            return Identifier.BeSame<Poker>(cards, p => p.WeightValue);
+            return Identifier.BeSame<Poker,int>(cards, p => p.WeightValue);
         }
 
         public IFormation Issue(List<Poker> cards)

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class FourWithDouble : ICertification
+    public class FourWithTwoPair : ICertification
     {
         public Formation.IFormation Issue(List<DataContext.Poker> cards)
         {
