@@ -31,12 +31,11 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
             this.btnRestart = new System.Windows.Forms.Button();
-            this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
-            this.tetrominoChest2 = new WindowsFormsApplication1.TetrominoChest();
             this.lblScore = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).BeginInit();
+            this.tetrominoChest2 = new WindowsFormsApplication1.TetrominoChest();
+            this.tetrominoChest1 = new WindowsFormsApplication1.TetrominoChest();
             ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStart
@@ -57,6 +56,7 @@
             this.btnPause.TabIndex = 2;
             this.btnPause.Text = "pause";
             this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Visible = false;
             this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
             // btnRestart
@@ -67,26 +67,8 @@
             this.btnRestart.TabIndex = 2;
             this.btnRestart.Text = "restart";
             this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Visible = false;
             this.btnRestart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // tetrominoChest1
-            // 
-            this.tetrominoChest1.BackColor = System.Drawing.Color.Tan;
-            this.tetrominoChest1.Location = new System.Drawing.Point(116, 135);
-            this.tetrominoChest1.Name = "tetrominoChest1";
-            this.tetrominoChest1.Size = new System.Drawing.Size(197, 318);
-            this.tetrominoChest1.TabIndex = 0;
-            this.tetrominoChest1.TabStop = false;
-            this.tetrominoChest1.Text = "tetrominoChest1";
-            // 
-            // tetrominoChest2
-            // 
-            this.tetrominoChest2.BackColor = System.Drawing.Color.Tan;
-            this.tetrominoChest2.Location = new System.Drawing.Point(335, 135);
-            this.tetrominoChest2.Name = "tetrominoChest2";
-            this.tetrominoChest2.Size = new System.Drawing.Size(100, 77);
-            this.tetrominoChest2.TabIndex = 4;
-            this.tetrominoChest2.TabStop = false;
             // 
             // lblScore
             // 
@@ -98,22 +80,30 @@
             this.lblScore.TabIndex = 5;
             this.lblScore.Text = "0";
             // 
-            // button1
+            // tetrominoChest2
             // 
-            this.button1.Location = new System.Drawing.Point(444, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.tetrominoChest2.BackColor = System.Drawing.Color.Tan;
+            this.tetrominoChest2.Location = new System.Drawing.Point(335, 135);
+            this.tetrominoChest2.Name = "tetrominoChest2";
+            this.tetrominoChest2.Size = new System.Drawing.Size(100, 77);
+            this.tetrominoChest2.TabIndex = 4;
+            this.tetrominoChest2.TabStop = false;
+            // 
+            // tetrominoChest1
+            // 
+            this.tetrominoChest1.BackColor = System.Drawing.Color.Tan;
+            this.tetrominoChest1.Location = new System.Drawing.Point(116, 135);
+            this.tetrominoChest1.Name = "tetrominoChest1";
+            this.tetrominoChest1.Size = new System.Drawing.Size(197, 318);
+            this.tetrominoChest1.TabIndex = 0;
+            this.tetrominoChest1.TabStop = false;
+            this.tetrominoChest1.Text = "tetrominoChest1";
             // 
             // FrmTetrisView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(531, 465);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.tetrominoChest2);
             this.Controls.Add(this.btnRestart);
@@ -124,8 +114,8 @@
             this.Name = "FrmTetrisView";
             this.Text = "Form1";
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmTetrisView_KeyUp);
-            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tetrominoChest1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,7 +129,6 @@
         private System.Windows.Forms.Button btnRestart;
         private WindowsFormsApplication1.TetrominoChest tetrominoChest2;
         private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Button button1;
     }
 }
 

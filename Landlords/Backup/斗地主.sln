@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "斗地主", "斗地主.csproj", "{CFFEC94F-E6E8-4060-8E52-C9354F65866B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFFEC94F-E6E8-4060-8E52-C9354F65866B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

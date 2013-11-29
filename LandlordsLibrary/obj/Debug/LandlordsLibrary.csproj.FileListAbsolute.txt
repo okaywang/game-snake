@@ -1,0 +1,7 @@
+D:\test2\MyGame\game-snake\LandlordsLibrary\bin\Debug\LandlordsLibrary.dll
+D:\test2\MyGame\game-snake\LandlordsLibrary\bin\Debug\LandlordsLibrary.pdb
+D:\test2\MyGame\game-snake\LandlordsLibrary\obj\Debug\LandlordsLibrary.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game-snake\LandlordsLibrary\obj\Debug\LandlordsLibrary.dll
+D:\test2\MyGame\game-snake\LandlordsLibrary\obj\Debug\LandlordsLibrary.pdb
+D:\test2\MyGame\game-snake\LandlordsLibrary\bin\Debug\BasicLibrary.dll
+D:\test2\MyGame\game-snake\LandlordsLibrary\bin\Debug\BasicLibrary.pdb

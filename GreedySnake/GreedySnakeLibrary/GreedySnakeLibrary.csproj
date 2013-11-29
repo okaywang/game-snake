@@ -61,7 +61,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\TinyGame\SimpleGame.csproj">
       <Project>{517593d6-de30-4fd3-80f1-d99f02ad8b04}</Project>
-      <Name>SimpleCommon</Name>
+      <Name>SimpleGame</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
