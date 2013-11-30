@@ -8,12 +8,12 @@ namespace LandlordsLibrary
 {
     public class LandlordsLibraryRules
     {
-        public static int Compare_SingleCard(Poker p1, Poker p2)
+        public static int Compare_SingleCard(Card p1, Card p2)
         {
             return GetWeight(p1) - GetWeight(p2);
         }
 
-        private static int GetWeight(Poker p)
+        private static int GetWeight(Card p)
         {
             switch (p.PokerType)
             {

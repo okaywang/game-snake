@@ -10,16 +10,16 @@ namespace LandlordsLibrary.DataContext
 {
     public class Referee
     {
-        private Poker[] _pokers;
+        private Card[] _pokers;
 
         private CircularlyLinkedList<IPlayer> _players;
 
         public Referee(CircularlyLinkedList<IPlayer> players)
         {
-            _pokers = new Poker[54];
+            _pokers = new Card[54];
             for (int i = 0; i < 54; i++)
             {
-                _pokers[i] = new Poker(i);
+                _pokers[i] = CardCarton.Get(i);
             }
 
             _players = players;
@@ -30,7 +30,7 @@ namespace LandlordsLibrary.DataContext
             var rnd = Miscellanea.GetUnrepeatableRandom(54);
             for (int i = 0; i < 54; i++)
             {
-                _pokers[i] = new Poker(rnd[i]);
+                _pokers[i] = CardCarton.Get(rnd[i]);
             }
         }
 

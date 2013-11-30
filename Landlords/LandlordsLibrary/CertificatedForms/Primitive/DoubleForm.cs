@@ -11,14 +11,14 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public class DoubleForm : ICertification
     {
-        public IFormation Issue(List<DataContext.Poker> cards)
+        public IFormation Parse(List<DataContext.Card> cards)
         {
             return new FormationPair(cards.ToArray());
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         {
-            return Identifier.BeSame<Poker,int>(cards, p => p.WeightValue);
+            return Identifier.BeSame<Card,int>(cards, p => p.WeightValue);
         }
     }
 }

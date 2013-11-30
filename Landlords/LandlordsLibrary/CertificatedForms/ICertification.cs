@@ -10,7 +10,7 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public interface ICertification
     {
-        IFormation Issue(List<Poker> cards);
-        bool ICertificate(List<Poker> cards);
+        IFormation Parse(List<Card> cards);
+        bool IsValid(List<Card> cards);
     }
 }

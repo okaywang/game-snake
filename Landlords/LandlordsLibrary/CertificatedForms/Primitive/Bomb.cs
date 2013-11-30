@@ -11,12 +11,12 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public class BombKingForm : ICertification
     {
-        public bool ICertificate(List<Poker> cards)
+        public bool IsValid(List<Card> cards)
         {
             return Identifier.BeSameRespectively(cards, p => p.WeightValue, (int)CardWeights.Queen, (int)CardWeights.King);
         }
 
-        public IFormation Issue(List<Poker> cards)
+        public IFormation Parse(List<Card> cards)
         {
             return new FormationBomb();
         }
@@ -24,16 +24,16 @@ namespace LandlordsLibrary.CertificatedForms
 
     public class BombCivilianForm : ICertification
     {
-        public bool ICertificate(List<Poker> cards)
+        public bool IsValid(List<Card> cards)
         {
             if (cards.Count != 4)
             {
                 return false;
             }
-            return Identifier.BeSame<Poker,int>(cards, p => p.WeightValue);
+            return Identifier.BeSame<Card,int>(cards, p => p.WeightValue);
         }
 
-        public IFormation Issue(List<Poker> cards)
+        public IFormation Parse(List<Card> cards)
         {
             return new FormationBomb(new FormationFour(cards.ToArray(), null, null));
         }

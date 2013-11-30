@@ -10,7 +10,7 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public class ThreeWithSole : ICertification
     {
-        public Formation.IFormation Issue(List<DataContext.Poker> cards)
+        public Formation.IFormation Parse(List<DataContext.Card> cards)
         {
             if (cards[0].WeightValue == cards[1].WeightValue)
             {
@@ -22,9 +22,19 @@ namespace LandlordsLibrary.CertificatedForms
             }
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         {
-            return cards.GroupBy(p => p.WeightValue).Count() == 2;
+            var groups = cards.GroupBy(p => p.WeightValue);
+            if (groups.Count() != 2)
+            {
+                return false;
+            }
+
+            if (groups.Where(i => i.Count() == 3).Count() != 1)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

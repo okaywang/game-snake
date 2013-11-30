@@ -11,12 +11,12 @@ namespace LandlordsLibrary.DataContext
         string Name { get; }
         bool IsBanker { get; set; }
 
-        void DrawPokers(Poker poker);
-        void DrawPokers(List<Poker> pokers);
+        void DrawPokers(Card poker);
+        void DrawPokers(List<Card> pokers);
 
         void Passby();
-        void Fight(List<Poker> pokers);
+        void Fight(List<Card> pokers);
 
-        void ActLandlords(List<Poker> pokers);
+        void ActLandlords(List<Card> pokers);
     }
 }

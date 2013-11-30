@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class FlowPair : ICertification
+    public class FlowPairForm : ICertification
     {
-        public Formation.IFormation Issue(List<DataContext.Poker> cards)
+        public Formation.IFormation Parse(List<DataContext.Card> cards)
         {
             var pairs = new Formation.FormationPair[cards.Count / 2];
             for (int i = 0; i < pairs.Length; i++)
@@ -20,10 +20,10 @@ namespace LandlordsLibrary.CertificatedForms
             return new Formation.FormationSequenceOfPair(pairs);
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         { 
-            var evenCards = new List<Poker>(); 
-            var oddCards = new List<Poker>();
+            var evenCards = new List<Card>(); 
+            var oddCards = new List<Card>();
             for (int i = 0; i < cards.Count; i += 2)
             {
                 evenCards.Add(cards[i]);
@@ -36,7 +36,7 @@ namespace LandlordsLibrary.CertificatedForms
             {
                 return false;
             }
-            return Identifier.BeSame<Poker, int>(evenCards, oddCards, p => p.WeightValue);
+            return Identifier.BeSame<Card, int>(evenCards, oddCards, p => p.WeightValue);
         }
     }
 }

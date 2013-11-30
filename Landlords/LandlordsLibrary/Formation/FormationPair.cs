@@ -10,15 +10,15 @@ namespace LandlordsLibrary.Formation
 {
     public class FormationPair : IFormation, IComparable<FormationPair>, IAppendix
     {
-        private Poker[] _pokers;
+        private Card[] _pokers;
 
-        public FormationPair(Poker poker1, Poker poker2)
-            : this(new Poker[] { poker1, poker2 })
+        public FormationPair(Card poker1, Card poker2)
+            : this(new Card[] { poker1, poker2 })
         {
 
         }
 
-        public FormationPair(Poker[] pokers)
+        public FormationPair(Card[] pokers)
         {
             Guard.ArrayLengthEqual(pokers, 2);
             Guard.IsEqual(pokers[0].WeightValue, pokers[1].WeightValue);

@@ -41,7 +41,7 @@ namespace WinFormLandlords
             RenderCards(p1._pokers);
         }
 
-        private void RenderCards(List<Poker> pokers)
+        private void RenderCards(List<Card> pokers)
         {
             this.pnoMe.Controls.Clear();
             _selectedCards.Clear();
@@ -89,25 +89,44 @@ namespace WinFormLandlords
         {
             var x = _selectedCards;
 
-            var pokes = x.Select(i => new Poker(i)).ToList();
-
+            var pokes = x.Select(i => CardCarton.Get(i)).ToList();
+            pokes.Sort((p1,p2)=>p1.WeightValue - p2.WeightValue);
             var dicts = new Dictionary<int, IEnumerable<ICertification>>();
 
             dicts.Add(1, new List<ICertification>() { new SoleForm() });
             dicts.Add(2, new List<ICertification>() { new DoubleForm(), new BombKingForm() });
             dicts.Add(3, new List<ICertification>() { new ThreeForm() });
             dicts.Add(4, new List<ICertification>() { new ThreeWithSole(), new BombCivilianForm() });
-            dicts.Add(5, new List<ICertification>() { new FlowSingle(), new ThreeWithDouble() });
-            dicts.Add(6, new List<ICertification>() { new FlowSingle(), new FourWithTwoSole(), new FlowPair(), new FlowThree() });
-            dicts.Add(7, new List<ICertification>() { new FlowSingle() });
-            dicts.Add(8, new List<ICertification>() { new FlowSingle(), new FourWithTwoPair(), new FlowPair(), new FlowThreeWithSole() });
+            dicts.Add(5, new List<ICertification>() { new FlowSingleForm(), new ThreeWithDouble() });
+            dicts.Add(6, new List<ICertification>() { new FlowSingleForm(), new FourWithTwoSoleForm(), new FlowPairForm(), new FlowThreeForm() });
+            dicts.Add(7, new List<ICertification>() { new FlowSingleForm() });
+            dicts.Add(8, new List<ICertification>() { new FlowSingleForm(), new FourWithTwoPair(), new FlowPairForm(), new FlowThreeWithSole() });
+            dicts.Add(9, new List<ICertification>() { new FlowSingleForm(), new FlowThreeForm() });
+            dicts.Add(10, new List<ICertification>() { new FlowSingleForm(), new FlowPairForm(), new FlowThreeWithPair() });
+            dicts.Add(11, new List<ICertification>() { new FlowSingleForm() });
+            dicts.Add(12, new List<ICertification>() { new FlowSingleForm(), new FlowPairForm(), new FlowThreeWithSole() });
+            //dicts.Add(13, null);
+            dicts.Add(14, new List<ICertification>() { new FlowPairForm() });
+            dicts.Add(15, new List<ICertification>() { new FlowThreeForm(), new FlowThreeWithPair() });
+            dicts.Add(16, new List<ICertification>() { new FlowPairForm(), new FlowThreeWithSole() });
+            //dicts.Add(17, null);
+            dicts.Add(18, new List<ICertification>() { new FlowPairForm(), new FlowThreeForm() });
+            //dicts.Add(19, null);
+            dicts.Add(20, new List<ICertification>() { new FlowPairForm(), new FlowThreeWithSole(), new FlowThreeWithPair() });
+
+            if (!dicts.ContainsKey(x.Count))
+            {
+                MessageBox.Show("invalid");
+                return;
+            }
             IFormation type = null;
             var certs = dicts[x.Count];
             foreach (var item in certs)
             {
-                if (item.ICertificate(pokes))
+                if (item.IsValid(pokes))
                 {
-                    type = item.Issue(pokes);
+                    type = item.Parse(pokes);
+                    break;
                 }
             }
 

@@ -10,12 +10,12 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public class SoleForm : ICertification
     { 
-        public IFormation Issue(List<Poker> cards)
+        public IFormation Parse(List<Card> cards)
         {
             return new FormationSingle(cards.First());
         }
 
-        public bool ICertificate(List<Poker> cards)
+        public bool IsValid(List<Card> cards)
         {
             return cards.Count == 1;
         }

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 namespace LandlordsLibrary.CertificatedForms
 {
     //6
-    public class FourWithTwoSole : ICertification
+    public class FourWithTwoSoleForm : ICertification
     {
-        public IFormation Issue(List<Poker> cards)
+        public IFormation Parse(List<Card> cards)
         {
             cards.Sort((p1, p2) => p1.WeightValue - p2.WeightValue); 
             for (int continuousThreeIndex = 0; continuousThreeIndex <= 2; continuousThreeIndex++)
@@ -25,7 +25,7 @@ namespace LandlordsLibrary.CertificatedForms
             return null; 
         }
 
-        private IFormation GetFormation(List<Poker> cards, int continuousFourIndex)
+        private IFormation GetFormation(List<Card> cards, int continuousFourIndex)
         {
             var tmp = new Dictionary<int, int[]>();
             tmp[0] = new int[] { 4, 5 };
@@ -34,7 +34,7 @@ namespace LandlordsLibrary.CertificatedForms
             return new Formation.FormationFour(cards.GetRange(continuousFourIndex, 4).ToArray(), new Formation.FormationSingle(cards[tmp[continuousFourIndex][0]]), new Formation.FormationSingle(cards[tmp[continuousFourIndex][1]]));
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         {
             var groups = cards.GroupBy(p => p.WeightValue);
             if (groups.Count() != 3)

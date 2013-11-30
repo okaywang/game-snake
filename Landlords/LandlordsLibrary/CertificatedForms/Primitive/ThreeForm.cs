@@ -10,14 +10,14 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public class ThreeForm : ICertification
     {
-        public Formation.IFormation Issue(List<DataContext.Poker> cards)
+        public Formation.IFormation Parse(List<DataContext.Card> cards)
         {
             return new Formation.FormationThree(cards.ToArray(), null);
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         {
-            return Identifier.BeSame<Poker,int>(cards, p => p.WeightValue);
+            return Identifier.BeSame<Card,int>(cards, p => p.WeightValue);
         }
     }
 }

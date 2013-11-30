@@ -8,21 +8,21 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class FlowThreeWithSole : ICertification
+    public class FlowThreeWithPair : ICertification
     {
         public Formation.IFormation Parse(List<DataContext.Card> cards)
         {
 
             var groups = cards.GroupBy(c => c.WeightValue).OrderBy(g => g.Count());
 
-            var singles = groups.Where(g => g.Count() == 1).Select(i => i.First());
-             
+            var pairs = groups.Where(g => g.Count() == 2).Select(i => i.ToList());
+
             var threes = groups.Where(g => g.Count() == 3).Select(p => p.ToList());
 
-            var formationThrees = new FormationThree[singles.Count()];
+            var formationThrees = new FormationThree[pairs.Count()];
             for (int i = 0; i < formationThrees.Length; i++)
             {
-                formationThrees[i] = new FormationThree(threes.ElementAt(i).ToArray(), new FormationSingle(singles.ElementAt(i)));
+                formationThrees[i] = new FormationThree(threes.ElementAt(i).ToArray(), new FormationPair(pairs.ElementAt(i).ToArray()));
             }
 
             return new Formation.FormationSequenceofThree(formationThrees);
@@ -30,25 +30,25 @@ namespace LandlordsLibrary.CertificatedForms
 
         public bool IsValid(List<DataContext.Card> cards)
         {
-            if (cards.Count % 4 != 0)
+            if (cards.Count % 5 != 0)
             {
                 return false;
             }
 
-            var continuousCount = cards.Count / 4;
+            var continuousCount = cards.Count / 5;
             if (continuousCount <= 1)
             {
                 return false;
             }
-             
+
             var groups = cards.GroupBy(c => c.WeightValue).OrderBy(g => g.Count());
 
-            var singles = groups.Where(g => g.Count() == 1).Select(i => i.First());
-            if (singles.Count() != continuousCount)
+            var pairs = groups.Where(g => g.Count() == 2).Select(i => i.First());
+            if (pairs.Count() != continuousCount)
             {
                 return false;
             }
-            if (singles.Distinct().Count() != singles.Count())
+            if (pairs.Distinct().Count() != pairs.Count())
             {
                 return false;
             }

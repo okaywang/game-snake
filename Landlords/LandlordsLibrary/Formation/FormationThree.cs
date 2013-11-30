@@ -10,15 +10,15 @@ namespace LandlordsLibrary.Formation
 {
     public class FormationThree : IFormation, IComparable<FormationThree>, IExpandable
     {
-        private Poker[] _pokers;
+        private Card[] _pokers;
         private IAppendix _appendix;
 
-        public FormationThree(Poker poker1, Poker poker2, Poker poker3)
-            : this(new Poker[] { poker1, poker2, poker3 }, null)
+        public FormationThree(Card poker1, Card poker2, Card poker3)
+            : this(new Card[] { poker1, poker2, poker3 }, null)
         {
 
         }
-        public FormationThree(Poker[] pokers, IAppendix appendix)
+        public FormationThree(Card[] pokers, IAppendix appendix)
         {
             Guard.ArrayLengthEqual(pokers, 3);
             Guard.IsEqual(pokers[0].WeightValue, pokers[1].WeightValue, pokers[2].WeightValue);

@@ -16,9 +16,12 @@ namespace WinFormLandlords
         /// </summary>
         [STAThread]
         static void Main()
-        { 
-
-            
+        {
+            var str = string.Empty;
+            for (int i = 0; i < 54; i++)
+            {
+                str += i.ToString() + ",";
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

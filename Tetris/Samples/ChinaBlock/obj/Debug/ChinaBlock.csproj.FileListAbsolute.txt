@@ -36,3 +36,16 @@ D:\test2\MyGame\game-snake\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.setGam
 D:\test2\MyGame\game-snake\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.csproj.GenerateResource.Cache
 D:\test2\MyGame\game-snake\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.exe
 D:\test2\MyGame\game-snake\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.pdb
+D:\development\mygame\Tetris\Samples\ChinaBlock\bin\Debug\ChinaBlock.exe.config
+D:\development\mygame\Tetris\Samples\ChinaBlock\bin\Debug\ChinaBlock.exe
+D:\development\mygame\Tetris\Samples\ChinaBlock\bin\Debug\ChinaBlock.pdb
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.csprojResolveAssemblyReference.cache
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.about.resources
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.Form1.resources
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.help.resources
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.Properties.Resources.resources
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.setBlockColor.resources
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.setGameFieldBgColor.resources
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.csproj.GenerateResource.Cache
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.exe
+D:\development\mygame\Tetris\Samples\ChinaBlock\obj\Debug\ChinaBlock.pdb

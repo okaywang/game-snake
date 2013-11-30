@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.CertificatedForms
 {
-    public class FlowThree : ICertification
+    public class FlowThreeForm : ICertification
     {
-        public Formation.IFormation Issue(List<DataContext.Poker> cards)
+        public Formation.IFormation Parse(List<DataContext.Card> cards)
         {
             var threes = new Formation.FormationThree[cards.Count / 3];
             for (int i = 0; i < threes.Length; i++)
@@ -20,11 +20,11 @@ namespace LandlordsLibrary.CertificatedForms
             return new Formation.FormationSequenceofThree(threes);
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         {
-            var cards1 = new List<Poker>();
-            var cards2 = new List<Poker>();
-            var cards3 = new List<Poker>();
+            var cards1 = new List<Card>();
+            var cards2 = new List<Card>();
+            var cards3 = new List<Card>();
             for (int i = 0; i < cards.Count; i += 3)
             {
                 cards1.Add(cards[i]);
@@ -37,12 +37,12 @@ namespace LandlordsLibrary.CertificatedForms
             {
                 return false;
             }
-            var isSame = Identifier.BeSame<Poker, int>(cards1, cards2, p => p.WeightValue);
+            var isSame = Identifier.BeSame<Card, int>(cards1, cards2, p => p.WeightValue);
             if (!isSame)
             {
                 return false;
             }
-            return Identifier.BeSame<Poker, int>(cards1, cards3, p => p.WeightValue);
+            return Identifier.BeSame<Card, int>(cards1, cards3, p => p.WeightValue);
         }
     }
 }

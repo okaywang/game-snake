@@ -11,7 +11,7 @@ namespace LandlordsLibrary.CertificatedForms
 {
     public class FourWithTwoPair : ICertification
     {
-        public Formation.IFormation Issue(List<DataContext.Poker> cards)
+        public Formation.IFormation Parse(List<DataContext.Card> cards)
         {
             cards.Sort((p1, p2) => p1.WeightValue - p2.WeightValue);
             for (int continuousThreeIndex = 0; continuousThreeIndex <= 4; continuousThreeIndex++)
@@ -24,7 +24,7 @@ namespace LandlordsLibrary.CertificatedForms
             return null;
         }
 
-        private IFormation GetFormation(List<Poker> cards, int continuousThreeIndex)
+        private IFormation GetFormation(List<Card> cards, int continuousThreeIndex)
         {
             var tmp = new Dictionary<int, int[]>();
             tmp[0] = new int[] { 4, 5, 6, 7 };
@@ -34,11 +34,11 @@ namespace LandlordsLibrary.CertificatedForms
             tmp[4] = new int[] { 0, 1, 2, 3 };
 
             return new FormationFour(cards.GetRange(continuousThreeIndex, 4).ToArray(),
-                new FormationPair(new Poker[] { cards[tmp[continuousThreeIndex][0]], cards[tmp[continuousThreeIndex][1]] }),
-                new FormationPair(new Poker[] { cards[tmp[continuousThreeIndex][0]], cards[tmp[continuousThreeIndex][1]] }));
+                new FormationPair(new Card[] { cards[tmp[continuousThreeIndex][0]], cards[tmp[continuousThreeIndex][1]] }),
+                new FormationPair(new Card[] { cards[tmp[continuousThreeIndex][2]], cards[tmp[continuousThreeIndex][3]] }));
         }
 
-        public bool ICertificate(List<DataContext.Poker> cards)
+        public bool IsValid(List<DataContext.Card> cards)
         {
             return cards.GroupBy(p => p.WeightValue).Count() == 3;
         }

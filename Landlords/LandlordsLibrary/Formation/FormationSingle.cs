@@ -9,9 +9,9 @@ namespace LandlordsLibrary.Formation
 {
     public class FormationSingle : IFormation,IComparable<FormationSingle>,IAppendix
     {
-        private Poker _poker;
+        private Card _poker;
 
-        public FormationSingle(Poker poker)
+        public FormationSingle(Card poker)
         {
             _poker = poker;
         }

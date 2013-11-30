@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="ArtificialIntelligence\AI1.cs" />
     <Compile Include="ArtificialIntelligence\AIBase.cs" />
-    <Compile Include="CertificatedForms\Join\FlowThreeWithDouble.cs" />
+    <Compile Include="CertificatedForms\Join\FlowThreeWithPair.cs" />
     <Compile Include="CertificatedForms\Join\FlowThreeWithSole.cs" />
     <Compile Include="CertificatedForms\Join\FlowThree.cs" />
     <Compile Include="CertificatedForms\Join\FlowPair.cs" />

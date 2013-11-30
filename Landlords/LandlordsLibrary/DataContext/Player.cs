@@ -9,25 +9,25 @@ namespace LandlordsLibrary.DataContext
     public class Player : IPlayer
     {
         private string _playName;
-        public List<Poker> _pokers;
+        public List<Card> _pokers;
 
         public Player(string playName)
         {
             _playName = playName;
-            _pokers = new List<Poker>();
+            _pokers = new List<Card>();
         }
 
         public void ReviewCards()
         {
-            _pokers.Sort(new Comparison<Poker>((p1, p2) => LandlordsLibraryRules.Compare_SingleCard(p1, p2)));
+            _pokers.Sort(new Comparison<Card>((p1, p2) => LandlordsLibraryRules.Compare_SingleCard(p1, p2)));
         }
 
-        public void DrawPokers(Poker poker)
+        public void DrawPokers(Card poker)
         {
             _pokers.Add(poker);
         }
 
-        public void DrawPokers(List<Poker> pokers)
+        public void DrawPokers(List<Card> pokers)
         {
             _pokers.AddRange(pokers);
         }
@@ -37,12 +37,12 @@ namespace LandlordsLibrary.DataContext
             throw new NotImplementedException();
         }
 
-        public void Fight(List<Poker> pokers)
+        public void Fight(List<Card> pokers)
         {
             throw new NotImplementedException();
         }
 
-        public void ActLandlords(List<Poker> pokers)
+        public void ActLandlords(List<Card> pokers)
         {
             throw new NotImplementedException();
         }

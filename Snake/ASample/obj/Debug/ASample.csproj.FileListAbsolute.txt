@@ -42,3 +42,12 @@ D:\test2\MyGame\game-snake\Snake\ASample\obj\Debug\贪吃蛇.Properties.Resource
 D:\test2\MyGame\game-snake\Snake\ASample\obj\Debug\ASample.csproj.GenerateResource.Cache
 D:\test2\MyGame\game-snake\Snake\ASample\obj\Debug\贪吃蛇.exe
 D:\test2\MyGame\game-snake\Snake\ASample\obj\Debug\贪吃蛇.pdb
+D:\development\mygame\Snake\ASample\bin\Debug\贪吃蛇.exe.config
+D:\development\mygame\Snake\ASample\bin\Debug\贪吃蛇.exe
+D:\development\mygame\Snake\ASample\bin\Debug\贪吃蛇.pdb
+D:\development\mygame\Snake\ASample\obj\Debug\ASample.csprojResolveAssemblyReference.cache
+D:\development\mygame\Snake\ASample\obj\Debug\贪吃蛇.FormMain.resources
+D:\development\mygame\Snake\ASample\obj\Debug\贪吃蛇.Properties.Resources.resources
+D:\development\mygame\Snake\ASample\obj\Debug\ASample.csproj.GenerateResource.Cache
+D:\development\mygame\Snake\ASample\obj\Debug\贪吃蛇.exe
+D:\development\mygame\Snake\ASample\obj\Debug\贪吃蛇.pdb

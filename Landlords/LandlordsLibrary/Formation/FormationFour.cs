@@ -10,10 +10,10 @@ namespace LandlordsLibrary.Formation
 {
     public class FormationFour : IFormation, IComparable<FormationThree>, IExpandable
     {
-        private Poker[] _pokers;
+        private Card[] _pokers;
         private IAppendix _appendix1;
         private IAppendix _appendix2;
-        public FormationFour(Poker[] pokers, IAppendix appendix1, IAppendix appendix2)
+        public FormationFour(Card[] pokers, IAppendix appendix1, IAppendix appendix2)
         {
             Guard.ArrayLengthEqual(pokers, 4);
             Guard.IsEqual(pokers[0].WeightValue, pokers[1].WeightValue, pokers[2].WeightValue, pokers[3].WeightValue);

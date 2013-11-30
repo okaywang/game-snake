@@ -35,3 +35,10 @@ D:\test2\MyGame\game-snake\Snake\GreedySnakeLibrary\bin\Debug\SimpleGame.pdb
 D:\test2\MyGame\game-snake\Snake\GreedySnakeLibrary\obj\Debug\GreedySnakeLibrary.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game-snake\Snake\GreedySnakeLibrary\obj\Debug\GreedySnakeLibrary.dll
 D:\test2\MyGame\game-snake\Snake\GreedySnakeLibrary\obj\Debug\GreedySnakeLibrary.pdb
+D:\development\mygame\Snake\GreedySnakeLibrary\bin\Debug\GreedySnakeLibrary.dll
+D:\development\mygame\Snake\GreedySnakeLibrary\bin\Debug\GreedySnakeLibrary.pdb
+D:\development\mygame\Snake\GreedySnakeLibrary\bin\Debug\SimpleGame.dll
+D:\development\mygame\Snake\GreedySnakeLibrary\bin\Debug\SimpleGame.pdb
+D:\development\mygame\Snake\GreedySnakeLibrary\obj\Debug\GreedySnakeLibrary.csprojResolveAssemblyReference.cache
+D:\development\mygame\Snake\GreedySnakeLibrary\obj\Debug\GreedySnakeLibrary.dll
+D:\development\mygame\Snake\GreedySnakeLibrary\obj\Debug\GreedySnakeLibrary.pdb
