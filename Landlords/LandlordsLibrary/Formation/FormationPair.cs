@@ -10,25 +10,30 @@ namespace LandlordsLibrary.Formation
 {
     public class FormationPair : IFormation, IComparable<FormationPair>, IAppendix
     {
-        private Card[] _pokers;
+        private Card[] _cards;
 
-        public FormationPair(Card poker1, Card poker2)
-            : this(new Card[] { poker1, poker2 })
+        public FormationPair(Card card1, Card card2)
+            : this(new Card[] { card1, card2 })
         {
 
         }
 
-        public FormationPair(Card[] pokers)
+        public FormationPair(Card[] cards)
         {
-            Guard.ArrayLengthEqual(pokers, 2);
-            Guard.IsEqual(pokers[0].WeightValue, pokers[1].WeightValue);
+            Guard.ArrayLengthEqual(cards, 2);
+            Guard.IsEqual(cards[0].WeightValue, cards[1].WeightValue);
 
-            _pokers = pokers;
+            _cards = cards;
+        }
+         
+        public Card[] Cards
+        {
+            get { return _cards; }
         }
 
         public int Weight
         {
-            get { return _pokers[0].WeightValue; }
+            get { return _cards[0].WeightValue; }
         }
 
         public string Name
@@ -40,5 +45,6 @@ namespace LandlordsLibrary.Formation
         {
             return this.Weight - other.Weight;
         }
+
     }
 }

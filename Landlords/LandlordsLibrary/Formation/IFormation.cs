@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LandlordsLibrary.DataContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace LandlordsLibrary.Formation
     {
         string Name { get; }
         int Weight { get; }
+
+        Card[] Cards { get; }
     }
 }

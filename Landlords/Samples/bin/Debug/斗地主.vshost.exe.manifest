@@ -48,26 +48,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.ShockwaveFlashObjects.dll" size="28672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.ShockwaveFlashObjects.dll" size="17920">
       <assemblyIdentity name="AxInterop.ShockwaveFlashObjects" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TaZW6PwWUtQlwxMDrg+GnFYdi7ktH+GCKlPJprW+Wd0=</dsig:DigestValue>
+        <dsig:DigestValue>5XVLgwU0vmeuDZc8HdioqJXmRg749LDjwgeDnL+5ftE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.WMPLib.dll" size="53248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AxInterop.WMPLib.dll" size="53760">
       <assemblyIdentity name="AxInterop.WMPLib" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>j44Jn2J21ngwAD8/Wq7Xzsl4lKS9aCUp9EPWdjFFQWY=</dsig:DigestValue>
+        <dsig:DigestValue>Z8yIGAYsmuo2Q/IRihFE6i5uLEIOg20bouZSF8EUS4Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,19 +79,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9giaiKUWiLAz1muEWvisUDOtvCwBKb9ahqBj13a5Ht0=</dsig:DigestValue>
+        <dsig:DigestValue>l65auWOnq9ZuMkPKhuxMNN0pegxcX0Xd1n09IK3g3+w=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.ShockwaveFlashObjects.dll" size="32768">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Interop.ShockwaveFlashObjects.dll" size="22528">
       <assemblyIdentity name="Interop.ShockwaveFlashObjects" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>YSP3nagUAJmeDYqli3mmtXNLX9j2pwFTuk2u8ioIrec=</dsig:DigestValue>
+        <dsig:DigestValue>Y9Dz0AGQ2XOuWhwSFm1EOqW85I9oH9At5TkMHASJGbw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,7 +103,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>F5YLVH/LMRpn9wgev7GFfu9oedYasCzB1BwrJEvrrlM=</dsig:DigestValue>
+        <dsig:DigestValue>h4pLuicdf8qRJyhSSlLYhsPvnaCt5pjJFa8L3ZaZ+bA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -127,7 +127,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WlnpxZrU0eIQwW6GnVx+YZFM8slkOYCZaYoosyzYmQs=</dsig:DigestValue>
+        <dsig:DigestValue>Dm6QReIxV0+PgXMgWS1if+lw1bQRicC8yISq11M1Wlk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

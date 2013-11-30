@@ -2,6 +2,7 @@
 using BasicLibrary.DataStructure;
 using LandlordsLibrary;
 using LandlordsLibrary.DataContext;
+using LandlordsLibrary.Participant;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +18,25 @@ namespace WinFormLandlords
         [STAThread]
         static void Main()
         {
-            var str = string.Empty;
-            for (int i = 0; i < 54; i++)
-            {
-                str += i.ToString() + ",";
-            }
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LandlordsGameView());
+
+            var view = new LandlordsGameView();
+            var p1 = new Player("王国君");
+            var p2 = new Player("张衡");
+            var p3 = new Player("刘志伟");
+            var players = new CircularlyLinkedList<IPlayer>(p1, p2, p3);
+            var controller = new LandlordsGameController(players, view);
+            controller.Initiallize();
+
+            view.UserPrepared += controller.UserPreparedHandler;
+            view.PlayerDesireLandlords += controller.PlayerDesireLandlordsHandler;
+            view.NoPlayerDesireLandlords += controller.NoPlayerDesireLandlordsHandler;
+            view.PlayerTakeoutFormation += controller.PlayerTakeoutFormationHandler;
+            view.PlayerPassby += controller.PlayerPassbyHandler;
+            Application.Run(view);
         }
+         
 
         public static object p1LandlordsLibraryRules { get; set; }
     }

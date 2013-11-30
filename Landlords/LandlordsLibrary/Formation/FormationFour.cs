@@ -28,6 +28,20 @@ namespace LandlordsLibrary.Formation
             _pokers = pokers;
         }
 
+
+        public Card[] Cards
+        {
+            get
+            {
+                if (_appendix1 == null)
+                {
+                    return _pokers;
+                }
+
+                return _pokers.Concat(_appendix1.Cards).Concat(_appendix2.Cards).ToArray();
+            }
+        }
+
         public int Weight
         {
             get { return _pokers[0].WeightValue; }
@@ -42,5 +56,6 @@ namespace LandlordsLibrary.Formation
         {
             return this.Weight - other.Weight;
         }
+
     }
 }

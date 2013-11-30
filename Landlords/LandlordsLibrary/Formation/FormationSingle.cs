@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.Formation
 {
-    public class FormationSingle : IFormation,IComparable<FormationSingle>,IAppendix
+    public class FormationSingle : IFormation, IComparable<FormationSingle>, IAppendix
     {
         private Card _poker;
 
@@ -29,6 +29,12 @@ namespace LandlordsLibrary.Formation
         public int CompareTo(FormationSingle other)
         {
             return this.Weight - other.Weight;
+        }
+
+
+        public Card[] Cards
+        {
+            get { return new Card[] { _poker }; }
         }
     }
 }

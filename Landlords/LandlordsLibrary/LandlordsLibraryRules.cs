@@ -8,28 +8,6 @@ namespace LandlordsLibrary
 {
     public class LandlordsLibraryRules
     {
-        public static int Compare_SingleCard(Card p1, Card p2)
-        {
-            return GetWeight(p1) - GetWeight(p2);
-        }
 
-        private static int GetWeight(Card p)
-        {
-            switch (p.PokerType)
-            {
-                case PokerTypes.King:
-                    return p.LiteralValue + 100;
-                default:
-                    if (p.LiteralValue == 1)
-                    {
-                        return 20;
-                    }
-                    if (p.LiteralValue == 2)
-                    {
-                        return 30;
-                    }
-                    return p.LiteralValue;
-            }
-        }
     }
 }

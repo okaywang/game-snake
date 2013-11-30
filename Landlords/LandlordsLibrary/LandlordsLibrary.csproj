@@ -44,23 +44,28 @@
   <ItemGroup>
     <Compile Include="ArtificialIntelligence\AI1.cs" />
     <Compile Include="ArtificialIntelligence\AIBase.cs" />
-    <Compile Include="CertificatedForms\Join\FlowThreeWithPair.cs" />
-    <Compile Include="CertificatedForms\Join\FlowThreeWithSole.cs" />
-    <Compile Include="CertificatedForms\Join\FlowThree.cs" />
-    <Compile Include="CertificatedForms\Join\FlowPair.cs" />
+    <Compile Include="CertificatedForms\Flow\FlowThreeWithPair.cs" />
+    <Compile Include="CertificatedForms\Flow\FlowThreeWithSole.cs" />
+    <Compile Include="CertificatedForms\Flow\FlowThree.cs" />
+    <Compile Include="CertificatedForms\Flow\FlowPair.cs" />
+    <Compile Include="CertificatedForms\FormParser.cs" />
     <Compile Include="CertificatedForms\Primitive\Bomb.cs" />
     <Compile Include="CertificatedForms\Primitive\FourWithTwoPair.cs" />
     <Compile Include="CertificatedForms\Primitive\ThreeWithDouble.cs" />
-    <Compile Include="CertificatedForms\Join\FlowSingle.cs" />
+    <Compile Include="CertificatedForms\Flow\FlowSingle.cs" />
     <Compile Include="CertificatedForms\Primitive\FourWithTwoSole.cs" />
     <Compile Include="CertificatedForms\Primitive\ThreeWithSole.cs" />
     <Compile Include="CertificatedForms\Primitive\DoubleForm.cs" />
     <Compile Include="CertificatedForms\ICertification.cs" />
     <Compile Include="CertificatedForms\Primitive\SoleForm.cs" />
     <Compile Include="CertificatedForms\Primitive\ThreeForm.cs" />
+    <Compile Include="DataContext\CardSet.cs" />
     <Compile Include="DataContext\CardWeights.cs" />
-    <Compile Include="DataContext\IPlayer.cs" />
-    <Compile Include="DataContext\Player.cs" />
+    <Compile Include="DataContext\RoundInfo.cs" />
+    <Compile Include="EventArguments\PlayerEventArgs.cs" />
+    <Compile Include="ILandlordsGameView.cs" />
+    <Compile Include="Participant\IPlayer.cs" />
+    <Compile Include="Participant\Player.cs" />
     <Compile Include="DataContext\Poker.cs" />
     <Compile Include="DataContext\PokerTypes.cs" />
     <Compile Include="FormationAuthentication.cs" />
@@ -74,9 +79,10 @@
     <Compile Include="Formation\IAppendage.cs" />
     <Compile Include="Formation\IExpandable.cs" />
     <Compile Include="Formation\IFormation.cs" />
+    <Compile Include="LandlordsGameController.cs" />
     <Compile Include="LandlordsLibraryRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DataContext\Referee.cs" />
+    <Compile Include="Participant\Servant.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Utilities\BasicLibrary\BasicLibrary.csproj">

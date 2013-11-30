@@ -1,7 +1,9 @@
 ﻿using BasicLibrary.DataStructure;
+using LandlordsLibrary;
 using LandlordsLibrary.CertificatedForms;
 using LandlordsLibrary.DataContext;
 using LandlordsLibrary.Formation;
+using LandlordsLibrary.Participant;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,133 +16,241 @@ using WinFormControls;
 
 namespace WinFormLandlords
 {
-    public partial class LandlordsGameView : Form
+    public partial class LandlordsGameView : Form, ILandlordsGameView
     {
-        private List<int> _selectedCards;
+
+        public EventHandler<PlayerEventArgs> UserPrepared;
+        public EventHandler<PlayerEventArgs> PlayerPassby;
+        //public EventHandler<PlayerTakeoutFormationEventArgs> PlayerFollowed;
+        public EventHandler<PlayerEventArgs> PlayerDesireLandlords;
+        public EventHandler NoPlayerDesireLandlords;
+        public EventHandler<PlayerTakeoutFormationEventArgs> PlayerTakeoutFormation;
+
+        private Dictionary<CircularlyLinkedNode<IPlayer>, PlayerControl> _playerControls;
+        private CircularlyLinkedNode<IPlayer> _headPlayer;
         public LandlordsGameView()
         {
             InitializeComponent();
-            _selectedCards = new List<int>();
         }
 
-        private void btnPrepare_Click(object sender, EventArgs e)
+        public void Init(CircularlyLinkedNode<IPlayer> currentPlayer)
         {
-            var p1 = new Player("张衡");
-            var p2 = new Player("刘志伟");
-            var p3 = new Player("王国君");
-            var players = new CircularlyLinkedList<IPlayer>(p1, p2, p3);
-
-            var referee = new Referee(players);
-            referee.Shuffle();
-            referee.DistributeCards();
-
-            p1.ReviewCards();
-            p2.ReviewCards();
-            p3.ReviewCards();
-
-            RenderCards(p1._pokers);
-        }
-
-        private void RenderCards(List<Card> pokers)
-        {
-            this.pnoMe.Controls.Clear();
-            _selectedCards.Clear();
-
-            var left = 10;
-            foreach (var item in pokers)
+            _headPlayer = currentPlayer;
+            _playerControls = new Dictionary<CircularlyLinkedNode<IPlayer>, PlayerControl>();
+            _playerControls.Add(currentPlayer, new PlayerControl()
             {
-                var pic = new CardBox();
-                pic.CardCode = item.Code;
-                pic.Image = Image.FromFile(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\" + (item.Code + 1) + ".jpg");
-                pic.Click += pic_Click;
-                pic.DragOver += pic_DragOver;
-                pic.Top = 20;
-                pic.Left = left;
-                pic.Width = 105;
-                pic.Height = 150;
-                this.pnoMe.Controls.Add(pic);
-                pic.BringToFront();
-                left += 25;
+                PrepareButton = this.btnCurrentPrepare,
+                ShoutButton = this.btnCurrentShout,
+                SilenceButton = this.btnCurrentSilence,
+                TakeOutButton = this.btnCurrentTakeOut,
+                PassButton = this.btnCurrentPassby,
+                CardBoxContainer = this.pnlCurrent,
+                LblName = this.lblCurrentName,
+            });
+            _playerControls.Add(currentPlayer.Previous, new PlayerControl()
+            {
+                PrepareButton = this.btnLeftPrepare,
+                ShoutButton = this.btnLeftShout,
+                SilenceButton = this.btnLeftSilence,
+                TakeOutButton = this.btnLeftTakeOut,
+                PassButton = this.btnLeftPass,
+                CardBoxContainer = this.pnlLeft,
+                LblName = this.lblLeftName
+            });
+            _playerControls.Add(currentPlayer.Next, new PlayerControl()
+            {
+                PrepareButton = this.btnRightPrepare,
+                ShoutButton = this.btnRightShout,
+                SilenceButton = this.btnRightSilence,
+                TakeOutButton = this.btnRightTakeOut,
+                PassButton = this.btnRightPassby,
+                CardBoxContainer = this.pnlRight,
+                LblName = this.lblRightName
+            });
+            InitPlayerControls();
+        }
+
+        private void InitPlayerControls()
+        {
+            foreach (var item in _playerControls)
+            {
+                item.Value.PrepareButton.Click += BtnPrepare_Click;
+                item.Value.PrepareButton.Tag = item.Key;
+                //item.Value.PrepareButton.Enabled = false;
+                item.Value.LblName.Text = item.Key.Value.Name;
+
+                item.Value.ShoutButton.Click += BtnShout_Click;
+                item.Value.ShoutButton.Tag = item.Key;
+                item.Value.ShoutButton.Enabled = false;
+
+                item.Value.SilenceButton.Click += BtnSilence_Click;
+                item.Value.SilenceButton.Tag = item.Key;
+                item.Value.SilenceButton.Enabled = false;
+
+                item.Value.TakeOutButton.Click += BtnTakeOut_Click;
+                item.Value.TakeOutButton.Tag = item.Key;
+                item.Value.TakeOutButton.Enabled = false;
+
+                item.Value.PassButton.Click += PassButton_Click;
+                item.Value.PassButton.Tag = item.Key;
+                item.Value.PassButton.Enabled = false;
+
+                item.Value.LblName.Text = item.Key.Value.Name;
             }
         }
 
-        void pic_DragOver(object sender, DragEventArgs e)
+
+        private void BtnSilence_Click(object sender, EventArgs e)
         {
-            pic_Click(sender, null);
-        }
+            var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
 
-        void pic_Click(object sender, EventArgs e)
-        {
-            var pic = sender as CardBox;
-            pic.IsSelected = !pic.IsSelected;
-            if (pic.IsSelected)
+            _playerControls[player].ShoutButton.Enabled = false;
+            _playerControls[player].SilenceButton.Enabled = false;
+
+            if (player == _headPlayer.Previous)
             {
-                pic.Top -= 20;
-                _selectedCards.Add(pic.CardCode);
-            }
-            else
-            {
-                pic.Top += 20;
-                _selectedCards.Remove(pic.CardCode);
-            }
-        }
-
-        private void btnTakeOut_Click(object sender, EventArgs e)
-        {
-            var x = _selectedCards;
-
-            var pokes = x.Select(i => CardCarton.Get(i)).ToList();
-            pokes.Sort((p1,p2)=>p1.WeightValue - p2.WeightValue);
-            var dicts = new Dictionary<int, IEnumerable<ICertification>>();
-
-            dicts.Add(1, new List<ICertification>() { new SoleForm() });
-            dicts.Add(2, new List<ICertification>() { new DoubleForm(), new BombKingForm() });
-            dicts.Add(3, new List<ICertification>() { new ThreeForm() });
-            dicts.Add(4, new List<ICertification>() { new ThreeWithSole(), new BombCivilianForm() });
-            dicts.Add(5, new List<ICertification>() { new FlowSingleForm(), new ThreeWithDouble() });
-            dicts.Add(6, new List<ICertification>() { new FlowSingleForm(), new FourWithTwoSoleForm(), new FlowPairForm(), new FlowThreeForm() });
-            dicts.Add(7, new List<ICertification>() { new FlowSingleForm() });
-            dicts.Add(8, new List<ICertification>() { new FlowSingleForm(), new FourWithTwoPair(), new FlowPairForm(), new FlowThreeWithSole() });
-            dicts.Add(9, new List<ICertification>() { new FlowSingleForm(), new FlowThreeForm() });
-            dicts.Add(10, new List<ICertification>() { new FlowSingleForm(), new FlowPairForm(), new FlowThreeWithPair() });
-            dicts.Add(11, new List<ICertification>() { new FlowSingleForm() });
-            dicts.Add(12, new List<ICertification>() { new FlowSingleForm(), new FlowPairForm(), new FlowThreeWithSole() });
-            //dicts.Add(13, null);
-            dicts.Add(14, new List<ICertification>() { new FlowPairForm() });
-            dicts.Add(15, new List<ICertification>() { new FlowThreeForm(), new FlowThreeWithPair() });
-            dicts.Add(16, new List<ICertification>() { new FlowPairForm(), new FlowThreeWithSole() });
-            //dicts.Add(17, null);
-            dicts.Add(18, new List<ICertification>() { new FlowPairForm(), new FlowThreeForm() });
-            //dicts.Add(19, null);
-            dicts.Add(20, new List<ICertification>() { new FlowPairForm(), new FlowThreeWithSole(), new FlowThreeWithPair() });
-
-            if (!dicts.ContainsKey(x.Count))
-            {
-                MessageBox.Show("invalid");
+                OnNoPlayerDesireLandlords();
                 return;
             }
-            IFormation type = null;
-            var certs = dicts[x.Count];
-            foreach (var item in certs)
-            {
-                if (item.IsValid(pokes))
-                {
-                    type = item.Parse(pokes);
-                    break;
-                }
-            }
+            _playerControls[player.Next].ShoutButton.Enabled = true;
+            _playerControls[player.Next].SilenceButton.Enabled = true;
+        }
 
-            if (type == null)
-            {
-                MessageBox.Show("invalid");
-            }
-            else
-            {
-                MessageBox.Show(type.Name);
-            }
+        private void BtnShout_Click(object sender, EventArgs e)
+        {
+            var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
+            _playerControls[player].ShoutButton.Enabled = _playerControls[player].SilenceButton.Enabled = false;
+            OnPlayerDesireLandlords(player);
+        }
 
+        public void RepresentDistributeCards(CircularlyLinkedNode<IPlayer> currentPlayer)
+        {
+            _playerControls[currentPlayer].CardBoxContainer.CardBoxLeftToRight = true;
+            _playerControls[currentPlayer.Previous].CardBoxContainer.CardBoxLeftToRight = false;
+            _playerControls[currentPlayer.Next].CardBoxContainer.CardBoxLeftToRight = false;
+
+            this.pnlLeft.CardBoxes = currentPlayer.Previous.Value.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+            this.pnlCurrent.CardBoxes = currentPlayer.Value.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+            this.pnlRight.CardBoxes = currentPlayer.Next.Value.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+        }
+
+        public void DesireLandlords(CircularlyLinkedNode<IPlayer> player)
+        {
+            this.btnCurrentShout.Enabled = this.btnCurrentSilence.Enabled = true;
+        }
+
+        public void TakeOutCardsCommand(CircularlyLinkedNode<IPlayer> player)
+        {
+            _playerControls[player].TakeOutButton.Enabled = true;
+        }
+
+        public void FollowCardsCommand(CircularlyLinkedNode<IPlayer> player, RoundInfo roundInfo)
+        {
+            _playerControls[player].TakeOutButton.Enabled = true;
+            _playerControls[player].PassButton.Enabled = true;
+        }
+
+        private void PassButton_Click(object sender, EventArgs e)
+        {
+            var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
+            _playerControls[player].TakeOutButton.Enabled = false;
+            _playerControls[player].PassButton.Enabled = false;
+            OnPlayerPassby(player);
         }
 
 
+        private void BtnTakeOut_Click(object sender, EventArgs e)
+        {
+            var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
+            if ( _playerControls[player].CardBoxContainer.SelectedCardBoxes.Count ==0)
+            {
+                MessageBox.Show("Plz select cards");
+                return;
+            }
+            var selectedCards = _playerControls[player].CardBoxContainer.SelectedCardBoxes.Select(p => CardCarton.Get(p.CardCode)).ToList();
+            selectedCards.Sort((p1, p2) => p1.WeightValue - p2.WeightValue);
+            var formation = FormParser.Parse(selectedCards);
+
+            if (formation == null)
+            {
+                MessageBox.Show("invalid formation");
+                return;
+            }
+            this.pnlDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+            _playerControls[player].TakeOutButton.Enabled = false;
+            _playerControls[player].PassButton.Enabled = false;
+            _playerControls[player].CardBoxContainer.RemoveSelectedCardBoxes();
+
+            OnUserTakeoutFormation(player, formation);
+        }
+
+        private void BtnPrepare_Click(object sender, EventArgs e)
+        {
+            var btn = sender as Button;
+            btn.Enabled = false;
+            OnUserPrepared(btn.Tag as CircularlyLinkedNode<IPlayer>);
+        }
+
+        private void OnUserPrepared(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (UserPrepared != null)
+            {
+                UserPrepared(this, new PlayerEventArgs(player));
+            }
+        }
+        private void OnUserTakeoutFormation(CircularlyLinkedNode<IPlayer> player, IFormation formation)
+        {
+            if (UserPrepared != null)
+            {
+                PlayerTakeoutFormation(this, new PlayerTakeoutFormationEventArgs(player, formation));
+            }
+        }
+        private void OnPlayerDesireLandlords(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (UserPrepared != null)
+            {
+                PlayerDesireLandlords(this, new PlayerEventArgs(player));
+            }
+        }
+        private void OnNoPlayerDesireLandlords()
+        {
+            if (UserPrepared != null)
+            {
+                NoPlayerDesireLandlords(this, EventArgs.Empty);
+            }
+        }
+
+        private void OnPlayerPassby(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (PlayerPassby != null)
+            {
+                PlayerPassby(this, new PlayerEventArgs(player));
+            }
+        }
+        //private void OnPlayerFollowed(CircularlyLinkedNode<IPlayer> player, IFormation formation)
+        //{
+        //    if (PlayerFollowed != null)
+        //    {
+        //        PlayerFollowed(this, new PlayerTakeoutFormationEventArgs(player, formation));
+        //    }
+        //}
+
+        class PlayerControl
+        {
+            public Button PrepareButton { get; set; }
+            public Button ShoutButton { get; set; }
+            public Button SilenceButton { get; set; }
+            public Button TipButton { get; set; }
+            public Button TakeOutButton { get; set; }
+            public Button PassButton { get; set; }
+            public CardBoxContainer CardBoxContainer { get; set; }
+            public Label LblName { get; set; }
+        }
+
+
+        private string GetImgLocation(int code)
+        {
+            return string.Format(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
+        }
     }
 }
