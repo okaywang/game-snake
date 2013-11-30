@@ -36,9 +36,9 @@ namespace LandlordsLibrary.Formation
             get { return _cards[0].WeightValue; }
         }
 
-        public string Name
+        public string Signature
         {
-            get { return "对"; }
+            get { return "对子"; }
         }
 
         public int CompareTo(FormationPair other)

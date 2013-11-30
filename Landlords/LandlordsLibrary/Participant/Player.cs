@@ -54,6 +54,8 @@ namespace LandlordsLibrary.Participant
             _cards.Add(card1);
             _cards.Add(card2);
             _cards.Add(card3);
+
+            _isBanker = true;
         }
 
         public void TakeOff(IFormation set)

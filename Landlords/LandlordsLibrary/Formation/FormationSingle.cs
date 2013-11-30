@@ -21,7 +21,7 @@ namespace LandlordsLibrary.Formation
             get { return _poker.WeightValue; }
         }
 
-        public string Name
+        public string Signature
         {
             get { return "单张"; }
         }

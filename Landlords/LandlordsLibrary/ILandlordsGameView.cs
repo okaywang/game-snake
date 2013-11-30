@@ -20,5 +20,9 @@ namespace LandlordsLibrary
         void TakeOutCardsCommand(CircularlyLinkedNode<IPlayer> player);
 
         void FollowCardsCommand(CircularlyLinkedNode<IPlayer> player, RoundInfo roundInfo);
+
+        void PlayerGone(CircularlyLinkedNode<IPlayer> player);
+
+        void RepresentLandlords(CircularlyLinkedNode<IPlayer> player);
     }
 }

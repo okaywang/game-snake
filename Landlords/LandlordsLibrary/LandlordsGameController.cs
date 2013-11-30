@@ -33,7 +33,7 @@ namespace LandlordsLibrary
         private void DistributeCards()
         {
             Servant.Shuffle(_cards);
-            Servant.DistributeCards(_cards, _players.Current);
+            Servant.DistributeCards(_cards, _players.Current); 
             _view.RepresentDistributeCards(_players.Current);
             _view.DesireLandlords(_players.Current);
         }
@@ -49,7 +49,7 @@ namespace LandlordsLibrary
         public void PlayerDesireLandlordsHandler(object sender, PlayerEventArgs e)
         {
             e.Player.Value.GainBonus(_cards[51], _cards[52], _cards[53]);
-            
+            _view.RepresentLandlords(e.Player);
             _view.TakeOutCardsCommand(e.Player);
         }
 
@@ -57,7 +57,14 @@ namespace LandlordsLibrary
         {
             e.Player.Value.ExpelFormation(e.Formation);
             RoundRecorder.Add(e.Player.Value, e.Formation);
-            _view.FollowCardsCommand(e.Player.Next, RoundRecorder.ImmediateRound);
+            if (e.Player.Value.Cards.Count ==0)
+            {
+                _view.PlayerGone(e.Player);
+            }
+            else
+            {
+                _view.FollowCardsCommand(e.Player.Next, RoundRecorder.ImmediateRound);
+            }
         }
         public void PlayerPassbyHandler(object sender, PlayerEventArgs e)
         {

@@ -21,6 +21,7 @@ namespace WinFormLandlords
 
         public EventHandler<PlayerEventArgs> UserPrepared;
         public EventHandler<PlayerEventArgs> PlayerPassby;
+        public EventHandler<PlayerEventArgs> PlayerCardGone;
         //public EventHandler<PlayerTakeoutFormationEventArgs> PlayerFollowed;
         public EventHandler<PlayerEventArgs> PlayerDesireLandlords;
         public EventHandler NoPlayerDesireLandlords;
@@ -28,6 +29,8 @@ namespace WinFormLandlords
 
         private Dictionary<CircularlyLinkedNode<IPlayer>, PlayerControl> _playerControls;
         private CircularlyLinkedNode<IPlayer> _headPlayer;
+
+        private RoundInfo _currentRound;
         public LandlordsGameView()
         {
             InitializeComponent();
@@ -129,9 +132,17 @@ namespace WinFormLandlords
             _playerControls[currentPlayer.Previous].CardBoxContainer.CardBoxLeftToRight = false;
             _playerControls[currentPlayer.Next].CardBoxContainer.CardBoxLeftToRight = false;
 
-            this.pnlLeft.CardBoxes = currentPlayer.Previous.Value.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
-            this.pnlCurrent.CardBoxes = currentPlayer.Value.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
-            this.pnlRight.CardBoxes = currentPlayer.Next.Value.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+            var cards1 = currentPlayer.Previous.Value.Cards;
+            cards1.Sort ((p1, p2) => p2.WeightValue - p1.WeightValue);
+            this.pnlLeft.CardBoxes = cards1.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+
+            var cards2 = currentPlayer.Value.Cards;
+            cards2.Sort((p1, p2) => p2.WeightValue - p1.WeightValue);
+            this.pnlCurrent.CardBoxes = cards2.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+
+            var cards3 = currentPlayer.Next.Value.Cards;
+            cards3.Sort((p1, p2) => p2.WeightValue - p1.WeightValue);
+            this.pnlRight.CardBoxes = cards3.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
         }
 
         public void DesireLandlords(CircularlyLinkedNode<IPlayer> player)
@@ -142,13 +153,35 @@ namespace WinFormLandlords
         public void TakeOutCardsCommand(CircularlyLinkedNode<IPlayer> player)
         {
             _playerControls[player].TakeOutButton.Enabled = true;
+            _currentRound = null;
         }
 
         public void FollowCardsCommand(CircularlyLinkedNode<IPlayer> player, RoundInfo roundInfo)
         {
             _playerControls[player].TakeOutButton.Enabled = true;
             _playerControls[player].PassButton.Enabled = true;
+            _currentRound = roundInfo;
         }
+         
+        public void RepresentLandlords(CircularlyLinkedNode<IPlayer> player)
+        {
+            var cards1 = player.Value.Cards;
+            cards1.Sort((p1, p2) => p2.WeightValue - p1.WeightValue);
+            _playerControls[player].CardBoxContainer.CardBoxes = cards1.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+        }
+
+        public void PlayerGone(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (player.Value.IsBanker)
+            {
+                MessageBox.Show("landlords win");
+            }
+            else
+            {
+                MessageBox.Show("landlords failed");
+            }
+        }
+
 
         private void PassButton_Click(object sender, EventArgs e)
         {
@@ -157,12 +190,11 @@ namespace WinFormLandlords
             _playerControls[player].PassButton.Enabled = false;
             OnPlayerPassby(player);
         }
-
-
+         
         private void BtnTakeOut_Click(object sender, EventArgs e)
         {
             var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
-            if ( _playerControls[player].CardBoxContainer.SelectedCardBoxes.Count ==0)
+            if (_playerControls[player].CardBoxContainer.SelectedCardBoxes.Count == 0)
             {
                 MessageBox.Show("Plz select cards");
                 return;
@@ -175,6 +207,17 @@ namespace WinFormLandlords
             {
                 MessageBox.Show("invalid formation");
                 return;
+            }
+
+            if (_currentRound != null)
+            {
+                if (formation.Signature != _currentRound.Formation.Signature
+                || formation.Cards.Length != _currentRound.Formation.Cards.Length
+                    || formation.Weight < _currentRound.Formation.Weight)
+                {
+                    MessageBox.Show("violate rules");
+                    return;
+                }
             }
             this.pnlDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
             _playerControls[player].TakeOutButton.Enabled = false;
@@ -226,7 +269,9 @@ namespace WinFormLandlords
             {
                 PlayerPassby(this, new PlayerEventArgs(player));
             }
-        }
+        } 
+        
+
         //private void OnPlayerFollowed(CircularlyLinkedNode<IPlayer> player, IFormation formation)
         //{
         //    if (PlayerFollowed != null)
@@ -252,5 +297,6 @@ namespace WinFormLandlords
         {
             return string.Format(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
         }
+
     }
 }

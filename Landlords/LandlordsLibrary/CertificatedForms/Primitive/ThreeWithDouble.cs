@@ -50,7 +50,7 @@ namespace LandlordsLibrary.CertificatedForms
                 return false;
             }
 
-            return groups.All(g => g.ToList().Count() == 2 && g.ToList().Count == 3);
+            return groups.All(g => g.ToList().Count() == 2 || g.ToList().Count == 3);
         }
     }
 }

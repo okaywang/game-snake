@@ -15,7 +15,7 @@ namespace LandlordsLibrary.Formation
         {
         }
 
-        public override string Name
+        public override string Signature
         {
             get
             {
@@ -31,11 +31,11 @@ namespace LandlordsLibrary.Formation
         {
         }
 
-        public override string Name
+        public override string Signature
         {
             get
             {
-                return "顺子2";
+                return "连对";
             }
         }
     }
@@ -47,7 +47,7 @@ namespace LandlordsLibrary.Formation
         {
         }
 
-        public override string Name
+        public override string Signature
         {
             get
             {

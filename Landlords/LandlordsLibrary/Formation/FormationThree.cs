@@ -29,7 +29,7 @@ namespace LandlordsLibrary.Formation
             _cards = pokers;
             _appendix = appendix;
         }
-        
+
 
         public Card[] Cards
         {
@@ -41,9 +41,23 @@ namespace LandlordsLibrary.Formation
             get { return _cards[0].WeightValue; }
         }
 
-        public string Name
+        public string Signature
         {
-            get { return "三个"; }
+            get
+            {
+                if (_cards.Length % 3 == 0)
+                {
+                    return "三个";
+                }
+                else if (_cards.Length % 3 == 1)
+                {
+                    return "三带一";
+                }
+                else
+                {
+                    return "三带一对";
+                }
+            }
         }
 
         public int CompareTo(FormationThree other)

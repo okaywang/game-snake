@@ -9,7 +9,7 @@ namespace LandlordsLibrary.Formation
 {
     public interface IFormation
     {
-        string Name { get; }
+        string Signature { get; }
         int Weight { get; }
 
         Card[] Cards { get; }

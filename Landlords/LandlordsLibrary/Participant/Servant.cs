@@ -27,8 +27,6 @@ namespace LandlordsLibrary.Participant
                 player.Next.Value.DrawCard(cards[i + 1]);
                 player.Next.Next.Value.DrawCard(cards[i + 2]);
             }
-        }
-
-
+        }  
     }
 }

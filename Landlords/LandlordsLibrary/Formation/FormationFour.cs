@@ -10,22 +10,21 @@ namespace LandlordsLibrary.Formation
 {
     public class FormationFour : IFormation, IComparable<FormationThree>, IExpandable
     {
-        private Card[] _pokers;
+        private Card[] _cards;
         private IAppendix _appendix1;
         private IAppendix _appendix2;
         public FormationFour(Card[] pokers, IAppendix appendix1, IAppendix appendix2)
         {
             Guard.ArrayLengthEqual(pokers, 4);
             Guard.IsEqual(pokers[0].WeightValue, pokers[1].WeightValue, pokers[2].WeightValue, pokers[3].WeightValue);
-            if (appendix1 != null || appendix2 != null)
-            {
-                Guard.IsNotNull(appendix1);
-                Guard.IsNotNull(appendix2);
-                Guard.IsNotEqual(appendix1.Weight, appendix2.Weight);
-                _appendix1 = appendix1;
-                _appendix2 = appendix2;
-            }
-            _pokers = pokers;
+
+            Guard.IsNotNull(appendix1);
+            Guard.IsNotNull(appendix2);
+            Guard.IsNotEqual(appendix1.Weight, appendix2.Weight);
+            _appendix1 = appendix1;
+            _appendix2 = appendix2;
+
+            _cards = pokers;
         }
 
 
@@ -35,21 +34,31 @@ namespace LandlordsLibrary.Formation
             {
                 if (_appendix1 == null)
                 {
-                    return _pokers;
+                    return _cards;
                 }
 
-                return _pokers.Concat(_appendix1.Cards).Concat(_appendix2.Cards).ToArray();
+                return _cards.Concat(_appendix1.Cards).Concat(_appendix2.Cards).ToArray();
             }
         }
 
         public int Weight
         {
-            get { return _pokers[0].WeightValue; }
+            get { return _cards[0].WeightValue; }
         }
 
-        public string Name
+        public string Signature
         {
-            get { return "四个"; }
+            get
+            {
+                if (_cards.Length / 4 == 2)
+                {
+                    return "四带二";
+                }
+                else
+                {
+                    return "四带两对";
+                }
+            }
         }
 
         public int CompareTo(FormationThree other)

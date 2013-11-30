@@ -29,9 +29,15 @@ namespace LandlordsLibrary.Formation
             get { return _cards; }
         }
 
-        public string Name
+        public string Signature
         {
-            get { return "炸弹"; }
+            get {
+                if (_cards.Length ==4)
+                {
+                    return "炸弹";
+                }
+                return "王炸";
+            }
         }
 
         public int Weight

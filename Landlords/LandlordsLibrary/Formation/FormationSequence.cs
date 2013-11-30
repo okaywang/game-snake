@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.Formation
 {
-    public class FormationSequence<T> : IFormation, IComparable<FormationSequence<T>>
+    public abstract class FormationSequence<T> : IFormation, IComparable<FormationSequence<T>>
     {
         private IFormation[] _formations;
 
@@ -37,9 +37,9 @@ namespace LandlordsLibrary.Formation
             get { return _formations[0].Weight; }
         }
 
-        public virtual string Name
+        public abstract string Signature
         {
-            get { return "顺子"; }
+            get;
         }
 
         public int CompareTo(FormationSequence<T> other)
