@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary.Formation
 {
-    public class FormationFour : IComparable<FormationThree>, IExpandable
+    public class FormationFour : IFormation, IComparable<FormationThree>, IExpandable
     {
         private Poker[] _pokers;
         private IAppendix _appendix1;
@@ -17,7 +17,7 @@ namespace LandlordsLibrary.Formation
         {
             Guard.ArrayLengthEqual(pokers, 4);
             Guard.IsEqual(pokers[0].WeightValue, pokers[1].WeightValue, pokers[2].WeightValue, pokers[3].WeightValue);
-            if (appendix1 !=null || appendix2 !=null)
+            if (appendix1 != null || appendix2 != null)
             {
                 Guard.IsNotNull(appendix1);
                 Guard.IsNotNull(appendix2);

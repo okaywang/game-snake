@@ -12,6 +12,12 @@ namespace LandlordsLibrary.Formation
     {
         private Poker[] _pokers;
 
+        public FormationPair(Poker poker1, Poker poker2)
+            : this(new Poker[] { poker1, poker2 })
+        {
+
+        }
+
         public FormationPair(Poker[] pokers)
         {
             Guard.ArrayLengthEqual(pokers, 2);

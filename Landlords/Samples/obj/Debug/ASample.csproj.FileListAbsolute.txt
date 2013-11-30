@@ -8,7 +8,6 @@ D:\test2\MyGame\game-snake\Landlords\Samples\bin\Debug\Interop.ShockwaveFlashObj
 D:\test2\MyGame\game-snake\Landlords\Samples\bin\Debug\Interop.WMPLib.dll
 D:\test2\MyGame\game-snake\Landlords\Samples\bin\Debug\AxInterop.ShockwaveFlashObjects.dll
 D:\test2\MyGame\game-snake\Landlords\Samples\bin\Debug\AxInterop.WMPLib.dll
-D:\test2\MyGame\game-snake\Landlords\Samples\obj\Debug\ASample.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game-snake\Landlords\Samples\obj\Debug\Interop.FlashAccessibility.dll
 D:\test2\MyGame\game-snake\Landlords\Samples\obj\Debug\Interop.ShockwaveFlashObjects.dll
 D:\test2\MyGame\game-snake\Landlords\Samples\obj\Debug\Interop.WMPLib.dll

@@ -10,6 +10,5 @@ D:\development\game-snake\CommonHelper\obj\Debug\CommonHelper.dll
 D:\development\game-snake\CommonHelper\obj\Debug\CommonHelper.pdb
 D:\test2\MyGame\game-snake\Utilities\CommonHelper\bin\Debug\CommonHelper.dll
 D:\test2\MyGame\game-snake\Utilities\CommonHelper\bin\Debug\CommonHelper.pdb
-D:\test2\MyGame\game-snake\Utilities\CommonHelper\obj\Debug\CommonHelper.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game-snake\Utilities\CommonHelper\obj\Debug\CommonHelper.dll
 D:\test2\MyGame\game-snake\Utilities\CommonHelper\obj\Debug\CommonHelper.pdb

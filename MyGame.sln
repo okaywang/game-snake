@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGreedySnake", "Snake\GreedySnake\WpfGreedySnake\WpfGreedySnake.csproj", "{8E3905DC-A5AE-4B4A-9906-10AAB5E91AF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGreedySnake", "Snake\WpfGreedySnake\WpfGreedySnake.csproj", "{8E3905DC-A5AE-4B4A-9906-10AAB5E91AF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedySnakeLibrary", "Snake\GreedySnake\GreedySnakeLibrary\GreedySnakeLibrary.csproj", "{4012DFAA-7D47-43EC-B8D7-118946572DF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedySnakeLibrary", "Snake\GreedySnakeLibrary\GreedySnakeLibrary.csproj", "{4012DFAA-7D47-43EC-B8D7-118946572DF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormGreedySnake", "Snake\GreedySnake\WinFormGreedySnake\WinFormGreedySnake.csproj", "{C391FE60-5664-4790-8201-28AA4126DFEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormGreedySnake", "Snake\WinFormGreedySnake\WinFormGreedySnake.csproj", "{C391FE60-5664-4790-8201-28AA4126DFEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASample", "Snake\GreedySnake\ASample\ASample.csproj", "{1CF81D71-20DE-4587-95DE-722627E21E93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASample", "Snake\ASample\ASample.csproj", "{1CF81D71-20DE-4587-95DE-722627E21E93}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormControls", "Utilities\WinFormControls\WinFormControls.csproj", "{1B23D1E3-DB79-4EC3-BC16-75E1E0C39DFB}"
 EndProject

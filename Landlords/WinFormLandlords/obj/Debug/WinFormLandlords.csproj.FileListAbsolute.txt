@@ -29,8 +29,6 @@ D:\test2\MyGame\game-snake\WinFormLandlords\bin\Debug\WinFormControls.dll
 D:\test2\MyGame\game-snake\WinFormLandlords\bin\Debug\WinFormControls.pdb
 D:\test2\MyGame\game-snake\WinFormLandlords\obj\Debug\WinFormLandlords.LandlordsGameView.resources
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\bin\Debug\WinFormLandlords.exe.config
-D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.exe
-D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.pdb
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\bin\Debug\WinFormLandlords.exe
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\bin\Debug\WinFormLandlords.pdb
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\bin\Debug\BasicLibrary.dll
@@ -43,3 +41,5 @@ D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.LandlordsGameView.resources
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.Properties.Resources.resources
 D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.csproj.GenerateResource.Cache
+D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.exe
+D:\test2\MyGame\game-snake\Landlords\WinFormLandlords\obj\Debug\WinFormLandlords.pdb

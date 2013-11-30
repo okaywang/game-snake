@@ -111,7 +111,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\TinyGame\SimpleGame.csproj">
+    <ProjectReference Include="..\..\TinyGame\SimpleGame.csproj">
       <Project>{517593d6-de30-4fd3-80f1-d99f02ad8b04}</Project>
       <Name>SimpleGame</Name>
     </ProjectReference>

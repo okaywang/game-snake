@@ -43,6 +43,7 @@
     <Compile Include="Block.cs" />
     <Compile Include="DataStructure\CircularlyLinkedList.cs" />
     <Compile Include="Guard.cs" />
+    <Compile Include="Identifier.cs" />
     <Compile Include="Miscellanea.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

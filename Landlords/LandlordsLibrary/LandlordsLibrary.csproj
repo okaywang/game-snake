@@ -44,6 +44,20 @@
   <ItemGroup>
     <Compile Include="ArtificialIntelligence\AI1.cs" />
     <Compile Include="ArtificialIntelligence\AIBase.cs" />
+    <Compile Include="CertificatedForms\Join\FlowThreeWithDouble.cs" />
+    <Compile Include="CertificatedForms\Join\FlowThreeWithSole.cs" />
+    <Compile Include="CertificatedForms\Join\FlowThree.cs" />
+    <Compile Include="CertificatedForms\Join\FlowPair.cs" />
+    <Compile Include="CertificatedForms\Primitive\Bomb.cs" />
+    <Compile Include="CertificatedForms\Primitive\FourWithDouble.cs" />
+    <Compile Include="CertificatedForms\Primitive\ThreeWithDouble.cs" />
+    <Compile Include="CertificatedForms\Join\FlowSingle.cs" />
+    <Compile Include="CertificatedForms\Primitive\FourWithSole.cs" />
+    <Compile Include="CertificatedForms\Primitive\ThreeWithSole.cs" />
+    <Compile Include="CertificatedForms\Primitive\Double.cs" />
+    <Compile Include="CertificatedForms\ICertification.cs" />
+    <Compile Include="CertificatedForms\Primitive\Sole.cs" />
+    <Compile Include="CertificatedForms\Primitive\Three.cs" />
     <Compile Include="DataContext\CardWeights.cs" />
     <Compile Include="DataContext\IPlayer.cs" />
     <Compile Include="DataContext\Player.cs" />
@@ -129,6 +143,7 @@
   <ItemGroup>
     <None Include="Resources\Thumbs.db" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

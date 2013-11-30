@@ -10,6 +10,7 @@ namespace LandlordsLibrary
 {
     public class FormationAuthentication
     {
+
         public IFormation Authenticate(List<int> codes)
         {
             if (codes.Count == 1)

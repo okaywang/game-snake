@@ -27,7 +27,7 @@ namespace LandlordsLibrary.Formation
 
     public class FormationSequenceofThree : FormationSequence<FormationThree>
     {
-        public FormationSequenceofThree(FormationPair[] formations)
+        public FormationSequenceofThree(FormationThree[] formations)
             : base(formations, 2)
         {
         }
