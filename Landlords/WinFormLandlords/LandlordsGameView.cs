@@ -1,4 +1,5 @@
 ﻿using BasicLibrary.DataStructure;
+using LandlordsLibrary.CertificatedForms;
 using LandlordsLibrary.DataContext;
 using System;
 using System.Collections.Generic;
@@ -46,7 +47,7 @@ namespace WinFormLandlords
             {
                 var pic = new CardBox();
                 pic.CardCode = item.Code;
-                pic.Image = Image.FromFile(@"D:\test2\MyGame\game-snake\LandlordsLibrary\Resources\" + (item.Code + 1) + ".jpg");
+                pic.Image = Image.FromFile(@"D:\test2\MyGame\game-snake\Landlords\LandlordsLibrary\Resources\" + (item.Code + 1) + ".jpg");
                 pic.Click += pic_Click;
                 pic.DragOver += pic_DragOver;
                 pic.Top = 20;
@@ -69,7 +70,7 @@ namespace WinFormLandlords
             var pic = sender as CardBox;
             pic.IsSelected = !pic.IsSelected;
             if (pic.IsSelected)
-            { 
+            {
                 pic.Top -= 20;
                 _selectedCards.Add(pic.CardCode);
             }
@@ -84,7 +85,9 @@ namespace WinFormLandlords
         {
             var x = _selectedCards;
 
-
+            var dicts = new Dictionary<int, IEnumerable<ICertification>>();
+            dicts.Add(0, null);
+            //dicts.Add(1,new
         }
     }
 }

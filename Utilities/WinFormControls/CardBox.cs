@@ -11,5 +11,10 @@ namespace WinFormControls
     {
         public bool IsSelected { get; set; }
         public int CardCode { get; set; }
+
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            base.OnPaint(pe);
+        }
     }
 }
