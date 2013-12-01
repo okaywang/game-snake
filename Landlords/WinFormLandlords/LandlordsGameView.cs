@@ -269,8 +269,6 @@ namespace WinFormLandlords
         }
 
 
-
-
         private void PassButton_Click(object sender, EventArgs e)
         {
             var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;

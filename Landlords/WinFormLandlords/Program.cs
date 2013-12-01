@@ -41,6 +41,7 @@ namespace WinFormLandlords
             view.PlayerActLandlordsTimeout += controller.PlayerActLandlordsTimeoutHandler;
             view.PlayerBringFormationTimeout += controller.PlayerBringFormationTimeoutHandler;
             view.PlayerFollowFormationTimeout += controller.PlayerFollowFormationTimeoutHandler;
+
             Application.Run(view);
         }
 

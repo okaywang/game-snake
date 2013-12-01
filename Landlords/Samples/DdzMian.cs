@@ -353,7 +353,7 @@ namespace 斗地主
                 for (int j = 0; j < 21; j += 5)
                 {
                     paiImage[pai[i].Index].SetBounds(a[0] + j * 9 + a[1], 170 + 20 + j * 10 + a[2], 65, 100);
-                    Thread.Sleep(5);
+                    Thread.Sleep(300);
                 }
                 i++; a[0] -= 5;
                 paiImage[pai[i].Index].BringToFront();
@@ -366,14 +366,14 @@ namespace 斗地主
                         paiImage[pai[i].Index].Width = 80; paiImage[pai[i].Index].Height = 120;
                         paiImage[pai[i].Index].BackgroundImage = pai[pai[i].Index].Image;
                     }
-                    Thread.Sleep(5);
+                    Thread.Sleep(300);
                 }
                 i++; a[0] -= 5;
                 paiImage[pai[i].Index].BringToFront();
                 for (int j = 0; j < 26; j += 5)
                 {
                     paiImage[pai[i].Index].SetBounds(a[0] - j * a[4] - a[5] + 3, 170 + 20 + j * 8 + a[2], 65, 100);
-                    Thread.Sleep(5);
+                    Thread.Sleep(300);
                 }
                 a[0] -= 5; a[1] += 15; a[2] += 5; a[3] -= 1; a[4] -= 1; a[5] += 10; SoundGive.Play();//5~1-a-s-p-x
             }
