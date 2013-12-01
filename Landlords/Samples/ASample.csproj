@@ -16,7 +16,8 @@
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <StartupObject>斗地主.Program</StartupObject>
-    <ApplicationIcon>程序图标.ICO</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -385,7 +386,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\向左.jpg" />
-    <None Include="斗地主_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -431,7 +431,6 @@
   <ItemGroup>
     <None Include="bin\Debug\mf_001.swf" />
     <None Include="bin\Debug\冰.ani" />
-    <Content Include="程序图标.ICO" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,7 +9,7 @@ namespace LandlordsLibrary.DataContext
     public enum CardWeights
     {
         Aice = 11,
-        Two = 12,
+        Two = 13,
         Three = 0,
         Four = 1,
         Five = 2,
@@ -22,7 +22,7 @@ namespace LandlordsLibrary.DataContext
         Twelve = 9,
         Thirteen = 10,
 
-        Queen = 13,
-        King = 14
+        Queen = 100,
+        King = 101
     }
 }

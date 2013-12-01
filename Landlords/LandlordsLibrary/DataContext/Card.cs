@@ -71,7 +71,7 @@ namespace LandlordsLibrary.DataContext
                                      11, 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                                      11, 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
                                      11, 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
-                                     100,200 };
+                                     (int)CardWeights.Queen,(int)CardWeights.King };
         private static Card[] _cards = new Card[54];
         static CardCarton()
         {
