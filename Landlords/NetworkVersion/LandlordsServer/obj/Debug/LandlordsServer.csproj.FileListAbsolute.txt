@@ -1,0 +1,4 @@
+D:\development\mygame\LandlordsServer\bin\Debug\LandlordsServer.dll
+D:\development\mygame\LandlordsServer\bin\Debug\LandlordsServer.pdb
+D:\development\mygame\LandlordsServer\obj\Debug\LandlordsServer.dll
+D:\development\mygame\LandlordsServer\obj\Debug\LandlordsServer.pdb

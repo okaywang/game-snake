@@ -1,0 +1,4 @@
+D:\development\mygame\Communication\bin\Debug\CommunicationTcp.dll
+D:\development\mygame\Communication\bin\Debug\CommunicationTcp.pdb
+D:\development\mygame\Communication\obj\Debug\CommunicationTcp.dll
+D:\development\mygame\Communication\obj\Debug\CommunicationTcp.pdb

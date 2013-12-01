@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="斗地主.exe.manifest" size="8174">
+    <dependentAssembly dependencyType="install" codebase="斗地主.exe.manifest" size="7686">
       <assemblyIdentity name="斗地主.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="zh-CHS" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0dfPHe01fmQqrRIERkAso4aJtIYr9DOp36ISLsi2Klo=</dsig:DigestValue>
+        <dsig:DigestValue>/Y5pTfs5FHfQ8gNryCKS8fhzN2PUiY8jFSTN+EU5iWg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

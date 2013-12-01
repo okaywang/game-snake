@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
   <asmv1:assemblyIdentity name="斗地主.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="zh-CHS" processorArchitecture="msil" type="win32" />
-  <description asmv2:iconFile="程序图标.ICO" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
     <assemblyIdentity name="斗地主" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -55,7 +54,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5XVLgwU0vmeuDZc8HdioqJXmRg749LDjwgeDnL+5ftE=</dsig:DigestValue>
+        <dsig:DigestValue>rjzjeCfSMQZ2mGqjsxEmwBfnQZQb3RaEVn8ATaDceYc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -67,7 +66,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z8yIGAYsmuo2Q/IRihFE6i5uLEIOg20bouZSF8EUS4Q=</dsig:DigestValue>
+        <dsig:DigestValue>CeSTTTIiJpV0/b9rSzJqz8jMjezQm8gMkq1RGqNOxn0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,7 +78,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>l65auWOnq9ZuMkPKhuxMNN0pegxcX0Xd1n09IK3g3+w=</dsig:DigestValue>
+        <dsig:DigestValue>Oax/TH+M2edvCJrNX95xcTLT09HfEEPIY9ICXsmqpcA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -91,7 +90,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Y9Dz0AGQ2XOuWhwSFm1EOqW85I9oH9At5TkMHASJGbw=</dsig:DigestValue>
+        <dsig:DigestValue>pq+8e9Cd0xY6e4fIeMUKRjEIhgZ75oAFQXDDBHg3a64=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -103,7 +102,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>h4pLuicdf8qRJyhSSlLYhsPvnaCt5pjJFa8L3ZaZ+bA=</dsig:DigestValue>
+        <dsig:DigestValue>i5wEwdDYew7o+lxKjaPj2sUWL7Kjh6zdYLehcGpfmJo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -120,14 +119,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="斗地主.exe" size="1774080">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="斗地主.exe" size="1771520">
       <assemblyIdentity name="斗地主" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Dm6QReIxV0+PgXMgWS1if+lw1bQRicC8yISq11M1Wlk=</dsig:DigestValue>
+        <dsig:DigestValue>W948KIs83yX7w5i7Nto+TXjSmpp5aZnKGgoI06rwVJc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -138,15 +137,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>jLCHdLm7v47ACsSCc72IOp8bA051ZvlIJCmYB91hk5o=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="程序图标.ICO" size="2238">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>F4X8VVWukzuVN0tfNEQm2tNeuDE3tbATM0f8OT07n/I=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
