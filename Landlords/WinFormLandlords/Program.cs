@@ -6,6 +6,7 @@ using LandlordsLibrary.Participant;
 using LandlordsLibrary.Participant.Robot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,7 +19,8 @@ namespace WinFormLandlords
         /// </summary>
         [STAThread]
         static void Main()
-        { 
+        {
+            Stopwatch sw = new Stopwatch();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
@@ -33,12 +35,15 @@ namespace WinFormLandlords
 
             view.UserPrepared += controller.UserPreparedHandler;
             view.PlayerDesireLandlords += controller.PlayerDesireLandlordsHandler;
-            view.NoPlayerDesireLandlords += controller.NoPlayerDesireLandlordsHandler;
+            view.PlayerDiscardLandlords += controller.PlayerDiscardLandlordsHandler;
             view.PlayerTakeoutFormation += controller.PlayerTakeoutFormationHandler;
             view.PlayerPassby += controller.PlayerPassbyHandler;
+            view.PlayerActLandlordsTimeout += controller.PlayerActLandlordsTimeoutHandler;
+            view.PlayerBringFormationTimeout += controller.PlayerBringFormationTimeoutHandler;
+            view.PlayerFollowFormationTimeout += controller.PlayerFollowFormationTimeoutHandler;
             Application.Run(view);
         }
-         
+
 
         public static object p1LandlordsLibraryRules { get; set; }
     }

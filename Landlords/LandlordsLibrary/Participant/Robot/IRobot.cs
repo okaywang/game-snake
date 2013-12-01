@@ -10,7 +10,7 @@ namespace LandlordsLibrary.Participant.Robot
 {
     public interface IRobot
     {
-        Formation.IFormation TakeOut();
-        IFormation Follow(RoundInfo round);
+        IFormation BringFormation();
+        IFormation FollowFormation(RoundInfo round);
     }
 }

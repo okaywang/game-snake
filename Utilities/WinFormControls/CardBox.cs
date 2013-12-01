@@ -7,6 +7,7 @@ using System.Windows.Forms;
 
 namespace WinFormControls
 {
+    [Serializable]
     public class CardBox : PictureBox
     {
         public bool IsSelected { get; set; }
@@ -21,7 +22,7 @@ namespace WinFormControls
 
     public class CardBoxContainer : Panel
     {
-        private List<CardBox> _cardBoxes;
+        private List<CardBox> _cardBoxes = new List<CardBox>();
         public List<CardBox> CardBoxes
         {
             get { return _cardBoxes; }

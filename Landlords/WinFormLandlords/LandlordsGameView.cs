@@ -23,18 +23,54 @@ namespace WinFormLandlords
         public EventHandler<PlayerEventArgs> UserPrepared;
         public EventHandler<PlayerEventArgs> PlayerPassby;
         public EventHandler<PlayerEventArgs> PlayerCardGone;
-        //public EventHandler<PlayerTakeoutFormationEventArgs> PlayerFollowed;
         public EventHandler<PlayerEventArgs> PlayerDesireLandlords;
-        public EventHandler NoPlayerDesireLandlords;
+        public EventHandler<PlayerEventArgs> PlayerDiscardLandlords;
         public EventHandler<PlayerTakeoutFormationEventArgs> PlayerTakeoutFormation;
+
+        public EventHandler<PlayerEventArgs> PlayerActLandlordsTimeout;
+        public EventHandler<PlayerEventArgs> PlayerBringFormationTimeout;
+        public EventHandler<PlayerEventArgs> PlayerFollowFormationTimeout;
 
         private Dictionary<CircularlyLinkedNode<IPlayer>, PlayerControl> _playerControls;
         private CircularlyLinkedNode<IPlayer> _headPlayer;
-
+        private Action<CircularlyLinkedNode<IPlayer>> _timeoutAction;
         private RoundInfo _currentRound;
+
+        private Timer _timer;
         public LandlordsGameView()
         {
             InitializeComponent();
+            _timer = new Timer();
+            _timer.Interval = 1000;
+            _timer.Tick += _timer_Tick;
+
+        }
+
+        void _timer_Tick(object sender, EventArgs e)
+        {
+            var player = (sender as Timer).Tag as CircularlyLinkedNode<IPlayer>;
+            var lbl = _playerControls[player].LblCountdown;
+            var seconds = Int32.Parse(lbl.Text);
+            seconds -= 1;
+            lbl.Text = seconds.ToString();
+            if (seconds == 0)
+            {
+                EndCountDown(player);
+                MessageBox.Show("time out");
+                _timeoutAction(player);
+            }
+        }
+        private void EndCountDown(CircularlyLinkedNode<IPlayer> player)
+        {
+            _timer.Stop();
+        }
+        private void StartCountDown(CircularlyLinkedNode<IPlayer> player, Action<CircularlyLinkedNode<IPlayer>> timeoutAction)
+        {
+            _timeoutAction = timeoutAction;
+            var lbl = _playerControls[player].LblCountdown;
+            lbl.Text = "10";
+            _timer.Tag = player;
+            _timer.Start();
         }
 
         public void Init(CircularlyLinkedNode<IPlayer> currentPlayer)
@@ -50,6 +86,7 @@ namespace WinFormLandlords
                 PassButton = this.btnCurrentPassby,
                 CardBoxContainer = this.pnlCurrent,
                 LblName = this.lblCurrentName,
+                LblCountdown = this.lblCurrentCountdown
             });
             _playerControls.Add(currentPlayer.Previous, new PlayerControl()
             {
@@ -59,7 +96,8 @@ namespace WinFormLandlords
                 TakeOutButton = this.btnLeftTakeOut,
                 PassButton = this.btnLeftPass,
                 CardBoxContainer = this.pnlLeft,
-                LblName = this.lblLeftName
+                LblName = this.lblLeftName,
+                LblCountdown = this.lblLeftCountdown
             });
             _playerControls.Add(currentPlayer.Next, new PlayerControl()
             {
@@ -69,7 +107,8 @@ namespace WinFormLandlords
                 TakeOutButton = this.btnRightTakeOut,
                 PassButton = this.btnRightPassby,
                 CardBoxContainer = this.pnlRight,
-                LblName = this.lblRightName
+                LblName = this.lblRightName,
+                LblCountdown = this.lblRightCountdown
             });
             InitPlayerControls();
         }
@@ -103,28 +142,18 @@ namespace WinFormLandlords
             }
         }
 
-
         private void BtnSilence_Click(object sender, EventArgs e)
         {
             var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
 
-            _playerControls[player].ShoutButton.Enabled = false;
-            _playerControls[player].SilenceButton.Enabled = false;
-
-            if (player == _headPlayer.Previous)
-            {
-                OnNoPlayerDesireLandlords();
-                return;
-            }
-            _playerControls[player.Next].ShoutButton.Enabled = true;
-            _playerControls[player.Next].SilenceButton.Enabled = true;
+            DiscardLandlordsAction(player);
         }
 
         private void BtnShout_Click(object sender, EventArgs e)
         {
             var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
             _playerControls[player].ShoutButton.Enabled = _playerControls[player].SilenceButton.Enabled = false;
-            OnPlayerDesireLandlords(player);
+            ActLandlordsAction(player);
         }
 
         public void RepresentDistributeCards(CircularlyLinkedNode<IPlayer> currentPlayer)
@@ -146,57 +175,80 @@ namespace WinFormLandlords
             this.pnlRight.CardBoxes = cards3.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
         }
 
-        public void DesireLandlords(CircularlyLinkedNode<IPlayer> player)
+        public void ArrangeActLandlordsActionPrelude(CircularlyLinkedNode<IPlayer> player)
         {
-            this.btnCurrentShout.Enabled = this.btnCurrentSilence.Enabled = true;
+            _playerControls[player].ShoutButton.Enabled = true;
+            _playerControls[player].SilenceButton.Enabled = true;
+            StartCountDown(player, p => OnPlayerActLandlordsTimeout(p));
         }
 
-        public void TakeOutCardsCommand(CircularlyLinkedNode<IPlayer> player)
+        public void DiscardLandlordsAction(CircularlyLinkedNode<IPlayer> player)
         {
-            _currentRound = null;
-            if (player.Value is IRobot)
-            {
-                var robot = player.Value as  IRobot;
-                var formation = robot.TakeOut();
-                TakeOutFormation(player, formation);
-            }
-            else
-            {
-                _playerControls[player].TakeOutButton.Enabled = true;
-            }
+            _playerControls[player].ShoutButton.Enabled = false;
+            _playerControls[player].SilenceButton.Enabled = false;
+            EndCountDown(player);
         }
 
-        public void FollowCardsCommand(CircularlyLinkedNode<IPlayer> player, RoundInfo roundInfo)
+        public void ActLandlordsAction(CircularlyLinkedNode<IPlayer> player)
         {
-            _currentRound = roundInfo;
-            if (player.Value is IRobot)
-            {
-                var robot = player.Value as IRobot;
-                var formation = robot.Follow(roundInfo);
-                if (formation !=null)
-                {
-                    TakeOutFormation(player, formation);
-                }
-                else
-                {
-                    OnPlayerPassby(player);
-                }
-            }
-            else
-            { 
-                _playerControls[player].TakeOutButton.Enabled = true;
-                _playerControls[player].PassButton.Enabled = true;
-            }
+            EndCountDown(player);
+            OnPlayerDesireLandlords(player);
         }
 
-        public void RepresentLandlords(CircularlyLinkedNode<IPlayer> player)
+        public void ArrangeActLandlordsActionPostlude(CircularlyLinkedNode<IPlayer> player, Card card1, Card card2, Card card3)
         {
+            this.pnlCardHome.CardBoxes = new List<CardBox>() {
+                new CardBox() { CardCode = card1.Code, ImageLocation = GetImgLocation(card1.Code) },
+                new CardBox() { CardCode = card2.Code, ImageLocation = GetImgLocation(card2.Code) },
+                new CardBox() { CardCode = card3.Code, ImageLocation = GetImgLocation(card3.Code) },
+            };
+
             var cards1 = player.Value.Cards;
             cards1.Sort((p1, p2) => p2.WeightValue - p1.WeightValue);
             _playerControls[player].CardBoxContainer.CardBoxes = cards1.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
         }
 
-        public void PlayerGone(CircularlyLinkedNode<IPlayer> player)
+        public void ThrowSelectedFormationAction(CircularlyLinkedNode<IPlayer> player, IFormation formation)
+        {
+            if (_currentRound != null)
+            {
+                if (formation.Signature != _currentRound.Formation.Signature
+                || formation.Cards.Length != _currentRound.Formation.Cards.Length
+                    || formation.Weight < _currentRound.Formation.Weight)
+                {
+                    MessageBox.Show("violate rules");
+                    return;
+                }
+            }
+            this.pnlDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+            _playerControls[player].TakeOutButton.Enabled = false;
+            _playerControls[player].PassButton.Enabled = false;
+            //_playerControls[player].CardBoxContainer.RemoveSelectedCardBoxes();
+            _playerControls[player].CardBoxContainer.RemoveCardBoxes(c => formation.Cards.Any(p => p.Code == c.CardCode));
+            EndCountDown(player);
+            OnUserTakeoutFormation(player, formation);
+        }
+
+        public void ArrangleBringFormationPrelude(CircularlyLinkedNode<IPlayer> player)
+        {
+            _currentRound = null;
+
+            StartCountDown(player, p => OnPlayerBringFormationTimeout(player));
+            _playerControls[player].TakeOutButton.Enabled = true;
+
+        }
+
+        public void ArrangeFollowFormationPrelude(CircularlyLinkedNode<IPlayer> player, RoundInfo roundInfo)
+        {
+            _currentRound = roundInfo;
+
+            _playerControls[player].TakeOutButton.Enabled = true;
+            _playerControls[player].PassButton.Enabled = true;
+            StartCountDown(player, p => OnPlayerFollowFormationTimeout(player));
+
+        }
+
+        public void ArrangeFormationRoundPostlude(CircularlyLinkedNode<IPlayer> player)
         {
             if (player.Value.IsLandlords)
             {
@@ -208,13 +260,21 @@ namespace WinFormLandlords
             }
         }
 
+        public void PlayerPassbyAction(CircularlyLinkedNode<IPlayer> player)
+        {
+            _playerControls[player].TakeOutButton.Enabled = false;
+            _playerControls[player].PassButton.Enabled = false;
+            EndCountDown(player);
+            OnPlayerPassby(player);
+        }
+
+
+
 
         private void PassButton_Click(object sender, EventArgs e)
         {
             var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
-            _playerControls[player].TakeOutButton.Enabled = false;
-            _playerControls[player].PassButton.Enabled = false;
-            OnPlayerPassby(player);
+            PlayerPassbyAction(player);
         }
 
         private void BtnTakeOut_Click(object sender, EventArgs e)
@@ -234,30 +294,10 @@ namespace WinFormLandlords
                 MessageBox.Show("invalid formation");
                 return;
             }
-
-            TakeOutFormation(player, formation);
+            EndCountDown(player);
+            ThrowSelectedFormationAction(player, formation);
         }
 
-        private void TakeOutFormation(CircularlyLinkedNode<IPlayer> player, IFormation formation)
-        {
-            if (_currentRound != null)
-            {
-                if (formation.Signature != _currentRound.Formation.Signature
-                || formation.Cards.Length != _currentRound.Formation.Cards.Length
-                    || formation.Weight < _currentRound.Formation.Weight)
-                {
-                    MessageBox.Show("violate rules");
-                    return;
-                }
-            }
-            this.pnlDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
-            _playerControls[player].TakeOutButton.Enabled = false;
-            _playerControls[player].PassButton.Enabled = false;
-            //_playerControls[player].CardBoxContainer.RemoveSelectedCardBoxes();
-            _playerControls[player].CardBoxContainer.RemoveCardBoxes(c => formation.Cards.Any(p => p.Code == c.CardCode));
-
-            OnUserTakeoutFormation(player, formation);
-        }
 
         private void BtnPrepare_Click(object sender, EventArgs e)
         {
@@ -287,11 +327,11 @@ namespace WinFormLandlords
                 PlayerDesireLandlords(this, new PlayerEventArgs(player));
             }
         }
-        private void OnNoPlayerDesireLandlords()
+        private void OnPlayerDiscardLandlords(CircularlyLinkedNode<IPlayer> player)
         {
             if (UserPrepared != null)
             {
-                NoPlayerDesireLandlords(this, EventArgs.Empty);
+                PlayerDiscardLandlords(this, new PlayerEventArgs(player));
             }
         }
 
@@ -303,6 +343,27 @@ namespace WinFormLandlords
             }
         }
 
+        private void OnPlayerActLandlordsTimeout(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (PlayerActLandlordsTimeout != null)
+            {
+                PlayerActLandlordsTimeout(this, new PlayerEventArgs(player));
+            }
+        }
+        private void OnPlayerBringFormationTimeout(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (PlayerBringFormationTimeout != null)
+            {
+                PlayerBringFormationTimeout(this, new PlayerEventArgs(player));
+            }
+        }
+        private void OnPlayerFollowFormationTimeout(CircularlyLinkedNode<IPlayer> player)
+        {
+            if (PlayerFollowFormationTimeout != null)
+            {
+                PlayerFollowFormationTimeout(this, new PlayerEventArgs(player));
+            }
+        }
 
         //private void OnPlayerFollowed(CircularlyLinkedNode<IPlayer> player, IFormation formation)
         //{
@@ -322,6 +383,7 @@ namespace WinFormLandlords
             public Button PassButton { get; set; }
             public CardBoxContainer CardBoxContainer { get; set; }
             public Label LblName { get; set; }
+            public Label LblCountdown { get; set; }
         }
 
 
@@ -329,6 +391,7 @@ namespace WinFormLandlords
         {
             return string.Format(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
         }
+
 
     }
 }

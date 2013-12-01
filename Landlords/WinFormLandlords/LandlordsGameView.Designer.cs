@@ -29,6 +29,7 @@ namespace WinFormLandlords
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LandlordsGameView));
             this.btnCurrentPrepare = new System.Windows.Forms.Button();
             this.pnlCurrent = new WinFormControls.CardBoxContainer();
             this.pnlLeft = new WinFormControls.CardBoxContainer();
@@ -52,6 +53,9 @@ namespace WinFormLandlords
             this.lblLeftName = new System.Windows.Forms.Label();
             this.lblRightName = new System.Windows.Forms.Label();
             this.lblCurrentName = new System.Windows.Forms.Label();
+            this.lblCurrentCountdown = new System.Windows.Forms.Label();
+            this.lblRightCountdown = new System.Windows.Forms.Label();
+            this.lblLeftCountdown = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCurrentPrepare
@@ -251,11 +255,41 @@ namespace WinFormLandlords
             this.lblCurrentName.TabIndex = 8;
             this.lblCurrentName.Text = "label1";
             // 
+            // lblCurrentCountdown
+            // 
+            this.lblCurrentCountdown.AutoSize = true;
+            this.lblCurrentCountdown.Location = new System.Drawing.Point(539, 406);
+            this.lblCurrentCountdown.Name = "lblCurrentCountdown";
+            this.lblCurrentCountdown.Size = new System.Drawing.Size(19, 13);
+            this.lblCurrentCountdown.TabIndex = 9;
+            this.lblCurrentCountdown.Text = "10";
+            // 
+            // lblRightCountdown
+            // 
+            this.lblRightCountdown.AutoSize = true;
+            this.lblRightCountdown.Location = new System.Drawing.Point(816, 205);
+            this.lblRightCountdown.Name = "lblRightCountdown";
+            this.lblRightCountdown.Size = new System.Drawing.Size(19, 13);
+            this.lblRightCountdown.TabIndex = 9;
+            this.lblRightCountdown.Text = "10";
+            // 
+            // lblLeftCountdown
+            // 
+            this.lblLeftCountdown.AutoSize = true;
+            this.lblLeftCountdown.Location = new System.Drawing.Point(230, 205);
+            this.lblLeftCountdown.Name = "lblLeftCountdown";
+            this.lblLeftCountdown.Size = new System.Drawing.Size(19, 13);
+            this.lblLeftCountdown.TabIndex = 9;
+            this.lblLeftCountdown.Text = "10";
+            // 
             // LandlordsGameView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 671);
+            this.Controls.Add(this.lblLeftCountdown);
+            this.Controls.Add(this.lblRightCountdown);
+            this.Controls.Add(this.lblCurrentCountdown);
             this.Controls.Add(this.lblCurrentName);
             this.Controls.Add(this.lblRightName);
             this.Controls.Add(this.lblLeftName);
@@ -312,6 +346,9 @@ namespace WinFormLandlords
         private System.Windows.Forms.Label lblLeftName;
         private System.Windows.Forms.Label lblRightName;
         private System.Windows.Forms.Label lblCurrentName;
+        private System.Windows.Forms.Label lblCurrentCountdown;
+        private System.Windows.Forms.Label lblRightCountdown;
+        private System.Windows.Forms.Label lblLeftCountdown;
     }
 }
 
