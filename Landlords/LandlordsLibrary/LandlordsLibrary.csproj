@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArtificialIntelligence\AI1.cs" />
-    <Compile Include="ArtificialIntelligence\AIBase.cs" />
     <Compile Include="CertificatedForms\Flow\FlowThreeWithPair.cs" />
     <Compile Include="CertificatedForms\Flow\FlowThreeWithSole.cs" />
     <Compile Include="CertificatedForms\Flow\FlowThree.cs" />
@@ -64,10 +62,11 @@
     <Compile Include="DataContext\RoundInfo.cs" />
     <Compile Include="EventArguments\PlayerEventArgs.cs" />
     <Compile Include="ILandlordsGameView.cs" />
+    <Compile Include="Participant\Robot\IRobot.cs" />
     <Compile Include="Participant\IPlayer.cs" />
     <Compile Include="Participant\Player.cs" />
-    <Compile Include="DataContext\Poker.cs" />
-    <Compile Include="DataContext\PokerTypes.cs" />
+    <Compile Include="DataContext\Card.cs" />
+    <Compile Include="DataContext\CardTypes.cs" />
     <Compile Include="FormationAuthentication.cs" />
     <Compile Include="Formation\FormationBomb.cs" />
     <Compile Include="Formation\FormationSequenceSeries.cs" />
@@ -81,6 +80,7 @@
     <Compile Include="Formation\IFormation.cs" />
     <Compile Include="LandlordsGameController.cs" />
     <Compile Include="LandlordsLibraryRules.cs" />
+    <Compile Include="Participant\Robot\RobotJunior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Participant\Servant.cs" />
   </ItemGroup>

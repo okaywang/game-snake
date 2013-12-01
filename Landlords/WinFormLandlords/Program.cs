@@ -3,6 +3,7 @@ using BasicLibrary.DataStructure;
 using LandlordsLibrary;
 using LandlordsLibrary.DataContext;
 using LandlordsLibrary.Participant;
+using LandlordsLibrary.Participant.Robot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,14 @@ namespace WinFormLandlords
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        { 
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             var view = new LandlordsGameView();
             var p1 = new Player("王国君");
-            var p2 = new Player("张衡");
+            var p2 = new RobotJunior("机器人");
             var p3 = new Player("刘志伟");
             var players = new CircularlyLinkedList<IPlayer>(p1, p2, p3);
             var controller = new LandlordsGameController(players, view);

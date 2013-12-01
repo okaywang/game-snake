@@ -67,6 +67,20 @@ namespace WinFormControls
             }
         }
 
+        public void RemoveCardBoxes(Predicate<CardBox> pre)
+        {
+            _cardBoxes.RemoveAll(pre);
+
+            if (_leftToRight)
+            {
+                RepresentCardBoxesHorizontal();
+            }
+            else
+            {
+                RepresentCardBoxesVertical();
+            }
+        }
+
         private void RepresentCardBoxesVertical()
         {
             this.Controls.Clear();

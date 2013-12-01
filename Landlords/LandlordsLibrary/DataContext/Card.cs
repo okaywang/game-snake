@@ -7,9 +7,12 @@ namespace LandlordsLibrary.DataContext
 {
     public struct Card
     {
+        //public   readonly Card Empty = new Card(-1, -1);
+
         private int _code;
         private int _weight;
         internal Card(int code, int weight)
+            : this()
         {
             _code = code;
             _weight = weight;
@@ -37,14 +40,23 @@ namespace LandlordsLibrary.DataContext
             }
         }
 
-        public PokerTypes PokerType
+        public CardTypes PokerType
         {
-            get { return (PokerTypes)(_code / 13); }
+            get { return (CardTypes)(_code / 13); }
         }
 
         public override string ToString()
         {
             return string.Format("{0} {1}", PokerType, LiteralValue);
+        }
+
+        public static bool operator ==(Card card1, Card card2)
+        {
+            return card1.Code == card2.Code;
+        }
+        public static bool operator !=(Card card1, Card card2)
+        {
+            return card1.Code != card2.Code;
         }
     }
 
@@ -60,7 +72,7 @@ namespace LandlordsLibrary.DataContext
                                      11, 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
                                      11, 13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 
                                      100,200 };
-        private static Card[] _cards=new Card[54];
+        private static Card[] _cards = new Card[54];
         static CardCarton()
         {
             for (int i = 0; i < 54; i++)

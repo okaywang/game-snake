@@ -4,6 +4,7 @@ using LandlordsLibrary.CertificatedForms;
 using LandlordsLibrary.DataContext;
 using LandlordsLibrary.Formation;
 using LandlordsLibrary.Participant;
+using LandlordsLibrary.Participant.Robot;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,7 +134,7 @@ namespace WinFormLandlords
             _playerControls[currentPlayer.Next].CardBoxContainer.CardBoxLeftToRight = false;
 
             var cards1 = currentPlayer.Previous.Value.Cards;
-            cards1.Sort ((p1, p2) => p2.WeightValue - p1.WeightValue);
+            cards1.Sort((p1, p2) => p2.WeightValue - p1.WeightValue);
             this.pnlLeft.CardBoxes = cards1.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
 
             var cards2 = currentPlayer.Value.Cards;
@@ -152,17 +153,42 @@ namespace WinFormLandlords
 
         public void TakeOutCardsCommand(CircularlyLinkedNode<IPlayer> player)
         {
-            _playerControls[player].TakeOutButton.Enabled = true;
             _currentRound = null;
+            if (player.Value is IRobot)
+            {
+                var robot = player.Value as  IRobot;
+                var formation = robot.TakeOut();
+                TakeOutFormation(player, formation);
+            }
+            else
+            {
+                _playerControls[player].TakeOutButton.Enabled = true;
+            }
         }
 
         public void FollowCardsCommand(CircularlyLinkedNode<IPlayer> player, RoundInfo roundInfo)
         {
-            _playerControls[player].TakeOutButton.Enabled = true;
-            _playerControls[player].PassButton.Enabled = true;
             _currentRound = roundInfo;
+            if (player.Value is IRobot)
+            {
+                var robot = player.Value as IRobot;
+                var formation = robot.Follow(roundInfo);
+                if (formation !=null)
+                {
+                    TakeOutFormation(player, formation);
+                }
+                else
+                {
+                    OnPlayerPassby(player);
+                }
+            }
+            else
+            { 
+                _playerControls[player].TakeOutButton.Enabled = true;
+                _playerControls[player].PassButton.Enabled = true;
+            }
         }
-         
+
         public void RepresentLandlords(CircularlyLinkedNode<IPlayer> player)
         {
             var cards1 = player.Value.Cards;
@@ -172,7 +198,7 @@ namespace WinFormLandlords
 
         public void PlayerGone(CircularlyLinkedNode<IPlayer> player)
         {
-            if (player.Value.IsBanker)
+            if (player.Value.IsLandlords)
             {
                 MessageBox.Show("landlords win");
             }
@@ -190,7 +216,7 @@ namespace WinFormLandlords
             _playerControls[player].PassButton.Enabled = false;
             OnPlayerPassby(player);
         }
-         
+
         private void BtnTakeOut_Click(object sender, EventArgs e)
         {
             var player = (sender as Button).Tag as CircularlyLinkedNode<IPlayer>;
@@ -209,6 +235,11 @@ namespace WinFormLandlords
                 return;
             }
 
+            TakeOutFormation(player, formation);
+        }
+
+        private void TakeOutFormation(CircularlyLinkedNode<IPlayer> player, IFormation formation)
+        {
             if (_currentRound != null)
             {
                 if (formation.Signature != _currentRound.Formation.Signature
@@ -222,7 +253,8 @@ namespace WinFormLandlords
             this.pnlDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
             _playerControls[player].TakeOutButton.Enabled = false;
             _playerControls[player].PassButton.Enabled = false;
-            _playerControls[player].CardBoxContainer.RemoveSelectedCardBoxes();
+            //_playerControls[player].CardBoxContainer.RemoveSelectedCardBoxes();
+            _playerControls[player].CardBoxContainer.RemoveCardBoxes(c => formation.Cards.Any(p => p.Code == c.CardCode));
 
             OnUserTakeoutFormation(player, formation);
         }
@@ -269,8 +301,8 @@ namespace WinFormLandlords
             {
                 PlayerPassby(this, new PlayerEventArgs(player));
             }
-        } 
-        
+        }
+
 
         //private void OnPlayerFollowed(CircularlyLinkedNode<IPlayer> player, IFormation formation)
         //{

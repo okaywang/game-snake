@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LandlordsLibrary.DataContext
 {
-    public enum PokerTypes
+    public enum CardTypes
     {
         Spade, //黑桃
         Hearts, //红桃

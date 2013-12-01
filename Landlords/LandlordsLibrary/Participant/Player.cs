@@ -12,9 +12,11 @@ namespace LandlordsLibrary.Participant
     {
         private string _name;
         private List<Card> _cards;
-        private IFormation _feedback;
-        private bool _isBanker;
+        private bool _isLandlords;
 
+        public Player()
+            : this("Anonymity")
+        { }
         public Player(string name)
         {
             _name = name;
@@ -24,6 +26,7 @@ namespace LandlordsLibrary.Participant
         public List<Card> Cards
         {
             get { return _cards; }
+            protected set { _cards = value; }
         }
 
         public string Name
@@ -31,11 +34,11 @@ namespace LandlordsLibrary.Participant
             get { return _name; }
         }
 
-        public bool IsBanker
+        public bool IsLandlords
         {
             get
             {
-                return _isBanker;
+                return _isLandlords;
             }
         }
 
@@ -55,61 +58,10 @@ namespace LandlordsLibrary.Participant
             _cards.Add(card2);
             _cards.Add(card3);
 
-            _isBanker = true;
-        }
-
-        public void TakeOff(IFormation set)
-        {
-            _cards.RemoveAll(c => set.Cards.Any(s => s.Code == c.Code));
-        }
-
-        public IFormation NewRound_TakeOut()
-        {
-            IFormation formation = null;
-            while (formation == null)
-            {
-                formation = _feedback;
-            }
-
-            _feedback = null;
-            _cards.RemoveAll(c => formation.Cards.Any(s => s.Code == c.Code));
-            return formation;
-        }
-
-        public IFormation Track(IFormation cards, IPlayer player)
-        {
-            IFormation formation = null;
-            while (formation == null)
-            {
-                formation = _feedback;
-            }
-
-            _feedback = null;
-            _cards.RemoveAll(c => formation.Cards.Any(s => s.Code == c.Code));
-            return formation;
-        }
-
-        public void Passby()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool ActAsLandlords()
-        {
-            return true;
-        }
-
-        public void Review()
-        {
-        }
-
-        public void SetFeedback(IFormation feedback)
-        {
-            _feedback = feedback;
+            _isLandlords = true;
         }
 
         public bool IsPrepared { get; set; }
-
 
 
         public void ExpelFormation(IFormation formation)
