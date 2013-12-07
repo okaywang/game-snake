@@ -27,13 +27,13 @@ namespace WinFormLandlords
 
             var view = new LandlordsGameView();
             var p1 = new Player("王国君");
-            var p2 = new RobotJunior("机器人");
+            var p2 = new Player("张衡");
             var p3 = new Player("刘志伟");
             var players = new CircularlyLinkedList<IPlayer>(p1, p2, p3);
             var controller = new LandlordsGameController(players, view);
             controller.Initiallize();
 
-            view.UserPrepared += controller.UserPreparedHandler;
+            view.UserPrepared += controller.PlayerPreparedHandler;
             view.PlayerDesireLandlords += controller.PlayerDesireLandlordsHandler;
             view.PlayerDiscardLandlords += controller.PlayerDiscardLandlordsHandler;
             view.PlayerTakeoutFormation += controller.PlayerTakeoutFormationHandler;

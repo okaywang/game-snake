@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,6 @@ using System.Windows.Forms;
 
 namespace WinFormControls
 {
-    [Serializable]
     public class CardBox : PictureBox
     {
         public bool IsSelected { get; set; }
@@ -23,6 +23,7 @@ namespace WinFormControls
     public class CardBoxContainer : Panel
     {
         private List<CardBox> _cardBoxes = new List<CardBox>();
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<CardBox> CardBoxes
         {
             get { return _cardBoxes; }
@@ -91,7 +92,7 @@ namespace WinFormControls
             {
 
                 RepresentCard(box, left, top);
-                top += 30;
+                top += 15;
             }
         }
 
@@ -104,7 +105,7 @@ namespace WinFormControls
             foreach (var box in _cardBoxes)
             {
                 RepresentCard(box, left, top);
-                left += 20;
+                left += 15;
             }
         }
 
@@ -112,8 +113,9 @@ namespace WinFormControls
         {
             cardBox.Top = top;
             cardBox.Left = left;
-            cardBox.Width = 105;
-            cardBox.Height = 150;
+            cardBox.Width = 60;
+            cardBox.Height = 80;
+            cardBox.SizeMode = PictureBoxSizeMode.StretchImage;
             if (!cardBox.IsEventRegisted)
             {
                 cardBox.Click += CardBoxClick;

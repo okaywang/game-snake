@@ -19,13 +19,13 @@ namespace LandlordsLibrary.Participant
             }
         }
         
-        public static void DistributeCards(Card[] cards, CircularlyLinkedNode<IPlayer> player)
+        public static void DistributeCards(Card[] cards, CircularlyLinkedNode<ILandlordsGameView> views)
         {
             for (int i = 0; i < 50; i += 3)
             {
-                player.Value.DrawCard(cards[i]);
-                player.Next.Value.DrawCard(cards[i + 1]);
-                player.Next.Next.Value.DrawCard(cards[i + 2]);
+                views.Value.Player.DrawCard(cards[i]);
+                views.Next.Value.Player.DrawCard(cards[i + 1]);
+                views.Next.Next.Value.Player.DrawCard(cards[i + 2]);
             }
         }  
     }

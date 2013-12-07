@@ -13,144 +13,150 @@ namespace LandlordsLibrary
 {
     public class LandlordsGameController
     {
-        private CircularlyLinkedList<IPlayer> _players;
         private CircularlyLinkedNode<IPlayer> _landlords;
-        private CircularlyLinkedNode<IPlayer> _banker;
-        private ILandlordsGameView _view;
+        private CircularlyLinkedNode<ILandlordsGameView> _bankerView;
+        private CircularlyLinkedList<ILandlordsGameView> _views;
         private Card[] _cards;
 
-        public LandlordsGameController(CircularlyLinkedList<IPlayer> players, ILandlordsGameView view)
+        public LandlordsGameController(CircularlyLinkedList<ILandlordsGameView> views)
         {
-            _players = players;
-            _banker = _players.Current;
+            _bankerView = views.Current;
             _cards = new Card[54];
 
-            _view = view;
+            _views = views;
         }
 
         public void Initiallize()
         {
-            _view.Init(_banker);
+            _views.Each(v => v.Value.Init());
         }
 
         private void DistributeCards()
         {
             Servant.Shuffle(_cards);
-            Servant.DistributeCards(_cards, _banker);
-            _view.RepresentDistributeCards(_banker);
-            _view.ArrangeActLandlordsActionPrelude(_banker);
+            Servant.DistributeCards(_cards, _bankerView);
+            _views.Each(v => v.Value.RepresentDistributeCards());
+            _views.Each(v => v.Value.ArrangeActLandlordsActionPrelude(_views.Current.Value.Player));
         }
 
-        public void UserPreparedHandler(object sender, PlayerEventArgs e)
+        public void PlayerPreparedHandler(object sender, GameViewEventArgs e)
         {
-            e.Player.Value.IsPrepared = true;
-            if (e.Player.Previous.Value.IsPrepared && e.Player.Next.Value.IsPrepared)
+            e.View.Player.IsPrepared = true;
+            if (_views[e.View].Previous.Value.Player.IsPrepared && _views[e.View].Next.Value.Player.IsPrepared)
             {
                 DistributeCards();
             }
         }
-        public void PlayerDesireLandlordsHandler(object sender, PlayerEventArgs e)
+        public void PlayerDesireLandlordsHandler(object sender, GameViewEventArgs e)
         {
-            e.Player.Value.GainBonus(_cards[51], _cards[52], _cards[53]);
-            _view.ArrangeActLandlordsActionPostlude(e.Player, _cards[51], _cards[52], _cards[53]);
-            _view.ArrangleBringFormationPrelude(e.Player);
+            e.View.Player.GainBonus(_cards[51], _cards[52], _cards[53]);
+
+            _views.Each(v => v.Value.ArrangeActLandlordsActionPostlude(e.View.Player, _cards[51], _cards[52], _cards[53]));
+            _views.Each(v => v.Value.ArrangleBringFormationPrelude(e.View.Player));
         }
 
-        public void PlayerTakeoutFormationHandler(object sender, PlayerTakeoutFormationEventArgs e)
+        public void PlayerTakeoutFormationHandler(object sender, GameViewTakeoutFormationEventArgs e)
         {
-            e.Player.Value.ExpelFormation(e.Formation);
-            var round = new RoundInfo(e.Player.Value, e.Formation);
+            e.View.Player.ExpelFormation(e.Formation);
+            _views.Each(v => v.Value.ThrowFormationAction(e.View.Player, e.Formation));
+
+            var round = new RoundInfo(e.View.Player, e.Formation);
             RoundRecorder.Add(round);
-            if (e.Player.Value.Cards.Count == 0)
+            if (e.View.Player.Cards.Count == 0)
             {
-                _view.ArrangeFormationRoundPostlude(e.Player);
+                _views.Each(v => v.Value.ArrangeFormationRoundPostlude(e.View.Player));
             }
             else
             {
-                if (e.Player.Next.Value is IRobot)
+                var nextView = _views[e.View].Next.Value;
+                if (nextView.Player is IRobot)
                 {
-                    var robot = e.Player.Next.Value as IRobot;
+                    var robot = nextView.Player as IRobot;
                     var formation = robot.FollowFormation(round);
                     if (formation == null)
                     {
-                        _view.PlayerPassbyAction(e.Player.Next);
+                        _views.Each(v => v.Value.PlayerPassbyAction(nextView.Player));
                     }
                     else
                     {
-                        _view.ThrowSelectedFormationAction(e.Player.Next, formation);
+                        _views.Each(v => v.Value.ThrowFormationAction(nextView.Player, formation));
                     }
                 }
                 else
                 {
-                    _view.ArrangeFollowFormationPrelude(e.Player.Next, RoundRecorder.ImmediateRound);
+                    _views.Each(v => v.Value.ArrangeFollowFormationPrelude(nextView.Player, RoundRecorder.ImmediateRound));
                 }
             }
         }
-        public void PlayerPassbyHandler(object sender, PlayerEventArgs e)
+        public void PlayerPassbyHandler(object sender, GameViewEventArgs e)
         {
-            if (e.Player.Next.Value == RoundRecorder.ImmediateRound.Player)
+            var nextView = _views[e.View].Next.Value;
+            _views.Each(v => v.Value.PlayerPassbyAction(e.View.Player));
+
+            if (nextView.Player == RoundRecorder.ImmediateRound.Player)
             {
-                if (e.Player.Next.Value is IRobot)
+                if (nextView.Player is IRobot)
                 {
-                    _view.ThrowSelectedFormationAction(e.Player.Next, (e.Player.Next.Value as IRobot).BringFormation());
+                    _views.Each(v => v.Value.ThrowFormationAction(nextView.Player, (nextView.Player as IRobot).BringFormation()));
                 }
                 else
                 {
-                    _view.ArrangleBringFormationPrelude(e.Player.Next);
+                    _views.Each(v => v.Value.ArrangleBringFormationPrelude(nextView.Player));
                 }
             }
             else
             {
-                if (e.Player.Next.Value is IRobot)
+                if (nextView.Player is IRobot)
                 {
-                    var robot = e.Player.Next.Value as IRobot;
+                    var robot = nextView.Player as IRobot;
                     var formation = robot.FollowFormation(RoundRecorder.ImmediateRound);
                     if (formation == null)
                     {
-                        _view.PlayerPassbyAction(e.Player.Next);
+                        _views.Each(v => v.Value.PlayerPassbyAction(nextView.Player));
                     }
                     else
                     {
-                        _view.ThrowSelectedFormationAction(e.Player.Next, formation);
+                        _views.Each(v => v.Value.ThrowFormationAction(nextView.Player, formation));
                     }
                 }
                 else
                 {
 
-                    _view.ArrangeFollowFormationPrelude(e.Player.Next, RoundRecorder.ImmediateRound);
+                    _views.Each(v => v.Value.ArrangeFollowFormationPrelude(nextView.Player, RoundRecorder.ImmediateRound));
                 }
             }
         }
-        public void PlayerActLandlordsTimeoutHandler(object sender, PlayerEventArgs e)
+        public void PlayerActLandlordsTimeoutHandler(object sender, GameViewEventArgs e)
         {
-            _view.DiscardLandlordsAction(e.Player);
-            if (e.Player.Next.Value is IRobot)
+            e.View.DiscardLandlordsAction();
+            var nextView = _views[e.View].Next.Value;
+            if (nextView.Player is IRobot)
             {
-                _view.ActLandlordsAction(e.Player.Next);
+                nextView.ActLandlordsAction();
             }
             else
             {
-                _view.ArrangeActLandlordsActionPrelude(e.Player.Next);
+                _views.Each(v => v.Value.ArrangeActLandlordsActionPrelude(_views.Current.Next.Value.Player));
             }
         }
-        public void PlayerBringFormationTimeoutHandler(object sender, PlayerEventArgs e)
+        public void PlayerBringFormationTimeoutHandler(object sender, GameViewEventArgs e)
         {
-            _view.ThrowSelectedFormationAction(e.Player, RobotJunior.BringFormation(e.Player.Value.Cards));
+            _views.Each(v => v.Value.ThrowFormationAction(e.View.Player, RobotJunior.BringFormation(e.View.Player.Cards)));
         }
-        public void PlayerFollowFormationTimeoutHandler(object sender, PlayerEventArgs e)
+        public void PlayerFollowFormationTimeoutHandler(object sender, GameViewEventArgs e)
         {
-            _view.PlayerPassbyAction(e.Player);
+            _views.Each(v => v.Value.PlayerPassbyAction(e.View.Player));
         }
 
-        public void PlayerDiscardLandlordsHandler(object sender, PlayerEventArgs e)
+        public void PlayerDiscardLandlordsHandler(object sender, GameViewEventArgs e)
         {
-            if (e.Player == _banker)
+            if (e.View == _bankerView)
             {
                 DistributeCards();
             }
             else
             {
-                _view.ArrangeActLandlordsActionPrelude(_banker);
+                _views.Each(v => v.Value.ArrangeActLandlordsActionPrelude(_views.Current.Value.Player));
             }
         }
 

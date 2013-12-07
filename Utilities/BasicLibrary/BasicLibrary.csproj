@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="DataStructure\CircularlyLinkedList.cs" />
+    <Compile Include="DataStructure\SocketConnectedEventArgs.cs" />
+    <Compile Include="DataStructure\SocketMessageEventArgs.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="Identifier.cs" />
     <Compile Include="Miscellanea.cs" />

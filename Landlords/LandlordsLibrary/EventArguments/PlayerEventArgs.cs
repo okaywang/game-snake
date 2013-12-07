@@ -9,32 +9,32 @@ using System.Threading.Tasks;
 
 namespace LandlordsLibrary
 {
-    public class PlayerEventArgs : EventArgs
+    public class GameViewEventArgs : EventArgs
     {
-        private CircularlyLinkedNode<IPlayer> _player;
-        public PlayerEventArgs(CircularlyLinkedNode<IPlayer> player)
+        private ILandlordsGameView _view;
+        public GameViewEventArgs(ILandlordsGameView view)
         {
-            _player = player;
+            _view = view;
         }
-        public CircularlyLinkedNode<IPlayer> Player
+        public ILandlordsGameView View
         {
-            get { return _player; }
+            get { return _view; }
         }
     }
 
-    public class PlayerTakeoutFormationEventArgs : EventArgs
+    public class GameViewTakeoutFormationEventArgs : EventArgs
     {
-        private CircularlyLinkedNode<IPlayer> _player;
+        private ILandlordsGameView _view;
         private IFormation _formation;
-        public PlayerTakeoutFormationEventArgs(CircularlyLinkedNode<IPlayer> player, IFormation formation)
+        public GameViewTakeoutFormationEventArgs(ILandlordsGameView view, IFormation formation)
         {
-            _player = player;
+            _view = view;
             _formation = formation;
         }
 
-        public CircularlyLinkedNode<IPlayer> Player
+        public ILandlordsGameView View
         {
-            get { return _player; }
+            get { return _view; }
         }
 
         public IFormation Formation

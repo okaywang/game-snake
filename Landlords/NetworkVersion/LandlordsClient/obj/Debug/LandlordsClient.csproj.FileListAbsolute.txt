@@ -7,3 +7,7 @@ D:\test2\MyGame\game\game-snake\Landlords\NetworkVersion\LandlordsClient\bin\Deb
 D:\test2\MyGame\game\game-snake\Landlords\NetworkVersion\LandlordsClient\obj\Debug\LandlordsClient.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game\game-snake\Landlords\NetworkVersion\LandlordsClient\obj\Debug\LandlordsClient.dll
 D:\test2\MyGame\game\game-snake\Landlords\NetworkVersion\LandlordsClient\obj\Debug\LandlordsClient.pdb
+D:\development\mygame\Landlords\NetworkVersion\LandlordsClient\bin\Debug\LandlordsClient.dll
+D:\development\mygame\Landlords\NetworkVersion\LandlordsClient\bin\Debug\LandlordsClient.pdb
+D:\development\mygame\Landlords\NetworkVersion\LandlordsClient\obj\Debug\LandlordsClient.dll
+D:\development\mygame\Landlords\NetworkVersion\LandlordsClient\obj\Debug\LandlordsClient.pdb

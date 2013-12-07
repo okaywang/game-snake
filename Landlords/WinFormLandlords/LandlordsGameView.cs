@@ -387,7 +387,7 @@ namespace WinFormLandlords
 
         private string GetImgLocation(int code)
         {
-            return string.Format(@"D:\test2\MyGame\game\game-snake\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
+            return string.Format(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
         }
 
 

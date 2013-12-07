@@ -13,7 +13,6 @@ D:\test2\MyGame\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.exe
 D:\test2\MyGame\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.pdb
 D:\development\mygame\Landlords\WpfLandlords\bin\Debug\WpfLandlords.exe
 D:\development\mygame\Landlords\WpfLandlords\bin\Debug\WpfLandlords.pdb
-D:\development\mygame\Landlords\WpfLandlords\obj\Debug\WpfLandlords.csprojResolveAssemblyReference.cache
 D:\development\mygame\Landlords\WpfLandlords\obj\Debug\WpfLandlords.Properties.Resources.resources
 D:\development\mygame\Landlords\WpfLandlords\obj\Debug\WpfLandlords.csproj.GenerateResource.Cache
 D:\development\mygame\Landlords\WpfLandlords\obj\Debug\WpfLandlords.exe

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BasicLibrary.DataStructure
 {
-    public class CircularlyLinkedList<T>
+    public class CircularlyLinkedList<T> where T : class
     {
         private CircularlyLinkedNode<T>[] _nodes;
         private int _currentIndex;
@@ -36,9 +36,37 @@ namespace BasicLibrary.DataStructure
         {
             _currentIndex = --_currentIndex % 3;
         }
+
+        public void Each(Action<CircularlyLinkedNode<T>> action)
+        {
+            action(Current);
+            action(Current.Next);
+            action(Current.Previous);
+        }
+
+        public CircularlyLinkedNode<T> this[T t]
+        {
+            get
+            {
+                if (Current.Value == t)
+                {
+                    return Current;
+                }
+                else if(Current.Previous.Value == t )
+                {
+                    return Current.Previous;
+                }
+                else
+                {
+                    return Current.Next;
+                }
+
+
+            }
+        }
     }
 
-    public class CircularlyLinkedNode<T>
+    public class CircularlyLinkedNode<T> where T : class
     {
         private T _t;
         private CircularlyLinkedNode<T> _previous;
