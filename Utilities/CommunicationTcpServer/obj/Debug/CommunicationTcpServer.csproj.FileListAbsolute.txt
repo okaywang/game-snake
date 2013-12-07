@@ -1,0 +1,5 @@
+D:\test2\MyGame\game\game-snake\Utilities\CommunicationTcpServer\bin\Debug\CommunicationTcpServer.exe
+D:\test2\MyGame\game\game-snake\Utilities\CommunicationTcpServer\bin\Debug\CommunicationTcpServer.pdb
+D:\test2\MyGame\game\game-snake\Utilities\CommunicationTcpServer\obj\Debug\CommunicationTcpServer.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game\game-snake\Utilities\CommunicationTcpServer\obj\Debug\CommunicationTcpServer.exe
+D:\test2\MyGame\game\game-snake\Utilities\CommunicationTcpServer\obj\Debug\CommunicationTcpServer.pdb

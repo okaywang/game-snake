@@ -31,3 +31,14 @@ D:\development\mygame\Tetris\TetrisLibrary\bin\Debug\SimpleGame.pdb
 D:\development\mygame\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.csprojResolveAssemblyReference.cache
 D:\development\mygame\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.dll
 D:\development\mygame\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.pdb
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\TetrisLibrary.dll
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\TetrisLibrary.pdb
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\BasicLibrary.dll
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\CommonHelper.dll
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\SimpleGame.dll
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\BasicLibrary.pdb
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\CommonHelper.pdb
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\bin\Debug\SimpleGame.pdb
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.dll
+D:\test2\MyGame\game\game-snake\Tetris\TetrisLibrary\obj\Debug\TetrisLibrary.pdb
