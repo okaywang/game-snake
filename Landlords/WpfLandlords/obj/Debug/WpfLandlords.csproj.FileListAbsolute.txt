@@ -24,3 +24,9 @@ D:\test2\MyGame\game\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.Pr
 D:\test2\MyGame\game\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.csproj.GenerateResource.Cache
 D:\test2\MyGame\game\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.exe
 D:\test2\MyGame\game\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.pdb
+D:\development\game-snake\Landlords\WpfLandlords\bin\Debug\WpfLandlords.exe
+D:\development\game-snake\Landlords\WpfLandlords\bin\Debug\WpfLandlords.pdb
+D:\development\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.Properties.Resources.resources
+D:\development\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.csproj.GenerateResource.Cache
+D:\development\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.exe
+D:\development\game-snake\Landlords\WpfLandlords\obj\Debug\WpfLandlords.pdb

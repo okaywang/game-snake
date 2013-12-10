@@ -2,3 +2,7 @@ D:\test2\MyGame\game\game-snake\Utilities\WindowsFormsApplicationTestSocketLibra
 D:\test2\MyGame\game\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\bin\Debug\WindowsFormsApplicationTestSocketLibrary.pdb
 D:\test2\MyGame\game\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\obj\Debug\WindowsFormsApplicationTestSocketLibrary.dll
 D:\test2\MyGame\game\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\obj\Debug\WindowsFormsApplicationTestSocketLibrary.pdb
+D:\development\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\bin\Debug\WindowsFormsApplicationTestSocketLibrary.dll
+D:\development\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\bin\Debug\WindowsFormsApplicationTestSocketLibrary.pdb
+D:\development\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\obj\Debug\WindowsFormsApplicationTestSocketLibrary.dll
+D:\development\game-snake\Utilities\WindowsFormsApplicationTestSocketLibrary\obj\Debug\WindowsFormsApplicationTestSocketLibrary.pdb

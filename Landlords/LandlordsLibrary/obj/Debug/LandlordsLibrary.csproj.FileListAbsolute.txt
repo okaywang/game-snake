@@ -33,3 +33,10 @@ D:\development\mygame\Landlords\LandlordsLibrary\bin\Debug\BasicLibrary.pdb
 D:\development\mygame\Landlords\LandlordsLibrary\obj\Debug\LandlordsLibrary.csprojResolveAssemblyReference.cache
 D:\development\mygame\Landlords\LandlordsLibrary\obj\Debug\LandlordsLibrary.dll
 D:\development\mygame\Landlords\LandlordsLibrary\obj\Debug\LandlordsLibrary.pdb
+D:\development\game-snake\Landlords\LandlordsLibrary\bin\Debug\LandlordsLibrary.dll
+D:\development\game-snake\Landlords\LandlordsLibrary\bin\Debug\LandlordsLibrary.pdb
+D:\development\game-snake\Landlords\LandlordsLibrary\bin\Debug\BasicLibrary.dll
+D:\development\game-snake\Landlords\LandlordsLibrary\bin\Debug\BasicLibrary.pdb
+D:\development\game-snake\Landlords\LandlordsLibrary\obj\Debug\LandlordsLibrary.csprojResolveAssemblyReference.cache
+D:\development\game-snake\Landlords\LandlordsLibrary\obj\Debug\LandlordsLibrary.dll
+D:\development\game-snake\Landlords\LandlordsLibrary\obj\Debug\LandlordsLibrary.pdb

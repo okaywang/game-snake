@@ -10,3 +10,7 @@ D:\development\mygame\Landlords\NetworkVersion\LandlordsServer\bin\Debug\Landlor
 D:\development\mygame\Landlords\NetworkVersion\LandlordsServer\bin\Debug\LandlordsServer.pdb
 D:\development\mygame\Landlords\NetworkVersion\LandlordsServer\obj\Debug\LandlordsServer.dll
 D:\development\mygame\Landlords\NetworkVersion\LandlordsServer\obj\Debug\LandlordsServer.pdb
+D:\development\game-snake\Landlords\NetworkVersion\LandlordsServer\bin\Debug\LandlordsServer.dll
+D:\development\game-snake\Landlords\NetworkVersion\LandlordsServer\bin\Debug\LandlordsServer.pdb
+D:\development\game-snake\Landlords\NetworkVersion\LandlordsServer\obj\Debug\LandlordsServer.dll
+D:\development\game-snake\Landlords\NetworkVersion\LandlordsServer\obj\Debug\LandlordsServer.pdb

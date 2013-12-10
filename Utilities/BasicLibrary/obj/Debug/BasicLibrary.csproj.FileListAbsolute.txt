@@ -21,3 +21,7 @@ D:\development\mygame\Utilities\BasicLibrary\bin\Debug\BasicLibrary.dll
 D:\development\mygame\Utilities\BasicLibrary\bin\Debug\BasicLibrary.pdb
 D:\development\mygame\Utilities\BasicLibrary\obj\Debug\BasicLibrary.dll
 D:\development\mygame\Utilities\BasicLibrary\obj\Debug\BasicLibrary.pdb
+D:\development\game-snake\Utilities\BasicLibrary\bin\Debug\BasicLibrary.dll
+D:\development\game-snake\Utilities\BasicLibrary\bin\Debug\BasicLibrary.pdb
+D:\development\game-snake\Utilities\BasicLibrary\obj\Debug\BasicLibrary.dll
+D:\development\game-snake\Utilities\BasicLibrary\obj\Debug\BasicLibrary.pdb

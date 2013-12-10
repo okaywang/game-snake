@@ -14,3 +14,11 @@ D:\test2\MyGame\game\game-snake\Utilities\Communication\bin\Debug\CommunicationT
 D:\test2\MyGame\game\game-snake\Utilities\Communication\bin\Debug\BasicLibrary.dll
 D:\test2\MyGame\game\game-snake\Utilities\Communication\bin\Debug\BasicLibrary.pdb
 D:\test2\MyGame\game\game-snake\Utilities\Communication\obj\Debug\CommunicationTcpClient.dll
+D:\development\game-snake\Utilities\Communication\bin\Debug\CommunicationTcpClient.dll.config
+D:\development\game-snake\Utilities\Communication\bin\Debug\CommunicationTcpClient.dll
+D:\development\game-snake\Utilities\Communication\bin\Debug\CommunicationTcpClient.pdb
+D:\development\game-snake\Utilities\Communication\bin\Debug\BasicLibrary.dll
+D:\development\game-snake\Utilities\Communication\bin\Debug\BasicLibrary.pdb
+D:\development\game-snake\Utilities\Communication\obj\Debug\CommunicationTcpClient.csprojResolveAssemblyReference.cache
+D:\development\game-snake\Utilities\Communication\obj\Debug\CommunicationTcpClient.dll
+D:\development\game-snake\Utilities\Communication\obj\Debug\CommunicationTcpClient.pdb
