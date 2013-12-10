@@ -13,42 +13,45 @@ using System.Windows.Forms;
 namespace WindowsFormsApplicationTestSocket
 {
     public partial class FrmSeats : Form
-    { 
-        private Button _activeButton;
-        public EventHandler<UserEventArgs> UserSitdown;
+    {
+        private Dictionary<int, Button> seats;
+
+        public EventHandler<OccupySeatEventArgs> UserSitdown;
         public FrmSeats()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            seats = new Dictionary<int, Button>();
+            seats.Add(1, btnLeft);
+            seats.Add(2, btnRight);
+            seats.Add(3, btnBottom);
 
             this.btnLeft.Click += BtnSeatClick;
             this.btnRight.Click += BtnSeatClick;
             this.btnBottom.Click += BtnSeatClick;
-        } 
+        }
 
-        public void UserSitdownAction(object posTag, string userName)
+        public void UserSitdownAction(int seatNumber, string userName)
         {
-            var button = posTag as Button;
+            var button = seats[seatNumber];
             button.Text = userName;
             button.Enabled = false;
-
-            if (button == _activeButton)
-            {
-                //new FrmClient().Show();
-                this.btnLeft.Enabled = this.btnRight.Enabled = this.btnBottom.Enabled = false;
-            }
         }
 
         private void BtnSeatClick(object sender, EventArgs e)
         {
-            _activeButton = sender as Button;
-            OnUserSitdown(_activeButton, "wgj");
+            var name = DateTime.Now.ToString("ss");
+            var no = Int32.Parse((sender as Button).Tag.ToString());
+            UserSitdownAction(no, name);
+            (sender as Button).BackColor = Color.Green;
+            this.btnLeft.Enabled = this.btnRight.Enabled = this.btnBottom.Enabled = false;
+            OnUserSitdown(name, no);
         }
 
-        private void OnUserSitdown(Button btn, string name)
+        private void OnUserSitdown(string name, int seatNumber)
         {
             if (UserSitdown != null)
             {
-                UserSitdown(btn, new UserEventArgs(name));
+                UserSitdown(null, new OccupySeatEventArgs(name, seatNumber));
             }
         }
     }

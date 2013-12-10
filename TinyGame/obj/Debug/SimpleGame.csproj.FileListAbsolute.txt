@@ -11,3 +11,8 @@ D:\development\mygame\TinyGame\bin\Debug\SimpleGame.dll
 D:\development\mygame\TinyGame\bin\Debug\SimpleGame.pdb
 D:\development\mygame\TinyGame\obj\Debug\SimpleGame.dll
 D:\development\mygame\TinyGame\obj\Debug\SimpleGame.pdb
+D:\test2\MyGame\game\game-snake\TinyGame\bin\Debug\SimpleGame.dll
+D:\test2\MyGame\game\game-snake\TinyGame\bin\Debug\SimpleGame.pdb
+D:\test2\MyGame\game\game-snake\TinyGame\obj\Debug\SimpleGame.csprojResolveAssemblyReference.cache
+D:\test2\MyGame\game\game-snake\TinyGame\obj\Debug\SimpleGame.dll
+D:\test2\MyGame\game\game-snake\TinyGame\obj\Debug\SimpleGame.pdb

@@ -15,7 +15,7 @@ namespace CommunicationTcpClient
     public class TcpClientController
     {
         private TcpClient _tcpClient;
-        private byte[] buffer = new Byte[1024];
+        private byte[] buffer = new Byte[2048];
         private string _serverHostName;
         private int _serverPort;
 

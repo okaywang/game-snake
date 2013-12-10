@@ -1,9 +1,13 @@
-﻿using CommunicationTcpClient;
+﻿using BasicLibrary.DataStructure;
+using CommunicationTcpClient;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplicationTestSocketLibrary;
 
 namespace WindowsFormsApplicationTestSocket
 {
@@ -17,13 +21,13 @@ namespace WindowsFormsApplicationTestSocket
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-             
+
             var frmSeat = new FrmSeats();
             var controller = new SeatController(frmSeat);
             frmSeat.UserSitdown += controller.UserSitdownHandler;
             frmSeat.Show();
 
-            Application.Run(); 
+            Application.Run();
         }
     }
 
@@ -38,27 +42,71 @@ namespace WindowsFormsApplicationTestSocket
             _view = view;
             _client = new TcpClientController(host, port);
             _client.Connect();
+            _client.ServerDataReceived += ServerDataReceivedHandler;
+
+            QueryOccupiedSeats();
         }
 
-        public void UserSitdownHandler(object sender, UserEventArgs e)
+        private void QueryOccupiedSeats()
         {
-            _view.UserSitdownAction(sender, e.UserName);
+            var msg = new MessageConvention();
+            msg.MsgType = MessageType.QueryOccupiedSeats;
+            var bytes = MyHelper.BinarySerializeObject<MessageConvention>(msg);
+            _client.Send(bytes);
         }
 
+        private void ServerDataReceivedHandler(object sender, SocketMessageEventArgs e)
+        {
+            var msg = MyHelper.BinaryDeserializeObject<MessageConvention>(e.Buffer);
+
+            if (msg.MsgType == MessageType.OccupySeat)
+            {
+                _view.UserSitdownAction(msg.Seat.SeatNumber, msg.Seat.UserName);
+            }
+            else if (msg.MsgType == MessageType.QueryOccupiedSeats)
+            {
+                var os = msg.OccupiedSeats;
+                foreach (var item in os)
+                {
+                    _view.UserSitdownAction(item.SeatNumber, item.UserName);
+                }
+            }
+        }
+
+        public void UserSitdownHandler(object sender, OccupySeatEventArgs e)
+        {
+            var msg = new MessageConvention();
+            msg.MsgType = MessageType.OccupySeat;
+            msg.Seat = new Seat()
+            {
+                UserName = e.UserName,
+                SeatNumber = e.SeatNumber
+            };
+            var bytes = MyHelper.BinarySerializeObject<MessageConvention>(msg);
+            _client.Send(bytes);
+        }
     }
 
 
-    public class UserEventArgs : EventArgs
+    public class OccupySeatEventArgs : EventArgs
     {
         private string _userName;
-        public UserEventArgs(string username)
+        private int _seatNumber;
+        public OccupySeatEventArgs(string username, int seatNumber)
         {
             _userName = username;
+            _seatNumber = seatNumber;
         }
         public string UserName
         {
             get
             { return _userName; }
         }
+        public int SeatNumber
+        {
+            get
+            { return _seatNumber; }
+        }
     }
+
 }

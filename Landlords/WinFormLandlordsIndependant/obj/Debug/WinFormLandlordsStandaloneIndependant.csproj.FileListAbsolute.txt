@@ -22,7 +22,6 @@ D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\bin\Debug\
 D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\bin\Debug\BasicLibrary.pdb
 D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\bin\Debug\LandlordsLibrary.pdb
 D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\bin\Debug\WinFormControls.pdb
-D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\obj\Debug\WinFormLandlordsStandaloneIndependant.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\obj\Debug\WinFormLandlords.LandlordsGameView.resources
 D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\obj\Debug\WinFormLandlords.Properties.Resources.resources
 D:\test2\MyGame\game\game-snake\Landlords\WinFormLandlordsIndependant\obj\Debug\WinFormLandlordsStandaloneIndependant.csproj.GenerateResource.Cache

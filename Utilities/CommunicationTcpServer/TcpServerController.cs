@@ -27,6 +27,11 @@ namespace CommunicationTcpServer
             _dataReceivedhandler = dataReceivedHandler;
         }
 
+        public List<TcpClientListener> TcpClientListeners
+        {
+            get { return _tcpClientListeners; }
+        }
+
         public void Start()
         {
             _tcpListener.Start();
@@ -69,7 +74,12 @@ namespace CommunicationTcpServer
         public void SendMessage(byte[] bytes, string hostName, int port)
         {
             var listener = _tcpClientListeners.Find(i => i.HostName == hostName && i.Port == port);
-            listener.SendMessage(bytes);
+            SendMessage(bytes, listener);
+        }
+
+        public void SendMessage(byte[] bytes, TcpClientListener clientListener)
+        {
+            clientListener.SendMessage(bytes);
         }
     }
 }

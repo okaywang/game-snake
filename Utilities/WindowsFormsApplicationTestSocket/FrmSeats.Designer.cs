@@ -39,8 +39,9 @@
             this.btnBottom.Name = "btnBottom";
             this.btnBottom.Size = new System.Drawing.Size(75, 50);
             this.btnBottom.TabIndex = 0;
+            this.btnBottom.Tag = "3";
             this.btnBottom.Text = "sit here";
-            this.btnBottom.UseVisualStyleBackColor = true; 
+            this.btnBottom.UseVisualStyleBackColor = true;
             // 
             // btnLeft
             // 
@@ -48,8 +49,9 @@
             this.btnLeft.Name = "btnLeft";
             this.btnLeft.Size = new System.Drawing.Size(75, 50);
             this.btnLeft.TabIndex = 0;
+            this.btnLeft.Tag = "1";
             this.btnLeft.Text = "sit here";
-            this.btnLeft.UseVisualStyleBackColor = true; 
+            this.btnLeft.UseVisualStyleBackColor = true;
             // 
             // btnRight
             // 
@@ -57,10 +59,11 @@
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(75, 50);
             this.btnRight.TabIndex = 0;
+            this.btnRight.Tag = "2";
             this.btnRight.Text = "sit here";
-            this.btnRight.UseVisualStyleBackColor = true; 
+            this.btnRight.UseVisualStyleBackColor = true;
             // 
-            // FrmChooseSeat
+            // FrmSeats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +71,7 @@
             this.Controls.Add(this.btnRight);
             this.Controls.Add(this.btnLeft);
             this.Controls.Add(this.btnBottom);
-            this.Name = "FrmChooseSeat";
+            this.Name = "FrmSeats";
             this.Text = "FrmChooseSeat";
             this.ResumeLayout(false);
 
