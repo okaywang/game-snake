@@ -73,6 +73,7 @@
             this.Controls.Add(this.btnBottom);
             this.Name = "FrmSeats";
             this.Text = "FrmChooseSeat";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSeats_FormClosing);
             this.ResumeLayout(false);
 
         }

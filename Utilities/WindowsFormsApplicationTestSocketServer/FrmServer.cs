@@ -68,6 +68,7 @@ namespace WindowsFormsApplicationTestSocketServer
         {
             this.Invoke(new Action(() =>
             {
+                
                 this.cmbClientList.Items.Remove(e.IPEndPoint.ToString());
             }));
         }

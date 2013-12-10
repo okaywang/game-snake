@@ -17,6 +17,7 @@ namespace WindowsFormsApplicationTestSocket
         private Dictionary<int, Button> seats;
 
         public EventHandler<OccupySeatEventArgs> UserSitdown;
+        public EventHandler UserLeave;
         public FrmSeats()
         {
             InitializeComponent();
@@ -52,6 +53,14 @@ namespace WindowsFormsApplicationTestSocket
             if (UserSitdown != null)
             {
                 UserSitdown(null, new OccupySeatEventArgs(name, seatNumber));
+            }
+        }
+
+        private void FrmSeats_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (UserLeave !=null)
+            {
+                UserLeave(this, EventArgs.Empty);
             }
         }
     }

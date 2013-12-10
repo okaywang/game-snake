@@ -25,6 +25,7 @@ namespace WindowsFormsApplicationTestSocket
             var frmSeat = new FrmSeats();
             var controller = new SeatController(frmSeat);
             frmSeat.UserSitdown += controller.UserSitdownHandler;
+            frmSeat.UserLeave += controller.UserLeaveHandler;
             frmSeat.Show();
 
             Application.Run();
@@ -84,6 +85,11 @@ namespace WindowsFormsApplicationTestSocket
             };
             var bytes = MyHelper.BinarySerializeObject<MessageConvention>(msg);
             _client.Send(bytes);
+        }
+
+        public void UserLeaveHandler(object sender, EventArgs e)
+        {
+            _client.Disconnect();
         }
     }
 
