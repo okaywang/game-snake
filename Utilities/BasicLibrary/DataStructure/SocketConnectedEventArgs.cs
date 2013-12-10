@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace BasicLibrary.DataStructure
 {
-    public class ClientConnectedEventArgs : EventArgs
+    public class SocketConnectedEventArgs : EventArgs
     {
         private IPEndPoint _IPEndPoint;
-        public ClientConnectedEventArgs(IPEndPoint ep)
+        public SocketConnectedEventArgs(IPEndPoint ep)
         {
             _IPEndPoint = ep;
         }

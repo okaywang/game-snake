@@ -18,8 +18,9 @@ namespace CommunicationTcpServer
         private Thread _clientThread;
 
         private EventHandler<SocketMessageEventArgs> _dataReceivedhandler;
-        public EventHandler<ClientConnectedEventArgs> ClientConnected;
-        public TcpServerController(int port,EventHandler<SocketMessageEventArgs> dataReceivedHandler)
+        public EventHandler<SocketConnectedEventArgs> ClientConnected;
+        public EventHandler<SocketConnectedEventArgs> ClientDisconnected;
+        public TcpServerController(int port, EventHandler<SocketMessageEventArgs> dataReceivedHandler)
         {
             _tcpListener = new TcpListener(IPAddress.Loopback, port);
             _tcpClientListeners = new List<TcpClientListener>();
@@ -28,20 +29,27 @@ namespace CommunicationTcpServer
 
         public void Start()
         {
-            _tcpListener.Start(); 
+            _tcpListener.Start();
 
             _clientThread = new Thread(ListenClient);
             _clientThread.Start();
         }
 
+        public void Stop()
+        {
+            foreach (var clientListener in _tcpClientListeners)
+            {
+                clientListener.StopSocketListener();
+            }
+        }
 
         private void ListenClient(object obj)
         {
             TcpClientListener listener = null;
             while (true)
             {
-                var tcpClient = _tcpListener.AcceptTcpClient(); 
-                listener = new TcpClientListener(tcpClient);
+                var tcpClient = _tcpListener.AcceptTcpClient();
+                listener = new TcpClientListener(tcpClient, ClientDisconnected);
                 _tcpClientListeners.Add(listener);
                 listener.ClientDataReceived += _dataReceivedhandler;
                 listener.StartSocketListener();
@@ -52,9 +60,9 @@ namespace CommunicationTcpServer
 
         private void OnClientConnected(IPEndPoint ep)
         {
-            if (ClientConnected !=null)
+            if (ClientConnected != null)
             {
-                ClientConnected(this, new ClientConnectedEventArgs(ep));
+                ClientConnected(this, new SocketConnectedEventArgs(ep));
             }
         }
 

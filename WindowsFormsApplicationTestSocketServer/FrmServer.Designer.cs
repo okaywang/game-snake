@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplicationTestSocket
+﻿namespace WindowsFormsApplicationTestSocketServer
 {
     partial class FrmServer
     {
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(493, 252);
+            this.ClientSize = new System.Drawing.Size(490, 248);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cmbClientList);
             this.Controls.Add(this.btnStart);
@@ -92,6 +92,7 @@
             this.Controls.Add(this.btnSend);
             this.Name = "FrmServer";
             this.Text = "this is server";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmServer_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

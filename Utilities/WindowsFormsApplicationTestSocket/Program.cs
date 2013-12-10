@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunicationTcpClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,16 +17,48 @@ namespace WindowsFormsApplicationTestSocket
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+             
+            var frmSeat = new FrmSeats();
+            var controller = new SeatController(frmSeat);
+            frmSeat.UserSitdown += controller.UserSitdownHandler;
+            frmSeat.Show();
 
-            var frmServer = new FrmServer();
-            var frmClient1 = new FrmClient() { Text = "client 1111" };
-            var frmClient2 = new FrmClient() { Text = "client 2222" };
-            var frmClient3 = new FrmClient() { Text = "client 3333" };
-            frmClient1.Show();
-            frmClient2.Show();
-            frmClient3.Show();
-            Application.Run(frmServer);
+            Application.Run(); 
+        }
+    }
 
+    public class SeatController
+    {
+        private string host = "127.0.0.1";
+        private int port = 7788;
+        private TcpClientController _client;
+        private FrmSeats _view;
+        public SeatController(FrmSeats view)
+        {
+            _view = view;
+            _client = new TcpClientController(host, port);
+            _client.Connect();
+        }
+
+        public void UserSitdownHandler(object sender, UserEventArgs e)
+        {
+            _view.UserSitdownAction(sender, e.UserName);
+        }
+
+    }
+
+
+    public class UserEventArgs : EventArgs
+    {
+        private string _userName;
+        public UserEventArgs(string username)
+        {
+            _userName = username;
+        }
+        public string UserName
+        {
+            get
+            { return _userName; }
         }
     }
 }

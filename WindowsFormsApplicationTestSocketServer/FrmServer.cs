@@ -11,18 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplicationTestSocket
+namespace WindowsFormsApplicationTestSocketServer
 {
     public partial class FrmServer : Form
     {
         private TcpServerController _server;
         public FrmServer()
         {
-            InitializeComponent();
+            InitializeComponent(); 
             this.richTextBox1.ReadOnly = true;
             this.btnSend.Enabled = false;
             _server = new TcpServerController(7788, ClientDataReceivedHandler);
             _server.ClientConnected += ClientConnectedHandler;
+            _server.ClientDisconnected += ClientDisconnectedHandler; 
         }
 
         private void btnServer_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace WindowsFormsApplicationTestSocket
             _server.Start();
             this.btnSend.Enabled = true;
             this.btnStart.Enabled = false;
-        }
+        } 
 
         private void RecordMessage(MessageEntry me)
         {
@@ -54,15 +55,21 @@ namespace WindowsFormsApplicationTestSocket
             this.textBox1.Focus();
         }
 
-        void ClientConnectedHandler(object sender, ClientConnectedEventArgs e)
+        private void ClientConnectedHandler(object sender, SocketConnectedEventArgs e)
         {
             this.Invoke(new Action(() =>
             {
                 this.cmbClientList.Items.Add(e.IPEndPoint.ToString());
             }));
         }
-
-        void ClientDataReceivedHandler(object sender, BasicLibrary.DataStructure.SocketMessageEventArgs e)
+        private void ClientDisconnectedHandler(object sender, SocketConnectedEventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                this.cmbClientList.Items.Remove(e.IPEndPoint.ToString());
+            }));
+        }
+        private void ClientDataReceivedHandler(object sender, BasicLibrary.DataStructure.SocketMessageEventArgs e)
         {
             this.Invoke(new Action(() =>
             {
@@ -70,6 +77,11 @@ namespace WindowsFormsApplicationTestSocket
                 var rm = new ReceivedMessageEntry(msg, e.EndPoint.ToString());
                 RecordMessage(rm);
             }));
+        }
+
+        private void FrmServer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _server.Stop();
         }
     }
 }

@@ -32,6 +32,7 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.btnJoin = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnPrepare = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // richTextBox1
@@ -44,9 +45,9 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(306, 101);
+            this.btnSend.Location = new System.Drawing.Point(305, 101);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(202, 60);
+            this.btnSend.Size = new System.Drawing.Size(202, 46);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -54,9 +55,9 @@
             // 
             // btnJoin
             // 
-            this.btnJoin.Location = new System.Drawing.Point(306, 182);
+            this.btnJoin.Location = new System.Drawing.Point(305, 199);
             this.btnJoin.Name = "btnJoin";
-            this.btnJoin.Size = new System.Drawing.Size(202, 60);
+            this.btnJoin.Size = new System.Drawing.Size(202, 46);
             this.btnJoin.TabIndex = 1;
             this.btnJoin.Text = "Join";
             this.btnJoin.UseVisualStyleBackColor = true;
@@ -70,18 +71,28 @@
             this.textBox1.Size = new System.Drawing.Size(202, 82);
             this.textBox1.TabIndex = 2;
             // 
+            // btnPrepare
+            // 
+            this.btnPrepare.Location = new System.Drawing.Point(306, 150);
+            this.btnPrepare.Name = "btnPrepare";
+            this.btnPrepare.Size = new System.Drawing.Size(202, 46);
+            this.btnPrepare.TabIndex = 3;
+            this.btnPrepare.Text = "Prepare";
+            this.btnPrepare.UseVisualStyleBackColor = true;
+            // 
             // FrmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 250);
+            this.Controls.Add(this.btnPrepare);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnJoin);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.richTextBox1);
             this.Name = "FrmClient";
             this.Text = "this is client";
-            this.Load += new System.EventHandler(this.FrmClient_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmClient_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,5 +104,6 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.Button btnJoin;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnPrepare;
     }
 }

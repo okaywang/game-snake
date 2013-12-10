@@ -14,16 +14,14 @@ namespace WindowsFormsApplicationTestSocket
 {
     public partial class FrmClient : Form
     {
-        private string _host = "127.0.0.1";
-        private int _port = 7788;
         private TcpClientController _client;
-        public FrmClient()
+        public FrmClient(TcpClientController client)
         {
             InitializeComponent();
+            _client = client;
+            _client.ServerDataReceived += ServerDataReceivedHandler;
             this.btnSend.Enabled = false;
             this.richTextBox1.ReadOnly = true;
-            _client = new TcpClientController(_host, _port);
-            _client.ServerDataReceived += ServerDataReceivedHandler;
         }
 
         private void ServerDataReceivedHandler(object sender, SocketMessageEventArgs e)
@@ -38,11 +36,11 @@ namespace WindowsFormsApplicationTestSocket
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            var sm = new SendingMessageEntry(this.textBox1.Text, _host + ":" + _port);
-            _client.Send(System.Text.Encoding.ASCII.GetBytes(sm.Message));  
+            var sm = new SendingMessageEntry(this.textBox1.Text, _client.LocalEndPoint.ToString());
+            _client.Send(System.Text.Encoding.ASCII.GetBytes(sm.Message));
             RecordMessage(sm);
         }
-         
+
         private void RecordMessage(MessageEntry me)
         {
             this.richTextBox1.AppendText(me.ToString());
@@ -59,9 +57,9 @@ namespace WindowsFormsApplicationTestSocket
             this.btnJoin.Enabled = false;
         }
 
-        private void FrmClient_Load(object sender, EventArgs e)
+        private void FrmClient_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            _client.Disconnect();
         }
     }
 }

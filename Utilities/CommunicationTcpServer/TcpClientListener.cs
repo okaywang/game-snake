@@ -17,9 +17,11 @@ namespace CommunicationTcpServer
         private byte[] buffer;
 
         public event EventHandler<SocketMessageEventArgs> ClientDataReceived;
-        public TcpClientListener(TcpClient tcpClient)
+        private EventHandler<SocketConnectedEventArgs> _ClientDisconnected;
+        public TcpClientListener(TcpClient tcpClient, EventHandler<SocketConnectedEventArgs> clientDisconnected)
         {
             _tcpClient = tcpClient;
+            _ClientDisconnected = clientDisconnected;
             buffer = new byte[1024];
         }
 
@@ -40,6 +42,11 @@ namespace CommunicationTcpServer
                 _listenerThread = new Thread(ListenClient);
                 _listenerThread.Start();
             }
+        } 
+
+        internal void StopSocketListener()
+        {
+            _tcpClient.Client.Close();
         }
 
         public void SendMessage(byte[] bytes)
@@ -51,8 +58,24 @@ namespace CommunicationTcpServer
         {
             while (true)
             {
-                var size = _tcpClient.Client.Receive(buffer);
-                OnClientDataReceived(buffer, size, _tcpClient.Client.RemoteEndPoint);
+                try
+                {
+                    var size = _tcpClient.Client.Receive(buffer);
+                    OnClientDataReceived(buffer, size, _tcpClient.Client.RemoteEndPoint);
+                }
+                catch (SocketException)
+                {
+                    OnClientDisconnected(_tcpClient.Client.RemoteEndPoint as IPEndPoint);
+                    break;
+                }
+            }
+        }
+
+        private void OnClientDisconnected(IPEndPoint ep)
+        {
+            if (_ClientDisconnected != null)
+            {
+                _ClientDisconnected(this, new SocketConnectedEventArgs(ep));
             }
         }
 
@@ -63,6 +86,5 @@ namespace CommunicationTcpServer
                 ClientDataReceived(this, new SocketMessageEventArgs(buffer, size, ep));
             }
         }
-
     }
 }
