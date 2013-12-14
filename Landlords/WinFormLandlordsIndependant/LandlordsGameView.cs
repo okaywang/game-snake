@@ -169,26 +169,28 @@ namespace WinFormLandlords
         {
             EndCountDown();
 
+            var cardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
             if (specifiedPlayer == this.Player)
             {
-                this.pnlCurrentDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
-                this.btnCurrentTakeOut.Enabled = false;
-                this.btnCurrentPassby.Enabled = false;
-                this.pnlCurrent.RemoveCardBoxes(c => formation.Cards.Any(p => p.Code == c.CardCode));
+                this.pnlCurrentDesk.CardBoxes = cardBoxes;
                 this.pnlRightDesk.RemoveCardBoxes(c => true);
                 this.lblCurrentState.Hide();
                 this.lblRightPass.Hide();
+                this.pnlCurrent.RemoveCardBoxes(c => formation.Cards.Any(p => p.Code == c.CardCode));
+
+                this.btnCurrentTakeOut.Enabled = false;
+                this.btnCurrentPassby.Enabled = false;
             }
             else if (specifiedPlayer == this.PlayerLeft)
             {
-                this.pnlLeftDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+                this.pnlLeftDesk.CardBoxes = cardBoxes;
                 this.pnlCurrentDesk.RemoveCardBoxes(c => true);
-                this.lblLeftPass.Hide();
                 this.lblCurrentState.Hide();
+                this.lblLeftPass.Hide();
             }
             else if (specifiedPlayer == this.PlayerRight)
             {
-                this.pnlRightDesk.CardBoxes = formation.Cards.Select(p => new CardBox() { CardCode = p.Code, ImageLocation = GetImgLocation(p.Code) }).ToList();
+                this.pnlRightDesk.CardBoxes = cardBoxes;
                 this.pnlLeftDesk.RemoveCardBoxes(c => true);
                 this.lblRightPass.Hide();
                 this.lblLeftPass.Hide();
