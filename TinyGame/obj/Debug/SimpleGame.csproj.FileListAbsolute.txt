@@ -15,3 +15,4 @@ D:\test2\MyGame\game\game-snake\TinyGame\bin\Debug\SimpleGame.pdb
 D:\test2\MyGame\game\game-snake\TinyGame\obj\Debug\SimpleGame.csprojResolveAssemblyReference.cache
 D:\test2\MyGame\game\game-snake\TinyGame\obj\Debug\SimpleGame.dll
 D:\test2\MyGame\game\game-snake\TinyGame\obj\Debug\SimpleGame.pdb
+D:\development\game-snake\TinyGame\obj\Debug\SimpleGame.csprojResolveAssemblyReference.cache

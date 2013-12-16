@@ -15,7 +15,7 @@ namespace WindowsFormsApplicationTestSocket
     public partial class FrmSeats : Form
     {
         private Dictionary<int, Button> seats;
-
+        private Button _currentSeat;
         public EventHandler<OccupySeatEventArgs> UserSitdown;
         public EventHandler UserLeave;
         public FrmSeats()
@@ -33,9 +33,25 @@ namespace WindowsFormsApplicationTestSocket
 
         public void UserSitdownAction(int seatNumber, string userName)
         {
-            var button = seats[seatNumber];
-            button.Text = userName;
-            button.Enabled = false;
+            this.Invoke(new Action(() =>
+            {
+                var button = seats[seatNumber];
+                button.Text = userName;
+                button.Enabled = false;
+            }));
+        }
+
+        public void UserStandupAction(int seatNumber, string userName)
+        {
+            this.Invoke(new Action(() =>
+            {
+                var button = seats[seatNumber];
+                button.Text = "sit here";
+                if (_currentSeat == null)
+                {
+                    button.Enabled = true;
+                }
+            }));
         }
 
         private void BtnSeatClick(object sender, EventArgs e)
@@ -43,7 +59,8 @@ namespace WindowsFormsApplicationTestSocket
             var name = DateTime.Now.ToString("ss");
             var no = Int32.Parse((sender as Button).Tag.ToString());
             UserSitdownAction(no, name);
-            (sender as Button).BackColor = Color.Green;
+            _currentSeat = sender as Button;
+            _currentSeat.BackColor = Color.Green;
             this.btnLeft.Enabled = this.btnRight.Enabled = this.btnBottom.Enabled = false;
             OnUserSitdown(name, no);
         }
@@ -56,12 +73,26 @@ namespace WindowsFormsApplicationTestSocket
             }
         }
 
-        private void FrmSeats_FormClosing(object sender, FormClosingEventArgs e)
+        public void OnUserLeave()
         {
-            if (UserLeave !=null)
+            if (_currentSeat != null)
+            {
+                _currentSeat.Enabled = true;
+                _currentSeat.BackColor = SystemColors.Control;
+                _currentSeat.Text = "sit here";
+                _currentSeat = null;
+                this.btnLeft.Enabled = this.btnRight.Enabled = this.btnBottom.Enabled = true;
+            }
+
+            if (UserLeave != null)
             {
                 UserLeave(this, EventArgs.Empty);
             }
+        }
+
+        private void FrmSeats_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            OnUserLeave();
         }
     }
 

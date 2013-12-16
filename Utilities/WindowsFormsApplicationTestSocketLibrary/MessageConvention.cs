@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace WindowsFormsApplicationTestSocketLibrary
@@ -18,6 +19,7 @@ namespace WindowsFormsApplicationTestSocketLibrary
     { 
         public int SeatNumber { get; set; }
         public string UserName { get; set; }
+        public IPEndPoint IPEndPoint { get; set; }
     }
 
     [Serializable]
@@ -25,6 +27,7 @@ namespace WindowsFormsApplicationTestSocketLibrary
     {
         QueryOccupiedSeats,
         OccupySeat,
+        UserLeave,
         Talk
     }
 }

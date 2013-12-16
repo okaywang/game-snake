@@ -67,3 +67,4 @@ D:\development\game-snake\Snake\ASample\obj\Debug\贪吃蛇.Properties.Resources
 D:\development\game-snake\Snake\ASample\obj\Debug\ASample.csproj.GenerateResource.Cache
 D:\development\game-snake\Snake\ASample\obj\Debug\贪吃蛇.exe
 D:\development\game-snake\Snake\ASample\obj\Debug\贪吃蛇.pdb
+D:\development\game-snake\Snake\ASample\obj\Debug\ASample.csprojResolveAssemblyReference.cache

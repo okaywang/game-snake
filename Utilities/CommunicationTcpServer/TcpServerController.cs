@@ -25,6 +25,7 @@ namespace CommunicationTcpServer
             _tcpListener = new TcpListener(IPAddress.Loopback, port);
             _tcpClientListeners = new List<TcpClientListener>();
             _dataReceivedhandler = dataReceivedHandler;
+            ClientDisconnected += ClientDisconnectedHandler;
         }
 
         public List<TcpClientListener> TcpClientListeners
@@ -42,10 +43,11 @@ namespace CommunicationTcpServer
 
         public void Stop()
         {
-            foreach (var clientListener in _tcpClientListeners)
-            {
-                clientListener.StopSocketListener();
-            }
+            _tcpListener.Stop();
+            //foreach (var clientListener in _tcpClientListeners)
+            //{
+            //    clientListener.StopSocketListener();
+            //}
         }
 
         private void ListenClient(object obj)
@@ -53,14 +55,28 @@ namespace CommunicationTcpServer
             TcpClientListener listener = null;
             while (true)
             {
-                var tcpClient = _tcpListener.AcceptTcpClient();
-                listener = new TcpClientListener(tcpClient, ClientDisconnected);
-                _tcpClientListeners.Add(listener);
-                listener.ClientDataReceived += _dataReceivedhandler;
-                listener.StartSocketListener();
+                try
+                {
+                    var tcpClient = _tcpListener.AcceptTcpClient();
+                    listener = new TcpClientListener(tcpClient, ClientDisconnected);
+                    _tcpClientListeners.Add(listener);
+                    listener.ClientDataReceived += _dataReceivedhandler;
+                    listener.StartSocketListener();
 
-                OnClientConnected(tcpClient.Client.RemoteEndPoint as IPEndPoint);
+                    OnClientConnected(tcpClient.Client.RemoteEndPoint as IPEndPoint);
+                }
+                catch (SocketException ex)
+                {
+                    EventLog.WriteEntry("Application", ex.Message);
+                    break;
+                }
             }
+        }
+
+
+        private void ClientDisconnectedHandler(object sender, SocketConnectedEventArgs e)
+        {
+            _tcpClientListeners.RemoveAll(p => p.HostName == e.IPEndPoint.Address.ToString() && p.Port == e.IPEndPoint.Port);
         }
 
         private void OnClientConnected(IPEndPoint ep)

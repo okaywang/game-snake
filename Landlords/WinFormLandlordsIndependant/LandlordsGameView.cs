@@ -373,7 +373,7 @@ namespace WinFormLandlords
         }
         private string GetImgLocation(int code)
         {
-            return string.Format(@"D:\development\mygame\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
+            return string.Format(@"D:\development\game-snake\Landlords\LandlordsLibrary\Resources\{0}.jpg", (code + 1).ToString());
         }
 
         private void Timer_Tick(object sender, EventArgs e)

@@ -68,8 +68,23 @@ namespace WindowsFormsApplicationTestSocketServer
         {
             this.Invoke(new Action(() =>
             {
-                
+                var seat = seats.First(s => s.IPEndPoint == e.IPEndPoint);
+                if (seat == null)
+                {
+                    return;
+                }
                 this.cmbClientList.Items.Remove(e.IPEndPoint.ToString());
+                var clients = _server.TcpClientListeners;
+                seats.Remove(seat);
+                foreach (var client in clients)
+                {
+                    var msg = new MessageConvention();
+                    msg.MsgType = MessageType.UserLeave;
+                    msg.Seat = seat;
+
+                    var bytes = MyHelper.BinarySerializeObject<MessageConvention>(msg);
+                    client.SendMessage(bytes);
+                }
             }));
         }
         private void ClientDataReceivedHandler(object sender, BasicLibrary.DataStructure.SocketMessageEventArgs e)
@@ -84,7 +99,7 @@ namespace WindowsFormsApplicationTestSocketServer
                 if (convention.MsgType == MessageType.OccupySeat)
                 {
                     var clients = _server.TcpClientListeners;
-                    seats.Add(new Seat() { SeatNumber = convention.Seat.SeatNumber, UserName = convention.Seat.UserName });
+                    seats.Add(new Seat() { SeatNumber = convention.Seat.SeatNumber, UserName = convention.Seat.UserName, IPEndPoint = currentEP });
                     foreach (var client in clients)
                     {
                         if (client.HostName == currentEP.Address.ToString() && client.Port == currentEP.Port)

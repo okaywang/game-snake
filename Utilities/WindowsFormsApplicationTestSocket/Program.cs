@@ -23,12 +23,15 @@ namespace WindowsFormsApplicationTestSocket
             Application.SetCompatibleTextRenderingDefault(false);
 
             var frmSeat = new FrmSeats();
-            var controller = new SeatController(frmSeat);
+            var frmClient = new FrmClient();
+            var controller = new SeatController(frmSeat, frmClient);
             frmSeat.UserSitdown += controller.UserSitdownHandler;
             frmSeat.UserLeave += controller.UserLeaveHandler;
-            frmSeat.Show();
-
-            Application.Run();
+            frmClient.FormClosing += (object sender, FormClosingEventArgs e) =>
+            {
+                frmSeat.OnUserLeave();
+            };
+            Application.Run(frmSeat);
         }
     }
 
@@ -37,10 +40,12 @@ namespace WindowsFormsApplicationTestSocket
         private string host = "127.0.0.1";
         private int port = 7788;
         private TcpClientController _client;
-        private FrmSeats _view;
-        public SeatController(FrmSeats view)
+        private FrmSeats _viewSeat;
+        private FrmClient _viewClient;
+        public SeatController(FrmSeats view, FrmClient viewClient)
         {
-            _view = view;
+            _viewSeat = view;
+            _viewClient = viewClient;
             _client = new TcpClientController(host, port);
             _client.Connect();
             _client.ServerDataReceived += ServerDataReceivedHandler;
@@ -62,15 +67,19 @@ namespace WindowsFormsApplicationTestSocket
 
             if (msg.MsgType == MessageType.OccupySeat)
             {
-                _view.UserSitdownAction(msg.Seat.SeatNumber, msg.Seat.UserName);
+                _viewSeat.UserSitdownAction(msg.Seat.SeatNumber, msg.Seat.UserName);
             }
             else if (msg.MsgType == MessageType.QueryOccupiedSeats)
             {
                 var os = msg.OccupiedSeats;
                 foreach (var item in os)
                 {
-                    _view.UserSitdownAction(item.SeatNumber, item.UserName);
+                    _viewSeat.UserSitdownAction(item.SeatNumber, item.UserName);
                 }
+            }
+            else if (msg.MsgType == MessageType.UserLeave)
+            {
+                _viewSeat.UserStandupAction(msg.Seat.SeatNumber, msg.Seat.UserName);
             }
         }
 
@@ -85,6 +94,8 @@ namespace WindowsFormsApplicationTestSocket
             };
             var bytes = MyHelper.BinarySerializeObject<MessageConvention>(msg);
             _client.Send(bytes);
+
+            _viewClient.Show();
         }
 
         public void UserLeaveHandler(object sender, EventArgs e)

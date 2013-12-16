@@ -13,13 +13,11 @@ using System.Windows.Forms;
 namespace WindowsFormsApplicationTestSocket
 {
     public partial class FrmClient : Form
-    {
-        private TcpClientController _client;
-        public FrmClient(TcpClientController client)
+    { 
+        public FrmClient()
         {
             InitializeComponent();
-            _client = client;
-            _client.ServerDataReceived += ServerDataReceivedHandler;
+
             this.btnSend.Enabled = false;
             this.richTextBox1.ReadOnly = true;
         }
@@ -36,9 +34,9 @@ namespace WindowsFormsApplicationTestSocket
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            var sm = new SendingMessageEntry(this.textBox1.Text, _client.LocalEndPoint.ToString());
-            _client.Send(System.Text.Encoding.ASCII.GetBytes(sm.Message));
-            RecordMessage(sm);
+            //var sm = new SendingMessageEntry(this.textBox1.Text, _client.LocalEndPoint.ToString());
+            //_client.Send(System.Text.Encoding.ASCII.GetBytes(sm.Message));
+            //RecordMessage(sm);
         }
 
         private void RecordMessage(MessageEntry me)
@@ -52,14 +50,14 @@ namespace WindowsFormsApplicationTestSocket
 
         private void btnJoin_Click(object sender, EventArgs e)
         {
-            _client.Connect();
+            //_client.Connect();
             this.btnSend.Enabled = true;
             this.btnJoin.Enabled = false;
         }
 
         private void FrmClient_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _client.Disconnect();
+            //_client.Disconnect();
         }
     }
 }
